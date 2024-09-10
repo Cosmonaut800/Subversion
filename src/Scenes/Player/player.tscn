@@ -1,3 +1,32 @@
-[gd_scene format=3 uid="uid://d0rjl2uql7asj"]
+[gd_scene load_steps=6 format=3 uid="uid://d0rjl2uql7asj"]
 
-[node name="Player" type="Node2D"]
+[ext_resource type="Script" path="res://src/Scripts/Player/player.gd" id="1_rn414"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x1evk"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yo3f6"]
+
+[sub_resource type="Skin" id="Skin_y3q5e"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hmdbb"]
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_rn414")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_x1evk")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="MockBody" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_yo3f6")
+skin = SubResource("Skin_y3q5e")
+skeleton = NodePath("../..")
+
+[node name="MockFace" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(0.8, 0, 0, 0, 0.5, 0, 0, 0, 0.8, -0.025528, 0.17926, -0.112518)
+mesh = SubResource("BoxMesh_hmdbb")
+skeleton = NodePath("../..")
