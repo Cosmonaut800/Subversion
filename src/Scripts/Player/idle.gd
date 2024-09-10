@@ -26,14 +26,14 @@ func process_input(_event: InputEvent) -> State:
 	if Input.is_action_just_pressed("interact"):
 		var dialogue_starters = dialogue_starter_detector.get_overlapping_areas()
 		if dialogue_starters.size() > 0:
-			start_rotation = true
+			Global.is_talking = true
 			entity_to_rotate = dialogue_starters[0]
 			entity_to_rotate.start_dialogue()
 			return
 	return null
 
 func process_physics(_delta: float) -> State:
-	if start_rotation:
+	if Global.is_talking:
 		rotate_entity_smoothly(entity_to_rotate.get_parent(), _delta)
 		
 	return null
