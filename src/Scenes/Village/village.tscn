@@ -1,3 +1,31 @@
-[gd_scene format=3 uid="uid://b0ahb003d7w2s"]
+[gd_scene load_steps=4 format=3 uid="uid://b0ahb003d7w2s"]
 
-[node name="Village" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://d0rjl2uql7asj" path="res://src/Scenes/Player/player.tscn" id="1_pij0r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_55npu"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="BoxMesh" id="BoxMesh_s76jh"]
+size = Vector3(60, 2, 60)
+
+[node name="Village" type="Node"]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_55npu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_s76jh")
+
+[node name="Player" parent="." instance=ExtResource("1_pij0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="CameraPivot" type="Marker3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 2, 5)
+
+[node name="Camera3D" type="Camera3D" parent="Player/CameraPivot"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 17, 0)
+light_energy = 3.0
