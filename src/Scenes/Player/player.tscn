@@ -1,6 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0rjl2uql7asj"]
+[gd_scene load_steps=10 format=3 uid="uid://d0rjl2uql7asj"]
 
 [ext_resource type="Script" path="res://src/Scripts/Player/player.gd" id="1_rn414"]
+[ext_resource type="PackedScene" uid="uid://bxmvys46vndly" path="res://src/Scenes/Statemachine/statemachine.tscn" id="2_a2anx"]
+[ext_resource type="Script" path="res://src/Scripts/Player/idle.gd" id="3_wdds3"]
+[ext_resource type="Script" path="res://src/Scripts/Player/move.gd" id="4_ymhpd"]
+[ext_resource type="Script" path="res://src/Scripts/Player/interact.gd" id="5_s4xwr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x1evk"]
 
@@ -18,15 +22,29 @@ script = ExtResource("1_rn414")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_x1evk")
 
-[node name="Pivot" type="Node3D" parent="."]
+[node name="Character" type="Node3D" parent="."]
 
-[node name="MockBody" type="MeshInstance3D" parent="Pivot"]
+[node name="MockBody" type="MeshInstance3D" parent="Character"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_yo3f6")
 skin = SubResource("Skin_y3q5e")
 skeleton = NodePath("../..")
 
-[node name="MockFace" type="MeshInstance3D" parent="Pivot"]
+[node name="MockFace" type="MeshInstance3D" parent="Character"]
 transform = Transform3D(0.8, 0, 0, 0, 0.5, 0, 0, 0, 0.8, -0.025528, 0.17926, -0.112518)
 mesh = SubResource("BoxMesh_hmdbb")
 skeleton = NodePath("../..")
+
+[node name="Statemachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_a2anx")]
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="Statemachine" node_paths=PackedStringArray("move_state")]
+script = ExtResource("3_wdds3")
+move_state = NodePath("../Move")
+
+[node name="Move" type="Node" parent="Statemachine" node_paths=PackedStringArray("idle_state")]
+script = ExtResource("4_ymhpd")
+idle_state = NodePath("../Idle")
+
+[node name="Interact" type="Node" parent="Statemachine"]
+script = ExtResource("5_s4xwr")
