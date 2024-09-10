@@ -4,5 +4,8 @@
 
 [resource]
 shading_mode = 2
+diffuse_mode = 2
+specular_mode = 2
+disable_ambient_light = true
 albedo_texture = ExtResource("1_w7d0g")
 texture_filter = 2
