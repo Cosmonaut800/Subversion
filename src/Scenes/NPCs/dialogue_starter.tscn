@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3bf2vwd43ogn"]
+
+[ext_resource type="Script" path="res://src/Scripts/DialogueManager/dialogue_starter.gd" id="1_1mxur"]
+
+[node name="DialogueStarter" type="Area3D"]
+script = ExtResource("1_1mxur")
