@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbrwemhjdmnmp"]
+
+[ext_resource type="PackedScene" uid="uid://blmvkrw84v3a4" path="res://assets/Models/first_person_map.glb" id="1_ndep3"]
+[ext_resource type="PackedScene" uid="uid://bw2ljp43ffhlh" path="res://src/Scenes/Player/first_person_player.tscn" id="2_23518"]
+
+[sub_resource type="Environment" id="Environment_k0ooc"]
+ambient_light_source = 2
+ambient_light_color = Color(0.188572, 0.166762, 0.124763, 1)
+
+[node name="TestStage" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_k0ooc")
+
+[node name="first_person_map" parent="." instance=ExtResource("1_ndep3")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.2338, 0)
+light_color = Color(1, 0.952941, 0.92549, 1)
+omni_range = 18.3471
+
+[node name="FirstPersonPlayer" parent="." instance=ExtResource("2_23518")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4488, 2.42233e-07, 4.80151)

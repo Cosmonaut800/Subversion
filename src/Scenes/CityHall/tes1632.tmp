@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbrwemhjdmnmp"]
+
+[ext_resource type="PackedScene" uid="uid://blmvkrw84v3a4" path="res://assets/Models/first_person_map.glb" id="1_ndep3"]
+[ext_resource type="PackedScene" uid="uid://bw2ljp43ffhlh" path="res://src/Scenes/Player/imported_player.tscn" id="2_23518"]
+
+[node name="TestStage" type="Node3D"]
+
+[node name="first_person_map" parent="." instance=ExtResource("1_ndep3")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.19905, 0)
+omni_range = 11.5109
+
+[node name="Player" parent="." instance=ExtResource("2_23518")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.21173, 2.42233e-07, 3.69698)

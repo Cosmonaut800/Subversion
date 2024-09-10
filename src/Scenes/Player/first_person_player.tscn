@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw2ljp43ffhlh"]
+
+[ext_resource type="Script" path="res://src/Scripts/first_person_player.gd" id="1_fnf2j"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yksil"]
+
+[node name="FirstPersonPlayer" type="CharacterBody3D"]
+script = ExtResource("1_fnf2j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_yksil")
+
+[node name="YawPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.512, 0)
+
+[node name="PitchPivot" type="Node3D" parent="YawPivot"]
+
+[node name="CameraTarget" type="Node3D" parent="YawPivot/PitchPivot"]
+
+[node name="Camera3D" type="Camera3D" parent="YawPivot/PitchPivot"]
+fov = 85.0
+
+[node name="RayCast3D" type="RayCast3D" parent="YawPivot/PitchPivot"]
+target_position = Vector3(1.45519e-11, 1.45519e-11, -1.5)
+collision_mask = 5
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Audio" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="FootstepTimer" type="Timer" parent="Audio"]
+wait_time = 0.4
+autostart = true
+
+[node name="footstep1" type="AudioStreamPlayer3D" parent="Audio"]
+attenuation_filter_db = 0.0
+
+[node name="footstep2" type="AudioStreamPlayer3D" parent="Audio"]
+attenuation_filter_db = 0.0
+
+[node name="footstep3" type="AudioStreamPlayer3D" parent="Audio"]
+attenuation_filter_db = 0.0
+
+[node name="footstep4" type="AudioStreamPlayer3D" parent="Audio"]
+attenuation_filter_db = 0.0
+
+[connection signal="timeout" from="Audio/FootstepTimer" to="." method="_on_footstep_timer_timeout"]
