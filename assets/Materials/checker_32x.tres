@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c5atl2g2kcmm3"]
+
+[ext_resource type="Texture2D" uid="uid://drjufv4hhrj7h" path="res://assets/Materials/Textures/checker_32x.png" id="1_w7d0g"]
+
+[resource]
+shading_mode = 2
+albedo_texture = ExtResource("1_w7d0g")
+texture_filter = 2

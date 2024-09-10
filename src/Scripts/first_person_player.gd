@@ -4,6 +4,7 @@ extends CharacterBody3D
 const SPEED = 6.0
 const ACCEL = 30.0
 const DECEL = 25.0
+const JUMP_HEIGHT = 1.0
 
 @onready var yaw := $YawPivot
 @onready var pitch := $YawPivot/PitchPivot
@@ -58,7 +59,7 @@ func _physics_process(delta):
 		
 		if is_on_floor():
 			if Input.is_action_just_pressed("jump"):
-				velocity.y += sqrt(2.0 * gravity * 1.0)
+				velocity.y += sqrt(2.0 * gravity * JUMP_HEIGHT)
 			
 			if not direction:
 				decelerate(delta)
