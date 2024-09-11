@@ -11,12 +11,33 @@ const JUMP_HEIGHT = 1.0
 @onready var camera := $YawPivot/PitchPivot/Camera3D
 @onready var cam_target := $YawPivot/PitchPivot/CameraTarget
 @onready var ray := $YawPivot/PitchPivot/RayCast3D
+@onready var bullet_graphics := $YawPivot/PitchPivot/Camera3D/BulletGraphics
+@onready var muzzle_flash := $YawPivot/PitchPivot/Camera3D/MuzzleFlash
+@onready var muzzle_flash_timer := $YawPivot/PitchPivot/Camera3D/MuzzleFlashTimer
 @onready var action_wait := $ActionWait
 @onready var footstep_timer := $Audio/FootstepTimer
 @onready var footsteps := [	$Audio/footstep1,
 							$Audio/footstep2,
 							$Audio/footstep3,
 							$Audio/footstep4]
+@onready var raycasts := [	$YawPivot/PitchPivot/Rays/Ray1,
+							$YawPivot/PitchPivot/Rays/Ray2,
+							$YawPivot/PitchPivot/Rays/Ray3,
+							$YawPivot/PitchPivot/Rays/Ray4,
+							$YawPivot/PitchPivot/Rays/Ray5,
+							$YawPivot/PitchPivot/Rays/Ray6,
+							$YawPivot/PitchPivot/Rays/Ray7,
+							$YawPivot/PitchPivot/Rays/Ray8,
+							$YawPivot/PitchPivot/Rays/Ray9]
+@onready var splatters := [	$YawPivot/PitchPivot/Rays/Splatter1,
+							$YawPivot/PitchPivot/Rays/Splatter2,
+							$YawPivot/PitchPivot/Rays/Splatter3,
+							$YawPivot/PitchPivot/Rays/Splatter4,
+							$YawPivot/PitchPivot/Rays/Splatter5,
+							$YawPivot/PitchPivot/Rays/Splatter6,
+							$YawPivot/PitchPivot/Rays/Splatter7,
+							$YawPivot/PitchPivot/Rays/Splatter8,
+							$YawPivot/PitchPivot/Rays/Splatter9]
 
 var previous_basis: Basis
 var previous_position: Vector3
@@ -37,6 +58,7 @@ var focused := true
 
 var can_step := true
 var can_use := true
+var ammo := 2
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -65,6 +87,9 @@ func _physics_process(delta):
 				decelerate(delta)
 	else:
 		velocity = Vector3.ZERO
+	
+	if Input.is_action_just_pressed("primary_fire") and ammo > 0:
+		shoot()
 	
 	if can_step && get_last_motion().length() > 0.05:
 		var index = randi_range(0, 3)
@@ -101,5 +126,38 @@ func _unhandled_input(event):
 				yaw_input = -event.relative.x * mouse_sensitivity * horizontal_speed
 				pitch_input = -event.relative.y * mouse_sensitivity * vertical_speed
 
+func shoot():
+	var entity
+	
+	muzzle_flash.light_energy = 1.0
+	muzzle_flash_timer.start()
+	bullet_graphics.restart()
+	
+	for i in raycasts.size():
+		raycasts[i].target_position.x = ((i % 3) - 1) * randf_range(4.0, 8.0)
+		raycasts[i].target_position.y = (floor(i/3) - 1) * randf_range(4.0, 8.0)
+		entity = raycasts[i].get_collider()
+		if entity:
+			splatters[i].global_position = raycasts[i].get_collision_point()
+			if entity.get_collision_layer_value(3):
+				splatters[i].draw_pass_1.surface_get_material(0).albedo_color = Color.DARK_RED
+			else:
+				splatters[i].draw_pass_1.surface_get_material(0).albedo_color = Color.DARK_SLATE_GRAY
+			splatters[i].restart()
+	
+	pitch_input += 0.1
+	
+	ammo -= 1
+	if ammo <= 0:
+		action_wait.start()
+		print("reloading")
+
 func _on_footstep_timer_timeout():
 	can_step = true
+
+func _on_muzzle_flash_timer_timeout() -> void:
+	muzzle_flash.light_energy = 0.0
+
+func _on_action_wait_timeout() -> void:
+	ammo = 2
+	print("reloaded")
