@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bbrwemhjdmnmp"]
 
 [ext_resource type="PackedScene" uid="uid://blmvkrw84v3a4" path="res://assets/Models/first_person_map.glb" id="1_ndep3"]
-[ext_resource type="PackedScene" uid="uid://bw2ljp43ffhlh" path="res://src/Scenes/Player/first_person_player.tscn" id="2_23518"]
+[ext_resource type="PackedScene" path="res://src/Scenes/Player/first_person_player.tscn" id="2_23518"]
 
 [sub_resource type="Environment" id="Environment_k0ooc"]
 ambient_light_source = 2
