@@ -148,8 +148,13 @@ func shoot():
 		entity = raycasts[i].get_collider()
 		if entity:
 			splatters[i].global_position = raycasts[i].get_collision_point()
+			splatters[i].process_material.direction = camera.global_basis.inverse() * raycasts[i].get_collision_normal() + Vector3.UP
+			splatters[i].process_material.initial_velocity_min = 2.5
+			splatters[i].process_material.initial_velocity_max = 2.5
 			if entity.get_collision_layer_value(3):
 				splatters[i].draw_pass_1.surface_get_material(0).albedo_color = Color.DARK_RED
+				splatters[i].process_material.initial_velocity_min += raycasts[i].get_collision_normal().dot(entity.velocity)
+				splatters[i].process_material.initial_velocity_max += raycasts[i].get_collision_normal().dot(entity.velocity)
 			else:
 				splatters[i].draw_pass_1.surface_get_material(0).albedo_color = Color.DARK_SLATE_GRAY
 			splatters[i].restart()
