@@ -1,25 +1,28 @@
 extends CharacterBody3D
 
 
-const SPEED = 6.0
-const ACCEL = 30.0
-const DECEL = 25.0
-const JUMP_HEIGHT = 1.0
+const SPEED := 6.0
+const ACCEL := 30.0
+const DECEL := 25.0
+const JUMP_HEIGHT := 1.0
+const AMMO_MAX := 2
 
 @onready var yaw := $YawPivot
 @onready var pitch := $YawPivot/PitchPivot
 @onready var camera := $YawPivot/PitchPivot/Camera3D
 @onready var cam_target := $YawPivot/PitchPivot/CameraTarget
-@onready var ray := $YawPivot/PitchPivot/RayCast3D
+@onready var gun_graphics := $YawPivot/PitchPivot/Camera3D/GunGraphics
 @onready var bullet_graphics := $YawPivot/PitchPivot/Camera3D/BulletGraphics
 @onready var muzzle_flash := $YawPivot/PitchPivot/Camera3D/MuzzleFlash
 @onready var muzzle_flash_timer := $YawPivot/PitchPivot/Camera3D/MuzzleFlashTimer
-@onready var action_wait := $ActionWait
+@onready var reload_wait := $ReloadWait
 @onready var footstep_timer := $Audio/FootstepTimer
 @onready var footsteps := [	$Audio/footstep1,
 							$Audio/footstep2,
 							$Audio/footstep3,
 							$Audio/footstep4]
+@onready var gun_sfx := $Audio/Shotgun
+@onready var reload_sfx := $Audio/Reload
 @onready var raycasts := [	$YawPivot/PitchPivot/Rays/Ray1,
 							$YawPivot/PitchPivot/Rays/Ray2,
 							$YawPivot/PitchPivot/Rays/Ray3,
@@ -51,6 +54,11 @@ var mouse_sensitivity := 0.002
 var yaw_input := 0.0
 var pitch_input := 0.0
 
+var true_pitch := 0.0
+var recoil := 0.0
+var recoil_tween: Tween
+var gun_tween: Tween
+
 var state := 0
 enum STATE {FREE}
 
@@ -65,12 +73,9 @@ func _ready():
 	state = STATE.FREE
 
 func _physics_process(delta):
-	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var direction = (yaw.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	direction.y = 0.0
@@ -88,10 +93,10 @@ func _physics_process(delta):
 	else:
 		velocity = Vector3.ZERO
 	
-	if Input.is_action_just_pressed("primary_fire") and ammo > 0:
+	if Input.is_action_just_pressed("primary_fire") and ammo > 0 and reload_wait.is_stopped():
 		shoot()
 	
-	if can_step && get_last_motion().length() > 0.05:
+	if is_on_floor() && can_step && get_last_motion().length() > 0.05:
 		var index = randi_range(0, 3)
 		can_step = false
 		footstep_timer.start()
@@ -103,10 +108,14 @@ func _physics_process(delta):
 func _process(_delta):
 	if state == STATE.FREE:
 		yaw.rotate_y(yaw_input)
-		pitch.rotate_x(pitch_input)
-		pitch.rotation.x = clamp(pitch.rotation.x, -1.5, 1.5)
+		true_pitch += pitch_input
+		true_pitch = clamp(true_pitch, -1.5, 1.5)
+		pitch.rotation.x = true_pitch + recoil
 		yaw_input = 0.0
 		pitch_input = 0.0
+	
+	if ammo < AMMO_MAX and Input.is_action_just_pressed("reload") and reload_wait.is_stopped():
+		reload_gun()
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		if focused:
@@ -145,12 +154,32 @@ func shoot():
 				splatters[i].draw_pass_1.surface_get_material(0).albedo_color = Color.DARK_SLATE_GRAY
 			splatters[i].restart()
 	
-	pitch_input += 0.1
+	if recoil_tween:
+		recoil_tween.kill()
+	if gun_tween:
+		gun_tween.kill()
+	recoil_tween = create_tween()
+	gun_tween = create_tween()
+	recoil += 0.1
+	recoil_tween.tween_property(self, "recoil", 0.0, 0.07)
+	gun_graphics.position.z = -0.063
+	gun_tween.tween_property(gun_graphics, "position:z", -0.163, 0.2)
+	
+	velocity += 2.0 * camera.get_global_transform().basis.z
+	
+	gun_sfx.pitch_scale = randf_range(0.9, 1.1)
+	gun_sfx.play()
 	
 	ammo -= 1
 	if ammo <= 0:
-		action_wait.start()
-		print("reloading")
+		reload_gun()
+
+func reload_gun():
+	var reload_tween = create_tween()
+	reload_tween.tween_property(gun_graphics, "position:y", -0.35, reload_wait.wait_time/2.0)
+	reload_tween.tween_property(gun_graphics, "position:y", -0.107, reload_wait.wait_time/2.0)
+	reload_wait.start()
+	reload_sfx.play()
 
 func _on_footstep_timer_timeout():
 	can_step = true
@@ -158,6 +187,5 @@ func _on_footstep_timer_timeout():
 func _on_muzzle_flash_timer_timeout() -> void:
 	muzzle_flash.light_energy = 0.0
 
-func _on_action_wait_timeout() -> void:
-	ammo = 2
-	print("reloaded")
+func _on_reload_wait_timeout() -> void:
+	ammo = AMMO_MAX
