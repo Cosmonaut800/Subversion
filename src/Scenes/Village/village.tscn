@@ -1,3 +1,53 @@
-[gd_scene format=3 uid="uid://b0ahb003d7w2s"]
+[gd_scene load_steps=9 format=3 uid="uid://b0ahb003d7w2s"]
 
-[node name="Village" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://d0rjl2uql7asj" path="res://src/Scenes/Player/player.tscn" id="1_pij0r"]
+[ext_resource type="PackedScene" uid="uid://bwvtmvfiqkn3s" path="res://src/Scenes/NPCs/TestNpc/test_npc.tscn" id="2_h1bax"]
+[ext_resource type="PackedScene" uid="uid://d3bf2vwd43ogn" path="res://src/Scenes/NPCs/dialogue_starter.tscn" id="3_j8ef7"]
+[ext_resource type="Resource" uid="uid://bddc5j7bfm0d0" path="res://src/Scripts/DialogueManager/dialogue_container.dialogue" id="4_47aer"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_55npu"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kojbl"]
+albedo_color = Color(0.0333333, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_s76jh"]
+material = SubResource("StandardMaterial3D_kojbl")
+size = Vector3(60, 2, 60)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_232is"]
+
+[node name="Village" type="Node"]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_55npu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_s76jh")
+
+[node name="Player" parent="." instance=ExtResource("1_pij0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="CameraPivot" type="Marker3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 2, 5)
+
+[node name="Camera3D" type="Camera3D" parent="Player/CameraPivot"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 17, 0)
+light_energy = 3.0
+
+[node name="TestNpc" parent="." instance=ExtResource("2_h1bax")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2, 0)
+
+[node name="DialogueStarter" parent="TestNpc" instance=ExtResource("3_j8ef7")]
+collision_layer = 4
+collision_mask = 4
+dialogue_resource = ExtResource("4_47aer")
+dialogue_start = "this_is_a_node_title"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestNpc/DialogueStarter"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("BoxShape3D_232is")
