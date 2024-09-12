@@ -3,6 +3,7 @@ extends Node3D
 @export var max_enemies := 3
 @export var active := true
 @export var player: CharacterBody3D
+@export var hide_region: Area3D = null
 
 @onready var spawn_timer := $SpawnTimer
 
@@ -14,6 +15,12 @@ func _ready():
 		spawn_timer.start()
 
 func _process(_delta):
+	if hide_region:
+		if hide_region.has_overlapping_bodies():
+			active = false
+		else:
+			active = true
+	
 	if active and spawn_timer.is_stopped() and enemies.size() < max_enemies:
 		spawn_timer.start()
 

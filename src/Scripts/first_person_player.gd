@@ -130,6 +130,11 @@ func _process(_delta):
 		
 		focused = !focused
 	
+	if health > 100.0:
+		health = 100.0
+	elif health < 0.0:
+		health = -0.01
+	
 	healthbar.set_value(health)
 
 func decelerate(delta: float):

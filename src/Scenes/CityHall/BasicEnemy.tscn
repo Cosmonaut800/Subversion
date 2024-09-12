@@ -4,6 +4,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uwyrv"]
 radius = 0.4
+height = 1.8
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xavh8"]
 
@@ -23,6 +24,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_xavh8")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 0.1
 target_desired_distance = 0.1
 path_height_offset = 0.08
 debug_enabled = true
