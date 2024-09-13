@@ -228,7 +228,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_yksil")
 
 [node name="YawPivot" type="Node3D" parent="."]
-transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 1.512, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.512, 0)
 
 [node name="PitchPivot" type="Node3D" parent="YawPivot"]
 
@@ -447,6 +447,9 @@ offset_right = 346.0
 offset_bottom = -36.0
 grow_vertical = 0
 value = 50.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+omni_range = 13.9315
 
 [connection signal="timeout" from="YawPivot/PitchPivot/Camera3D/MuzzleFlashTimer" to="." method="_on_muzzle_flash_timer_timeout"]
 [connection signal="timeout" from="Audio/FootstepTimer" to="." method="_on_footstep_timer_timeout"]

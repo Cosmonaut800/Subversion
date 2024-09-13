@@ -27,7 +27,6 @@ mesh = SubResource("CapsuleMesh_xavh8")
 path_desired_distance = 0.1
 target_desired_distance = 0.1
 path_height_offset = 0.08
-debug_enabled = true
 
 [node name="Hurtbox" type="Area3D" parent="."]
 collision_layer = 4

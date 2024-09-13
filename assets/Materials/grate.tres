@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bsolfr0tarkpx"]
+
+[ext_resource type="Texture2D" uid="uid://b6qvehngkvixb" path="res://assets/Materials/Textures/grate.png" id="1_dosau"]
+
+[resource]
+transparency = 1
+shading_mode = 2
+diffuse_mode = 2
+specular_mode = 2
+albedo_texture = ExtResource("1_dosau")
+texture_filter = 2

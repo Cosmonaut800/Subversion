@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bps27hfo5t0k7"]
+
+[ext_resource type="Texture2D" uid="uid://cj8y5uu80texg" path="res://assets/Materials/Textures/wood_floor_gray.png" id="1_1b1pb"]
+
+[resource]
+shading_mode = 2
+diffuse_mode = 2
+specular_mode = 2
+albedo_texture = ExtResource("1_1b1pb")
+texture_filter = 2
