@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://1ynb8ejec0a6"]
+
+[ext_resource type="Script" path="res://src/Scripts/CityHall/key.gd" id="1_ubxde"]
+[ext_resource type="PackedScene" uid="uid://1c56ywl2tlql" path="res://assets/Models/key.glb" id="1_we3ut"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aoc0r"]
+
+[node name="Key" type="Node3D"]
+script = ExtResource("1_ubxde")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Graphics" parent="Pivot" instance=ExtResource("1_we3ut")]
+transform = Transform3D(0.932066, -0.341061, -0.122189, 0.362289, 0.877454, 0.314358, 0, -0.33727, 0.941408, 0.074766, 0, 0.101062)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49477, 0)
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_aoc0r")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

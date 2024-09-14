@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dn0qo2os4etde"]
+
+[ext_resource type="Texture2D" uid="uid://dxn6w2dwlgdwj" path="res://assets/Materials/Textures/wood_wall.png" id="1_1o6j2"]
+
+[resource]
+shading_mode = 2
+diffuse_mode = 2
+specular_mode = 2
+albedo_texture = ExtResource("1_1o6j2")
+texture_filter = 2

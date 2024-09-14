@@ -6,6 +6,8 @@ const ACCEL := 30.0
 const DECEL := 25.0
 const JUMP_HEIGHT := 1.0
 const AMMO_MAX := 2
+const MAX_HEALTH := 100.0
+const BULLET_DAMAGE := 12.0
 
 @onready var yaw := $YawPivot
 @onready var pitch := $YawPivot/PitchPivot
@@ -41,6 +43,7 @@ const AMMO_MAX := 2
 							$YawPivot/PitchPivot/Rays/Splatter7,
 							$YawPivot/PitchPivot/Rays/Splatter8,
 							$YawPivot/PitchPivot/Rays/Splatter9]
+@onready var healthbar := $UI/Control/HealthBar
 
 var previous_basis: Basis
 var previous_position: Vector3
@@ -66,6 +69,8 @@ var focused := true
 
 var can_step := true
 var can_use := true
+
+var health := MAX_HEALTH
 var ammo := 2
 
 func _ready():
@@ -81,8 +86,8 @@ func _physics_process(delta):
 	direction.y = 0.0
 	if state == STATE.FREE:
 		if direction:
-			velocity.x = move_toward(velocity.x, SPEED * direction.x, abs(direction.x) * ACCEL * delta)
-			velocity.z = move_toward(velocity.z, SPEED * direction.z, abs(direction.z) * ACCEL * delta)
+			velocity.x = move_toward(velocity.x, SPEED * direction.x, (abs(direction.x) if abs(direction.x) > 0.3 else 0.3) * ACCEL * delta)
+			velocity.z = move_toward(velocity.z, SPEED * direction.z, (abs(direction.z) if abs(direction.z) > 0.3 else 0.3) * ACCEL * delta)
 		
 		if is_on_floor():
 			if Input.is_action_just_pressed("jump"):
@@ -124,6 +129,13 @@ func _process(_delta):
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		
 		focused = !focused
+	
+	if health > 100.0:
+		health = 100.0
+	elif health < 0.0:
+		health = -0.01
+	
+	healthbar.set_value(health)
 
 func decelerate(delta: float):
 	velocity.x = move_toward(velocity.x, 0, abs(velocity.normalized().x) * DECEL * delta)
@@ -138,7 +150,7 @@ func _unhandled_input(event):
 func shoot():
 	var entity
 	
-	muzzle_flash.light_energy = 1.0
+	muzzle_flash.light_energy = 8.0
 	muzzle_flash_timer.start()
 	bullet_graphics.restart()
 	
@@ -148,8 +160,14 @@ func shoot():
 		entity = raycasts[i].get_collider()
 		if entity:
 			splatters[i].global_position = raycasts[i].get_collision_point()
+			splatters[i].process_material.direction = camera.global_basis.inverse() * raycasts[i].get_collision_normal() + Vector3.UP
+			splatters[i].process_material.initial_velocity_min = 2.5
+			splatters[i].process_material.initial_velocity_max = 2.5
 			if entity.get_collision_layer_value(3):
+				entity.health -= BULLET_DAMAGE
 				splatters[i].draw_pass_1.surface_get_material(0).albedo_color = Color.DARK_RED
+				splatters[i].process_material.initial_velocity_min = 1.0 + raycasts[i].get_collision_normal().dot(entity.velocity)
+				splatters[i].process_material.initial_velocity_max = 1.0 + raycasts[i].get_collision_normal().dot(entity.velocity)
 			else:
 				splatters[i].draw_pass_1.surface_get_material(0).albedo_color = Color.DARK_SLATE_GRAY
 			splatters[i].restart()
