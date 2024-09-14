@@ -7,4 +7,5 @@ shading_mode = 2
 diffuse_mode = 2
 specular_mode = 2
 albedo_texture = ExtResource("1_1b1pb")
+metallic_specular = 0.0
 texture_filter = 2

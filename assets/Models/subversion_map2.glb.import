@@ -37,6 +37,10 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "res://assets/Materials/alien_ground.tres"
 },
+"BOX": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/Materials/box.tres"
+},
 "CARPET": {
 "use_external/enabled": true,
 "use_external/path": "res://assets/Materials/carpet.tres"
@@ -52,6 +56,10 @@ _subresources={
 "CHECKER_32X": {
 "use_external/enabled": true,
 "use_external/path": "res://assets/Materials/checker_32x.tres"
+},
+"DOOR": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/Materials/door.tres"
 },
 "DRYWALL": {
 "use_external/enabled": true,

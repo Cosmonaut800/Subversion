@@ -25,7 +25,6 @@ mesh = SubResource("CapsuleMesh_xavh8")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 0.1
-target_desired_distance = 0.1
 path_height_offset = 0.08
 
 [node name="Hurtbox" type="Area3D" parent="."]
@@ -40,7 +39,7 @@ shape = SubResource("SphereShape3D_jt02u")
 one_shot = true
 
 [node name="DamageTimer" type="Timer" parent="."]
-wait_time = 0.8
+wait_time = 0.5
 one_shot = true
 
 [node name="DeathTimer" type="Timer" parent="."]

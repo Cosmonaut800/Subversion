@@ -1,7 +1,8 @@
-[gd_scene load_steps=41 format=3 uid="uid://dpudw516j8pow"]
+[gd_scene load_steps=40 format=3 uid="uid://dpudw516j8pow"]
 
 [ext_resource type="Script" path="res://src/Scripts/first_person_player.gd" id="1_fnf2j"]
 [ext_resource type="AudioStream" uid="uid://drfml1xsm5u5e" path="res://assets/Audio/double_barrel.wav" id="2_b7to4"]
+[ext_resource type="PackedScene" uid="uid://80njfs3doiv4" path="res://assets/Models/shotgun.glb" id="2_ih1vl"]
 [ext_resource type="AudioStream" uid="uid://4amrp52e6r57" path="res://assets/Audio/gunreload2.wav" id="3_e6gll"]
 [ext_resource type="AudioStream" uid="uid://dsu3isu881oxy" path="res://assets/Audio/wood_step1.wav" id="3_u0igy"]
 [ext_resource type="AudioStream" uid="uid://dhpfwrddyf87x" path="res://assets/Audio/wood_step2.wav" id="4_cafa7"]
@@ -9,14 +10,6 @@
 [ext_resource type="AudioStream" uid="uid://c7yhb47mmdy63" path="res://assets/Audio/wood_step4.wav" id="6_df8c1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yksil"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jp6t1"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_76qm2"]
-material = SubResource("StandardMaterial3D_jp6t1")
-top_radius = 0.08
-bottom_radius = 0.08
-height = 0.8
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jjsvv"]
 particle_flag_align_y = true
@@ -239,10 +232,8 @@ fov = 85.0
 near = 0.01
 far = 1000.0
 
-[node name="GunGraphics" type="MeshInstance3D" parent="YawPivot/PitchPivot/Camera3D"]
-transform = Transform3D(0.307788, -0.00267581, 0.000234103, 0, 0.0268266, 0.306629, -0.00268603, -0.306617, 0.0268255, 0.124, -0.107, -0.163)
-layers = 2
-mesh = SubResource("CylinderMesh_76qm2")
+[node name="GunGraphics" parent="YawPivot/PitchPivot/Camera3D" instance=ExtResource("2_ih1vl")]
+transform = Transform3D(-0.00185812, -0.00260715, 0.0628685, 0.0049343, 0.0626962, 0.00274584, -0.0627288, 0.00500896, -0.00164627, 0.122973, -0.0916154, -0.16762)
 
 [node name="MuzzleFlash" type="OmniLight3D" parent="YawPivot/PitchPivot/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.394826, 0)
@@ -449,6 +440,7 @@ grow_vertical = 0
 value = 50.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11846, 0)
 omni_range = 13.9315
 
 [connection signal="timeout" from="YawPivot/PitchPivot/Camera3D/MuzzleFlashTimer" to="." method="_on_muzzle_flash_timer_timeout"]

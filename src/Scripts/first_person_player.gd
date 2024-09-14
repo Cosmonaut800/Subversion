@@ -86,8 +86,8 @@ func _physics_process(delta):
 	direction.y = 0.0
 	if state == STATE.FREE:
 		if direction:
-			velocity.x = move_toward(velocity.x, SPEED * direction.x, abs(direction.x) * ACCEL * delta)
-			velocity.z = move_toward(velocity.z, SPEED * direction.z, abs(direction.z) * ACCEL * delta)
+			velocity.x = move_toward(velocity.x, SPEED * direction.x, (abs(direction.x) if abs(direction.x) > 0.3 else 0.3) * ACCEL * delta)
+			velocity.z = move_toward(velocity.z, SPEED * direction.z, (abs(direction.z) if abs(direction.z) > 0.3 else 0.3) * ACCEL * delta)
 		
 		if is_on_floor():
 			if Input.is_action_just_pressed("jump"):
@@ -150,7 +150,7 @@ func _unhandled_input(event):
 func shoot():
 	var entity
 	
-	muzzle_flash.light_energy = 1.0
+	muzzle_flash.light_energy = 8.0
 	muzzle_flash_timer.start()
 	bullet_graphics.restart()
 	

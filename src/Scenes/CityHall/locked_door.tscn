@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://o1wc2dmtt7wj"]
+
+[ext_resource type="Script" path="res://src/Scripts/CityHall/locked_door.gd" id="1_fbb10"]
+[ext_resource type="PackedScene" uid="uid://djx0nkflp07y8" path="res://assets/Models/subversion_door.glb" id="1_ibywh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i5hlg"]
+size = Vector3(1.69528, 2.37646, 2.03723)
+
+[node name="LockedDoor" type="Node3D"]
+script = ExtResource("1_fbb10")
+
+[node name="DoorPivot" type="Node3D" parent="."]
+
+[node name="Graphics" parent="DoorPivot" instance=ExtResource("1_ibywh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.768478, 1.29468, -0.0231323)
+shape = SubResource("BoxShape3D_i5hlg")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

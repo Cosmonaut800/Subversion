@@ -30,7 +30,6 @@ func _physics_process(_delta: float) -> void:
 		move_and_slide()
 
 func die():
-	print("I died :(")
 	if parent_spawner:
 		parent_spawner.enemies.erase(self)
 	state = STATE.DEAD

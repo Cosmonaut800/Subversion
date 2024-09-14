@@ -1,22 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgkmdffi5q7c3"]
+[gd_scene load_steps=4 format=3 uid="uid://dgkmdffi5q7c3"]
 
 [ext_resource type="Script" path="res://src/Scripts/CityHall/health_pickup.gd" id="1_afmcq"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7gyb7"]
-albedo_color = Color(0, 0.564706, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_5dmmm"]
-material = SubResource("StandardMaterial3D_7gyb7")
-size = Vector3(0.5, 0.2, 0.5)
+[ext_resource type="PackedScene" uid="uid://c8jii5w4knheh" path="res://assets/Models/healthkit.glb" id="2_ts07j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qltjm"]
 
 [node name="HealthPickup" type="Node3D"]
 script = ExtResource("1_afmcq")
 
-[node name="Graphics" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.284463, 0)
-mesh = SubResource("BoxMesh_5dmmm")
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Graphics" parent="Pivot" instance=ExtResource("2_ts07j")]
+transform = Transform3D(0.970521, -0.223787, 0.0894907, 0.241017, 0.90114, -0.360358, 0, 0.371304, 0.928511, 0, 0.268326, 0)
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_mask = 2
@@ -26,7 +21,7 @@ shape = SubResource("BoxShape3D_qltjm")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.111547, 0)
-light_color = Color(0, 0.780392, 0, 1)
+light_color = Color(0.715543, 1, 0.689873, 1)
 omni_range = 1.21555
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
