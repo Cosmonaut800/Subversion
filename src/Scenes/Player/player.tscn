@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://d0rjl2uql7asj"]
+[gd_scene load_steps=14 format=3 uid="uid://d0rjl2uql7asj"]
 
 [ext_resource type="Script" path="res://src/Scripts/Player/player.gd" id="1_rn414"]
 [ext_resource type="PackedScene" uid="uid://bxmvys46vndly" path="res://src/Scenes/Statemachine/statemachine.tscn" id="2_a2anx"]
+[ext_resource type="PackedScene" uid="uid://bjpjbfrtvqlfw" path="res://assets/Models/Player/GLTF/Player.Thirdperson.001.glb" id="2_dklqc"]
 [ext_resource type="Script" path="res://src/Scripts/Player/idle.gd" id="3_wdds3"]
 [ext_resource type="Resource" uid="uid://bddc5j7bfm0d0" path="res://src/Scripts/DialogueManager/dialogue_container.dialogue" id="4_eub0x"]
 [ext_resource type="Script" path="res://src/Scripts/Player/move.gd" id="4_ymhpd"]
@@ -19,37 +20,39 @@ material = SubResource("StandardMaterial3D_cd3wx")
 
 [sub_resource type="BoxMesh" id="BoxMesh_hmdbb"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_hjpyq"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_3q4ct"]
 
 [node name="Player" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_rn414")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.94553, 0)
 shape = SubResource("CapsuleShape3D_x1evk")
 
 [node name="Character" type="Node3D" parent="."]
 
 [node name="MockBody" type="MeshInstance3D" parent="Character"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_yo3f6")
 skin = SubResource("Skin_y3q5e")
 skeleton = NodePath("../..")
 
 [node name="MockFace" type="MeshInstance3D" parent="Character"]
 transform = Transform3D(0.7, 0, 0, 0, 0.5, 0, 0, 0, 0.8, 0.00403595, 0.17926, -0.112518)
+visible = false
 mesh = SubResource("BoxMesh_hmdbb")
 skeleton = NodePath("../..")
 
 [node name="DialogueStarterDetector" type="Area3D" parent="Character"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Character/DialogueStarterDetector"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.06757)
-shape = SubResource("BoxShape3D_hjpyq")
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.91196, -1.65012)
+shape = SubResource("BoxShape3D_3q4ct")
+
+[node name="Player_Thirdperson_001" parent="Character" instance=ExtResource("2_dklqc")]
+transform = Transform3D(-0.99995, 0, -0.00998305, 0, 1, 0, 0.00998305, 0, -0.99995, 0, 0, 0)
 
 [node name="Statemachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_a2anx")]
 initial_state = NodePath("Idle")
