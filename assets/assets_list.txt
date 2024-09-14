@@ -1,0 +1,61 @@
+Locations
+------------------
+Village area
+Highway area
+	- road texture
+Village center area
+	- cement floors
+	- asphalt
+Mount spittoon area
+Lake Manitow
+boat dock for lake manitow
+Bug Exterminator Van
+Lake manitow info building
+cedars path
+	- trees, bushes, grass, streams, bridges? <-- no mandatory
+dirt path
+apple trees
+orange trees
+pine trees
+bill's house
+	- pumpkin patch
+	- pumpkins
+	- fence
+shari's house
+Mary's house - first game house
+Tobin's house - second game house
+Cam's house
+city hall
+city fountain/monument
+baker's diner
+ye ol' pawn shop
+historical museum
+Mountain ranges for sealing in town area
+
+Characters
+--------------------------
+Player - exterminator
+Cam - NPC
+Shari - NPC
+Mary - NPC
+Tobin - NPC
+	- fishing rod
+Mayor - NPC - unlocks city hall for you
+Bug basic enemy
+Boss - Queen enemy
+
+Audio
+-------------------------
+Music for town theme
+Music for fps section
+Shotgun SFX
+Walking soundfx
+talking sfx
+
+Other
+--------------------------
+Dialogue bubble
+	- custom font
+	- custom colors
+	- portrait pics (maybe)
+
