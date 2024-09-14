@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://cot5d1udufw0o"
+path.s3tc="res://.godot/imported/subversion_map2_honeycomb_grad.png-49a1646fbd0e24c519b88cf01054196a.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "13db901b84b76d150a230e8d52aa37ca"
+}
+
+[deps]
+
+source_file="res://assets/Models/subversion_map2_honeycomb_grad.png"
+dest_files=["res://.godot/imported/subversion_map2_honeycomb_grad.png-49a1646fbd0e24c519b88cf01054196a.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

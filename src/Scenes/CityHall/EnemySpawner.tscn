@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://csbua6s8huld4"]
+
+[ext_resource type="Script" path="res://src/Scripts/CityHall/enemy_spawner.gd" id="1_mvbtw"]
+
+[node name="EnemySpawner" type="Node3D"]
+script = ExtResource("1_mvbtw")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

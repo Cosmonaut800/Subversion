@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dhdyd3b685rmf"]
+
+[ext_resource type="Texture2D" uid="uid://5uvnwx3n3tv" path="res://assets/Materials/Textures/wood_floor.png" id="1_vgvbk"]
+
+[resource]
+shading_mode = 2
+diffuse_mode = 2
+specular_mode = 2
+albedo_texture = ExtResource("1_vgvbk")
+texture_filter = 2

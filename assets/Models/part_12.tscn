@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://2u58xeebfvrr"]
+
+[ext_resource type="PackedScene" uid="uid://c47s8ky3kcaeg" path="res://assets/Models/part1.glb" id="1_g5spa"]
+[ext_resource type="Material" uid="uid://c5atl2g2kcmm3" path="res://assets/Materials/checker_32x.tres" id="2_pa48o"]
+
+[node name="part12" instance=ExtResource("1_g5spa")]
+
+[node name="part1" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_pa48o")
+surface_material_override/1 = ExtResource("2_pa48o")
+surface_material_override/2 = ExtResource("2_pa48o")
+surface_material_override/3 = ExtResource("2_pa48o")
+surface_material_override/4 = ExtResource("2_pa48o")

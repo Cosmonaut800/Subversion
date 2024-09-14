@@ -1,0 +1,448 @@
+[gd_scene load_steps=40 format=3 uid="uid://dpudw516j8pow"]
+
+[ext_resource type="Script" path="res://src/Scripts/first_person_player.gd" id="1_fnf2j"]
+[ext_resource type="AudioStream" uid="uid://drfml1xsm5u5e" path="res://assets/Audio/double_barrel.wav" id="2_b7to4"]
+[ext_resource type="PackedScene" uid="uid://80njfs3doiv4" path="res://assets/Models/shotgun.glb" id="2_ih1vl"]
+[ext_resource type="AudioStream" uid="uid://4amrp52e6r57" path="res://assets/Audio/gunreload2.wav" id="3_e6gll"]
+[ext_resource type="AudioStream" uid="uid://dsu3isu881oxy" path="res://assets/Audio/wood_step1.wav" id="3_u0igy"]
+[ext_resource type="AudioStream" uid="uid://dhpfwrddyf87x" path="res://assets/Audio/wood_step2.wav" id="4_cafa7"]
+[ext_resource type="AudioStream" uid="uid://bt6pwtk7r140m" path="res://assets/Audio/wood_step3.wav" id="5_5juvs"]
+[ext_resource type="AudioStream" uid="uid://c7yhb47mmdy63" path="res://assets/Audio/wood_step4.wav" id="6_df8c1"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yksil"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jjsvv"]
+particle_flag_align_y = true
+velocity_pivot = Vector3(1.45519e-11, 1.45519e-11, 1.45519e-11)
+direction = Vector3(1.45519e-11, 1.45519e-11, -1)
+spread = 4.0
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+gravity = Vector3(1.45519e-11, 1.45519e-11, 1.45519e-11)
+collision_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mcrtl"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.933333, 0.866667, 1)
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_vsdld"]
+material = SubResource("StandardMaterial3D_mcrtl")
+size = Vector2(0.01, 5)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iu5uo"]
+direction = Vector3(1.45519e-11, 1, 1.45519e-11)
+initial_velocity_min = 2.5
+initial_velocity_max = 2.5
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ttx0i"]
+albedo_color = Color(0.427451, 0, 0, 1)
+disable_receive_shadows = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_dc0or"]
+material = SubResource("StandardMaterial3D_ttx0i")
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ckqj7"]
+direction = Vector3(1.45519e-11, 1, 1.45519e-11)
+initial_velocity_min = 2.5
+initial_velocity_max = 2.5
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f5kjn"]
+albedo_color = Color(0.427451, 0, 0, 1)
+disable_receive_shadows = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_ybwsi"]
+material = SubResource("StandardMaterial3D_f5kjn")
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xucyh"]
+direction = Vector3(1.45519e-11, 1, 1.45519e-11)
+initial_velocity_min = 2.5
+initial_velocity_max = 2.5
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02n3w"]
+albedo_color = Color(0.427451, 0, 0, 1)
+disable_receive_shadows = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_xpym8"]
+material = SubResource("StandardMaterial3D_02n3w")
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_34lgr"]
+direction = Vector3(1.45519e-11, 1, 1.45519e-11)
+initial_velocity_min = 2.5
+initial_velocity_max = 2.5
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fuhb8"]
+albedo_color = Color(0.427451, 0, 0, 1)
+disable_receive_shadows = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_7cn7u"]
+material = SubResource("StandardMaterial3D_fuhb8")
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_83wig"]
+direction = Vector3(1.45519e-11, 1, 1.45519e-11)
+initial_velocity_min = 2.5
+initial_velocity_max = 2.5
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v3owl"]
+albedo_color = Color(0.427451, 0, 0, 1)
+disable_receive_shadows = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_rmqqv"]
+material = SubResource("StandardMaterial3D_v3owl")
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dpw35"]
+direction = Vector3(1.45519e-11, 1, 1.45519e-11)
+initial_velocity_min = 2.5
+initial_velocity_max = 2.5
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s4dj7"]
+albedo_color = Color(0.427451, 0, 0, 1)
+disable_receive_shadows = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_pftp8"]
+material = SubResource("StandardMaterial3D_s4dj7")
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yawwy"]
+direction = Vector3(1.45519e-11, 1, 1.45519e-11)
+initial_velocity_min = 2.5
+initial_velocity_max = 2.5
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ahmy"]
+albedo_color = Color(0.427451, 0, 0, 1)
+disable_receive_shadows = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_lh8a6"]
+material = SubResource("StandardMaterial3D_7ahmy")
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bylpx"]
+direction = Vector3(1.45519e-11, 1, 1.45519e-11)
+initial_velocity_min = 2.5
+initial_velocity_max = 2.5
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jsj41"]
+albedo_color = Color(0.427451, 0, 0, 1)
+disable_receive_shadows = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_71usv"]
+material = SubResource("StandardMaterial3D_jsj41")
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1mc1e"]
+direction = Vector3(1.45519e-11, 1, 1.45519e-11)
+initial_velocity_min = 2.5
+initial_velocity_max = 2.5
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t4r1e"]
+albedo_color = Color(0.427451, 0, 0, 1)
+disable_receive_shadows = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_1smjk"]
+material = SubResource("StandardMaterial3D_t4r1e")
+size = Vector2(0.1, 0.1)
+
+[node name="FirstPersonPlayer" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_fnf2j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_yksil")
+
+[node name="YawPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.512, 0)
+
+[node name="PitchPivot" type="Node3D" parent="YawPivot"]
+
+[node name="CameraTarget" type="Node3D" parent="YawPivot/PitchPivot"]
+
+[node name="Camera3D" type="Camera3D" parent="YawPivot/PitchPivot"]
+fov = 85.0
+near = 0.01
+far = 1000.0
+
+[node name="GunGraphics" parent="YawPivot/PitchPivot/Camera3D" instance=ExtResource("2_ih1vl")]
+transform = Transform3D(-0.00185812, -0.00260715, 0.0628685, 0.0049343, 0.0626962, 0.00274584, -0.0627288, 0.00500896, -0.00164627, 0.122973, -0.0916154, -0.16762)
+
+[node name="MuzzleFlash" type="OmniLight3D" parent="YawPivot/PitchPivot/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.394826, 0)
+light_color = Color(1, 1, 0.611765, 1)
+light_energy = 0.0
+light_cull_mask = 4294967293
+omni_range = 3.27979
+
+[node name="BulletGraphics" type="GPUParticles3D" parent="YawPivot/PitchPivot/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.226, -0.18, -0.458)
+emitting = false
+amount = 4
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_jjsvv")
+draw_pass_1 = SubResource("QuadMesh_vsdld")
+
+[node name="MuzzleFlashTimer" type="Timer" parent="YawPivot/PitchPivot/Camera3D"]
+wait_time = 0.1
+one_shot = true
+
+[node name="Rays" type="Node3D" parent="YawPivot/PitchPivot"]
+
+[node name="Ray1" type="RayCast3D" parent="YawPivot/PitchPivot/Rays"]
+target_position = Vector3(-8, -8, -100)
+collision_mask = 5
+hit_from_inside = true
+
+[node name="Ray2" type="RayCast3D" parent="YawPivot/PitchPivot/Rays"]
+target_position = Vector3(1.45519e-11, -8, -100)
+collision_mask = 5
+hit_from_inside = true
+
+[node name="Ray3" type="RayCast3D" parent="YawPivot/PitchPivot/Rays"]
+target_position = Vector3(8, -8, -100)
+collision_mask = 5
+hit_from_inside = true
+
+[node name="Ray4" type="RayCast3D" parent="YawPivot/PitchPivot/Rays"]
+target_position = Vector3(-8, 1.45519e-11, -100)
+collision_mask = 5
+hit_from_inside = true
+
+[node name="Ray5" type="RayCast3D" parent="YawPivot/PitchPivot/Rays"]
+target_position = Vector3(1.45519e-11, 1.45519e-11, -100)
+collision_mask = 5
+hit_from_inside = true
+
+[node name="Ray6" type="RayCast3D" parent="YawPivot/PitchPivot/Rays"]
+target_position = Vector3(8, 1.45519e-11, -100)
+collision_mask = 5
+hit_from_inside = true
+
+[node name="Ray7" type="RayCast3D" parent="YawPivot/PitchPivot/Rays"]
+target_position = Vector3(-8, 8, -100)
+collision_mask = 5
+hit_from_inside = true
+
+[node name="Ray8" type="RayCast3D" parent="YawPivot/PitchPivot/Rays"]
+target_position = Vector3(1.45519e-11, 8, -100)
+collision_mask = 5
+hit_from_inside = true
+
+[node name="Ray9" type="RayCast3D" parent="YawPivot/PitchPivot/Rays"]
+target_position = Vector3(8, 8, -100)
+collision_mask = 5
+hit_from_inside = true
+
+[node name="Splatter1" type="GPUParticles3D" parent="YawPivot/PitchPivot/Rays"]
+emitting = false
+amount = 4
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_iu5uo")
+draw_pass_1 = SubResource("QuadMesh_dc0or")
+
+[node name="Splatter2" type="GPUParticles3D" parent="YawPivot/PitchPivot/Rays"]
+emitting = false
+amount = 4
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ckqj7")
+draw_pass_1 = SubResource("QuadMesh_ybwsi")
+
+[node name="Splatter3" type="GPUParticles3D" parent="YawPivot/PitchPivot/Rays"]
+emitting = false
+amount = 4
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_xucyh")
+draw_pass_1 = SubResource("QuadMesh_xpym8")
+
+[node name="Splatter4" type="GPUParticles3D" parent="YawPivot/PitchPivot/Rays"]
+emitting = false
+amount = 4
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_34lgr")
+draw_pass_1 = SubResource("QuadMesh_7cn7u")
+
+[node name="Splatter5" type="GPUParticles3D" parent="YawPivot/PitchPivot/Rays"]
+emitting = false
+amount = 4
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_83wig")
+draw_pass_1 = SubResource("QuadMesh_rmqqv")
+
+[node name="Splatter6" type="GPUParticles3D" parent="YawPivot/PitchPivot/Rays"]
+emitting = false
+amount = 4
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_dpw35")
+draw_pass_1 = SubResource("QuadMesh_pftp8")
+
+[node name="Splatter7" type="GPUParticles3D" parent="YawPivot/PitchPivot/Rays"]
+emitting = false
+amount = 4
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_yawwy")
+draw_pass_1 = SubResource("QuadMesh_lh8a6")
+
+[node name="Splatter8" type="GPUParticles3D" parent="YawPivot/PitchPivot/Rays"]
+emitting = false
+amount = 4
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_bylpx")
+draw_pass_1 = SubResource("QuadMesh_71usv")
+
+[node name="Splatter9" type="GPUParticles3D" parent="YawPivot/PitchPivot/Rays"]
+emitting = false
+amount = 4
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_1mc1e")
+draw_pass_1 = SubResource("QuadMesh_1smjk")
+
+[node name="Audio" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="FootstepTimer" type="Timer" parent="Audio"]
+wait_time = 0.3
+autostart = true
+
+[node name="Shotgun" type="AudioStreamPlayer3D" parent="Audio"]
+stream = ExtResource("2_b7to4")
+bus = &"SFX"
+attenuation_filter_db = 0.0
+
+[node name="Reload" type="AudioStreamPlayer3D" parent="Audio"]
+stream = ExtResource("3_e6gll")
+bus = &"SFX"
+attenuation_filter_db = 0.0
+
+[node name="footstep1" type="AudioStreamPlayer3D" parent="Audio"]
+stream = ExtResource("3_u0igy")
+bus = &"SFX"
+attenuation_filter_db = 0.0
+
+[node name="footstep2" type="AudioStreamPlayer3D" parent="Audio"]
+stream = ExtResource("4_cafa7")
+bus = &"SFX"
+attenuation_filter_db = 0.0
+
+[node name="footstep3" type="AudioStreamPlayer3D" parent="Audio"]
+stream = ExtResource("5_5juvs")
+bus = &"SFX"
+attenuation_filter_db = 0.0
+
+[node name="footstep4" type="AudioStreamPlayer3D" parent="Audio"]
+stream = ExtResource("6_df8c1")
+bus = &"SFX"
+attenuation_filter_db = 0.0
+
+[node name="ReloadWait" type="Timer" parent="."]
+one_shot = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HealthBar" type="ProgressBar" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = -63.0
+offset_right = 346.0
+offset_bottom = -36.0
+grow_vertical = 0
+value = 50.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11846, 0)
+omni_range = 13.9315
+
+[connection signal="timeout" from="YawPivot/PitchPivot/Camera3D/MuzzleFlashTimer" to="." method="_on_muzzle_flash_timer_timeout"]
+[connection signal="timeout" from="Audio/FootstepTimer" to="." method="_on_footstep_timer_timeout"]
+[connection signal="timeout" from="ReloadWait" to="." method="_on_reload_wait_timeout"]

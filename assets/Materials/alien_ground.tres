@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c2rbwbr7fytmm"]
+
+[ext_resource type="Texture2D" uid="uid://cerr2erccxllu" path="res://assets/Materials/Textures/alien_ground.png" id="1_ygr3x"]
+
+[resource]
+shading_mode = 2
+diffuse_mode = 2
+specular_mode = 2
+albedo_texture = ExtResource("1_ygr3x")
+emission_enabled = true
+emission_texture = ExtResource("1_ygr3x")
+texture_filter = 2

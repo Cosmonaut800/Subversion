@@ -1,0 +1,101 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://dybrn0vr7kju3"
+path="res://.godot/imported/subversion_map2.glb-70b7516e3ac7211198bf0357e86560d9.scn"
+
+[deps]
+
+source_file="res://assets/Models/subversion_map2.glb"
+dest_files=["res://.godot/imported/subversion_map2.glb-70b7516e3ac7211198bf0357e86560d9.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"materials": {
+"ALIEN_GROUND": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/Materials/alien_ground.tres"
+},
+"BOX": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/Materials/box.tres"
+},
+"CARPET": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/Materials/carpet.tres"
+},
+"CARPET_BLUE": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/Materials/carpet_blue.tres"
+},
+"CARPET_RED": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/Materials/carpet_red.tres"
+},
+"CHECKER_32X": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/Materials/checker_32x.tres"
+},
+"DOOR": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/Materials/door.tres"
+},
+"DRYWALL": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/Materials/drywall.tres"
+},
+"GRATE": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/Materials/grate.tres"
+},
+"HONEYCOMB": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/Materials/honeycomb.tres"
+},
+"HONEYCOMB_GRAD": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/Materials/honeycomb_grad.tres"
+},
+"WOOD_FLOOR": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/Materials/wood_floor.tres"
+},
+"WOOD_FLOOR_GRAY": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/Materials/wood_floor_gray.tres"
+},
+"WOOD_WALL": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/Materials/wood_wall.tres"
+}
+},
+"nodes": {
+"PATH:Entity1(worldspawn)": {
+"generate/physics": true,
+"physics/shape_type": 2
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=1

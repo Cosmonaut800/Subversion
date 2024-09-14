@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c8rrq3lt2g38y"]
+
+[ext_resource type="Texture2D" uid="uid://k41riv8v8kq8" path="res://assets/Materials/Textures/carpet_red.png" id="1_clx2u"]
+
+[resource]
+shading_mode = 2
+diffuse_mode = 2
+specular_mode = 2
+albedo_texture = ExtResource("1_clx2u")
+texture_filter = 2
