@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8hggeedpkayj"]
+
+[ext_resource type="Texture2D" uid="uid://hdk6nkjp0abx" path="res://assets/aerial_rocks_02_diff_4k.jpg" id="1_535lf"]
+[ext_resource type="Texture2D" uid="uid://di106i0cllaga" path="res://assets/aerial_rocks_02_nor_dx_4k.jpg" id="2_0fch6"]
+[ext_resource type="Texture2D" uid="uid://q7wanfurhl64" path="res://assets/aerial_rocks_02_rough_4k.jpg" id="3_j2h22"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ucwuq"]
+size = Vector3(1, 2.00092, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bnml"]
+albedo_texture = ExtResource("1_535lf")
+roughness_texture = ExtResource("3_j2h22")
+normal_enabled = true
+normal_texture = ExtResource("2_0fch6")
+uv1_scale = Vector3(7, 7, 7)
+uv2_scale = Vector3(5, 5, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jlpyq"]
+material = SubResource("StandardMaterial3D_1bnml")
+
+[node name="Mountain" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00643921, 0)
+shape = SubResource("BoxShape3D_ucwuq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0.0109915, 0.0638449, 0.0633614)
+mesh = SubResource("BoxMesh_jlpyq")

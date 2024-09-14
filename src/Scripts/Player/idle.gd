@@ -33,9 +33,13 @@ func process_input(_event: InputEvent) -> State:
 	return null
 
 func process_physics(_delta: float) -> State:
+	if not parent.is_on_floor():
+		parent.velocity.y -= Global.gravity * _delta
+	else:
+		parent.velocity.y = 0
 	if Global.is_talking:
 		rotate_entity_smoothly(entity_to_rotate.get_parent(), _delta)
-		
+	parent.move_and_slide()
 	return null
 
 func rotate_entity_smoothly(entity: Node3D, delta: float) -> void:
