@@ -4,6 +4,9 @@ extends Area3D
 @export var dialogue_start: String
 @export var game_name : String
 
+signal minigame1_started
+signal minigame2_started
+signal fps_started
 
 func start_dialogue() -> void:
 	Global.is_talking = true
@@ -12,12 +15,14 @@ func start_dialogue() -> void:
 	if game_name != null:
 		if game_name == "game one" and not Global.game_one_completed and not Global.game_two_completed:
 			Global.game_one_completed = true
-			print(Global.game_one_completed)
+			Global.player_can_move = false
+			minigame1_started.emit()
 		if game_name == "game two" and Global.game_one_completed and not Global.game_two_completed:
 			Global.game_two_completed = true
-			print(Global.game_two_completed)
+			Global.player_can_move = false
+			minigame2_started.emit()
 		if game_name == "game three" and Global.game_one_completed and Global.game_two_completed:
-			print("Game three has started!")
+			fps_started.emit()
 		if game_name == "tobin" and Global.game_one_completed and not Global.game_two_completed:
 			Global.tobin_found = true
 	

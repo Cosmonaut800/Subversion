@@ -1,3 +1,43 @@
-[gd_scene format=3 uid="uid://pck2vvm7cusp"]
+[gd_scene load_steps=3 format=3 uid="uid://pck2vvm7cusp"]
+
+[ext_resource type="Script" path="res://src/Scripts/main.gd" id="1_ouo8v"]
+[ext_resource type="PackedScene" uid="uid://b0ahb003d7w2s" path="res://src/Scenes/Village/village.tscn" id="1_wyfoo"]
 
 [node name="Main" type="Node3D"]
+script = ExtResource("1_ouo8v")
+
+[node name="Village" parent="." instance=ExtResource("1_wyfoo")]
+
+[node name="TransitionTimer" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+
+[node name="TransitionTimer2" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[connection signal="start_fps" from="Village" to="." method="_on_village_start_fps"]
+[connection signal="timeout" from="TransitionTimer" to="." method="_on_transition_timer_timeout"]
+[connection signal="timeout" from="TransitionTimer2" to="." method="_on_transition_timer_2_timeout"]

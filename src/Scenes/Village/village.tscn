@@ -1,5 +1,6 @@
-[gd_scene load_steps=74 format=3 uid="uid://b0ahb003d7w2s"]
+[gd_scene load_steps=75 format=3 uid="uid://b0ahb003d7w2s"]
 
+[ext_resource type="Script" path="res://src/Scenes/Village/village.gd" id="1_0agi3"]
 [ext_resource type="PackedScene" uid="uid://d0rjl2uql7asj" path="res://src/Scenes/Player/player.tscn" id="1_pij0r"]
 [ext_resource type="PackedScene" uid="uid://bx0vvgxuwrxuc" path="res://assets/OrangeOrchards.gltf" id="2_apkti"]
 [ext_resource type="PackedScene" uid="uid://nanvw6abdjxm" path="res://src/Scenes/NPCs/TestNpc/NPC1.tscn" id="2_h1bax"]
@@ -163,6 +164,7 @@ size = Vector3(0.685425, 1, 1)
 size = Vector3(103.658, 1, 1)
 
 [node name="Village" type="Node"]
+script = ExtResource("1_0agi3")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_7crjn")
@@ -174,6 +176,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.4724, 0.511162, 182.125)
 transform = Transform3D(1, 0, 0, 0, 0.543629, 0.839326, 0, -0.839326, 0.543629, -0.189987, 16.2963, 5.23692)
 
 [node name="Camera3D" type="Camera3D" parent="WorldEnvironment/Player/CameraPivot"]
+current = true
 
 [node name="Town Center" parent="WorldEnvironment" instance=ExtResource("6_cvny5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5348, 24.3643, 2.2739)
@@ -813,6 +816,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.7845, -0.14957, 189.092)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HQDialogue"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.607712, 1.31925, 0)
 shape = SubResource("BoxShape3D_ey1t1")
+
+[connection signal="minigame1_started" from="WorldEnvironment/Shari\'s House/DialogueStarter" to="." method="_on_dialogue_starter_minigame_1_started"]
+[connection signal="minigame2_started" from="WorldEnvironment/Tobin\'s House/DialogueStarter" to="." method="_on_dialogue_starter_minigame_2_started"]
+[connection signal="fps_started" from="Mayor Frisbee/DialogueStarter" to="." method="_on_dialogue_starter_fps_started"]
 
 [editable path="Collisions/Collision8"]
 [editable path="Collisions/Collision9"]

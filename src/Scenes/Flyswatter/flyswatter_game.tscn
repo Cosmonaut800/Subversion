@@ -35,8 +35,6 @@ font_size = 60
 
 [node name="FlyswatterGame" type="Node3D"]
 script = ExtResource("1_h0kes")
-first_wasp_time = 5.0
-wasp_interval = 2.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_c78k1")

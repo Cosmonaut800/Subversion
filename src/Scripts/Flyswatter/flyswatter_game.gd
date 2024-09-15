@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var time_limit := 60.0
+@export var time_limit := 5.0
 @export var first_wasp_time := 30.0
 @export var wasp_interval := 15.0
 
@@ -15,6 +15,8 @@ extends Node3D
 @onready var final_score_label := $CanvasLayer/Control/Finished/FinalScore
 @onready var game_over := $CanvasLayer/Control/GameOver
 @onready var ambience := $Ambience
+@onready var camera := $Camera3D
+
 
 
 
@@ -26,7 +28,7 @@ var finished := false
 signal won_minigame
 signal lost_minigame
 
-func _ready():
+func update_timers():
 	wasp_spawner.first_spawn_timer.wait_time = first_wasp_time
 	wasp_spawner.spawn_timer.wait_time = wasp_interval
 	wasp_spawner.first_spawn_timer.start()

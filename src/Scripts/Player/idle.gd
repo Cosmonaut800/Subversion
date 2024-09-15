@@ -24,8 +24,9 @@ func exit() -> void:
 func process_input(_event: InputEvent) -> State:
 	var key_pressed : Vector2 = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	
-	if can_move and key_pressed.x != 0 || key_pressed.y != 0:
-		return move_state
+	if Global.player_can_move:
+		if can_move and key_pressed.x != 0 || key_pressed.y != 0:
+			return move_state
 	if Input.is_action_just_pressed("interact"):
 		var dialogue_starters = dialogue_starter_detector.get_overlapping_areas()
 		if dialogue_starters.size() > 0:

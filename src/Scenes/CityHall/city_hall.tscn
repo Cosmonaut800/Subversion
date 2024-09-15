@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://bbrwemhjdmnmp"]
+[gd_scene load_steps=15 format=3 uid="uid://bbrwemhjdmnmp"]
 
 [ext_resource type="PackedScene" uid="uid://dybrn0vr7kju3" path="res://assets/Models/subversion_map2.glb" id="1_jfut7"]
+[ext_resource type="Script" path="res://src/Scripts/CityHall/city_hall.gd" id="1_jw4ir"]
 [ext_resource type="PackedScene" uid="uid://djx0nkflp07y8" path="res://assets/Models/subversion_door.glb" id="2_pe2p7"]
 [ext_resource type="PackedScene" uid="uid://o1wc2dmtt7wj" path="res://src/Scenes/CityHall/locked_door.tscn" id="3_2exgt"]
 [ext_resource type="PackedScene" uid="uid://dgkmdffi5q7c3" path="res://src/Scenes/CityHall/health_pickup.tscn" id="4_4lyqu"]
@@ -28,6 +29,7 @@ size = Vector3(19.374, 4.11484, 3.67008)
 size = Vector3(15.0377, 3.27402, 11.7238)
 
 [node name="CityHall" type="Node3D"]
+script = ExtResource("1_jw4ir")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_k0ooc")
@@ -110,5 +112,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.92969, 2.4384, 14.3548)
 [node name="HealthPickup" parent="." instance=ExtResource("4_4lyqu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.88528, 2.4384, 17.8902)
 
+[connection signal="died" from="FirstPersonPlayer" to="." method="_on_first_person_player_died"]
 [connection signal="picked_up" from="Key" to="NavigationRegion3D/LockedDoor" method="unlock"]
 [connection signal="picked_up" from="Key2" to="SceneTrigger" method="activate"]
