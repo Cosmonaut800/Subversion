@@ -6,7 +6,9 @@ class_name DialogueManagerExampleBalloon extends CanvasLayer
 
 ## The action to use to skip typing the dialogue
 @export var skip_action: StringName = &"ui_cancel"
-
+@onready var talk_sound := $TalkSound
+@onready var indicator := $Indicator
+@onready var timer := $Indicator/Timer
 ## The dialogue resource
 var resource: DialogueResource
 
@@ -14,7 +16,12 @@ var resource: DialogueResource
 var temporary_game_states: Array = []
 
 ## See if we are waiting for the player
-var is_waiting_for_input: bool = false
+var is_waiting_for_input: bool = false:
+	set(value):
+		is_waiting_for_input = value
+		indicator.visible = value
+	get:
+		return is_waiting_for_input
 
 ## See if we are running a long mutation and should hide the balloon
 var will_hide_balloon: bool = false
@@ -88,6 +95,7 @@ var dialogue_line: DialogueLine:
 
 
 func _ready() -> void:
+	indicator.hide()
 	balloon.hide()
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
 
@@ -164,3 +172,9 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 
 
 #endregion
+
+
+func _on_dialogue_label_spoke(letter, letter_index, speed):
+	if not letter in [".", " "]:
+		talk_sound.pitch_scale = randf_range(0.9,1.1)
+		talk_sound.play()

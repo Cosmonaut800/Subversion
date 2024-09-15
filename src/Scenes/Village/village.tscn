@@ -889,6 +889,7 @@ shape = SubResource("BoxShape3D_ey1t1")
 stream = ExtResource("24_sjlvh")
 attenuation_model = 3
 panning_strength = 0.0
+bus = &"Village Music"
 
 [node name="bg_music_trigger" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.8322, 3.25229, 72.0123)

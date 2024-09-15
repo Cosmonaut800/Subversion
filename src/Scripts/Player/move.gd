@@ -8,6 +8,7 @@ extends State
 @export var movement_speed = 25.0
 @onready var character = $"../../Character"
 @onready var anim_tree := $"../../AnimationTree"
+@onready var footsteps_sfx := $"../../FootstepsSFX"
 func enter() -> void:
 	print(Global.is_talking)
 	#parent.animation_player.play(animation_name)
@@ -16,9 +17,12 @@ func enter() -> void:
 	pass
 
 func exit() -> void:
+	footsteps_sfx.stop()
 	pass
 
 func process_input(_event: InputEvent) -> State:
+	if not footsteps_sfx.is_playing():
+		footsteps_sfx.play()
 	if Global.is_talking:
 		return interact_state
 	return null
