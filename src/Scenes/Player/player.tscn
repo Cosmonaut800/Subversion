@@ -1,12 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://d0rjl2uql7asj"]
+[gd_scene load_steps=20 format=3 uid="uid://d0rjl2uql7asj"]
 
 [ext_resource type="Script" path="res://src/Scripts/Player/player.gd" id="1_rn414"]
 [ext_resource type="PackedScene" uid="uid://bxmvys46vndly" path="res://src/Scenes/Statemachine/statemachine.tscn" id="2_a2anx"]
-[ext_resource type="PackedScene" uid="uid://bjpjbfrtvqlfw" path="res://assets/Models/Player/GLTF/Player.Thirdperson.001.glb" id="2_dklqc"]
 [ext_resource type="Script" path="res://src/Scripts/Player/idle.gd" id="3_wdds3"]
 [ext_resource type="Resource" uid="uid://bddc5j7bfm0d0" path="res://src/Scripts/DialogueManager/dialogue_container.dialogue" id="4_eub0x"]
 [ext_resource type="Script" path="res://src/Scripts/Player/move.gd" id="4_ymhpd"]
 [ext_resource type="Script" path="res://src/Scripts/Player/interact.gd" id="5_s4xwr"]
+[ext_resource type="PackedScene" uid="uid://bjqcm3u61yv8i" path="res://assets/Models/Player/player_thirdperson_anim.tscn" id="8_rm35r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x1evk"]
 
@@ -22,6 +22,30 @@ material = SubResource("StandardMaterial3D_cd3wx")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3q4ct"]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cumfm"]
+animation = &"Player.Thirdperson.Anim.001/Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_djid7"]
+animation = &"Player.Thirdperson.Anim.001/Run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h52pc"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jj6th"]
+advance_mode = 2
+advance_condition = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_te4ct"]
+advance_mode = 2
+advance_condition = &"stop"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_4w2fd"]
+states/Player_Thirdperson_Anim_001_Idle/node = SubResource("AnimationNodeAnimation_cumfm")
+states/Player_Thirdperson_Anim_001_Idle/position = Vector2(511, 55)
+states/Player_Thirdperson_Anim_001_Run/node = SubResource("AnimationNodeAnimation_djid7")
+states/Player_Thirdperson_Anim_001_Run/position = Vector2(511, 163)
+transitions = ["Start", "Player_Thirdperson_Anim_001_Idle", SubResource("AnimationNodeStateMachineTransition_h52pc"), "Player_Thirdperson_Anim_001_Idle", "Player_Thirdperson_Anim_001_Run", SubResource("AnimationNodeStateMachineTransition_jj6th"), "Player_Thirdperson_Anim_001_Run", "Player_Thirdperson_Anim_001_Idle", SubResource("AnimationNodeStateMachineTransition_te4ct")]
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_rn414")
 
@@ -30,6 +54,37 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.94553, 0)
 shape = SubResource("CapsuleShape3D_x1evk")
 
 [node name="Character" type="Node3D" parent="."]
+
+[node name="Player_Thirdperson_Anim" parent="Character" instance=ExtResource("8_rm35r")]
+
+[node name="Skeleton3D" parent="Character/Player_Thirdperson_Anim/Armature" index="0"]
+bones/0/position = Vector3(-8.71597e-14, 1.60725, 1.27725e-07)
+bones/0/rotation = Quaternion(2.06994e-19, 1, 0, -7.54979e-08)
+bones/2/position = Vector3(-2.40094e-15, 0.500237, -5.96527e-09)
+bones/2/rotation = Quaternion(-0.0157431, 2.16611e-11, -1.37596e-09, 0.999876)
+bones/4/position = Vector3(7.36194e-16, 0.500237, -5.89499e-09)
+bones/4/rotation = Quaternion(-0.00956348, 6.63291e-11, -1.56681e-09, 0.999954)
+bones/5/scale = Vector3(1, 0.999999, 1)
+bones/6/position = Vector3(-2.58107e-11, 0.182689, 1.46683e-08)
+bones/6/rotation = Quaternion(-0.00550394, 4.65443e-11, -8.28451e-10, 0.999985)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/position = Vector3(-9.00655e-11, 0.182689, 6.51926e-09)
+bones/8/rotation = Quaternion(-0.00103056, -1.19386e-07, -9.26985e-10, 0.999999)
+bones/10/rotation = Quaternion(-0.721617, -5.58174e-08, 1.61505e-07, 0.692293)
+bones/12/position = Vector3(-0.218248, 0.34457, 0.0029945)
+bones/12/rotation = Quaternion(-0.474205, 0.533499, 0.464089, 0.524528)
+bones/14/rotation = Quaternion(-0.499167, 0.000137857, 0.0104765, 0.866443)
+bones/18/position = Vector3(0.218248, 0.34457, 0.00299456)
+bones/18/rotation = Quaternion(-0.474205, -0.533499, -0.464089, 0.524528)
+bones/20/rotation = Quaternion(-0.499167, -0.00013786, -0.0104765, 0.866443)
+bones/24/position = Vector3(-0.286447, -0.277495, 2.08227e-08)
+bones/24/rotation = Quaternion(0.985725, -0.0292345, 0.00431962, -0.16575)
+bones/26/rotation = Quaternion(-0.38161, 7.36303e-10, 4.22601e-07, 0.924323)
+bones/28/rotation = Quaternion(0.776926, -0.0120639, -0.0269777, 0.628898)
+bones/30/position = Vector3(0.286447, -0.277495, 1.06284e-07)
+bones/30/rotation = Quaternion(0.985725, 0.0292345, -0.00431949, -0.16575)
+bones/32/rotation = Quaternion(-0.38161, 1.4461e-08, -4.19354e-07, 0.924323)
+bones/34/rotation = Quaternion(0.776926, 0.0120639, 0.0269777, 0.628898)
 
 [node name="MockBody" type="MeshInstance3D" parent="Character"]
 visible = false
@@ -51,9 +106,6 @@ collision_mask = 4
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.91196, -1.65012)
 shape = SubResource("BoxShape3D_3q4ct")
 
-[node name="Player_Thirdperson_001" parent="Character" instance=ExtResource("2_dklqc")]
-transform = Transform3D(-0.99995, 0, -0.00998305, 0, 1, 0, 0.00998305, 0, -0.99995, 0, 0, 0)
-
 [node name="Statemachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_a2anx")]
 initial_state = NodePath("Idle")
 
@@ -63,9 +115,20 @@ move_state = NodePath("../Move")
 interact_state = NodePath("../Interact")
 dialogue_resource = ExtResource("4_eub0x")
 
-[node name="Move" type="Node" parent="Statemachine" node_paths=PackedStringArray("idle_state")]
+[node name="Move" type="Node" parent="Statemachine" node_paths=PackedStringArray("idle_state", "interact_state")]
 script = ExtResource("4_ymhpd")
 idle_state = NodePath("../Idle")
+interact_state = NodePath("../Interact")
 
-[node name="Interact" type="Node" parent="Statemachine"]
+[node name="Interact" type="Node" parent="Statemachine" node_paths=PackedStringArray("idle_state")]
 script = ExtResource("5_s4xwr")
+idle_state = NodePath("../Idle")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../Character/Player_Thirdperson_Anim")
+tree_root = SubResource("AnimationNodeStateMachine_4w2fd")
+anim_player = NodePath("../Character/Player_Thirdperson_Anim/AnimationPlayer")
+parameters/conditions/run = false
+parameters/conditions/stop = false
+
+[editable path="Character/Player_Thirdperson_Anim"]

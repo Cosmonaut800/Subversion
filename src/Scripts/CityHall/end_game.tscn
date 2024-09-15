@@ -1,0 +1,80 @@
+[gd_scene load_steps=15 format=3 uid="uid://bqu2qdu6mnb11"]
+
+[ext_resource type="Script" path="res://src/Scripts/CityHall/end_game.gd" id="1_8iw1m"]
+[ext_resource type="PackedScene" uid="uid://bbkobjgqqyfsp" path="res://assets/Town_center.gltf" id="1_rggwf"]
+[ext_resource type="PackedScene" uid="uid://d0rjl2uql7asj" path="res://src/Scenes/Player/player.tscn" id="2_w6a1d"]
+[ext_resource type="PackedScene" uid="uid://d3bf2vwd43ogn" path="res://addons/dialogue_starter.tscn" id="4_16pmo"]
+[ext_resource type="Resource" uid="uid://bddc5j7bfm0d0" path="res://src/Scripts/DialogueManager/dialogue_container.dialogue" id="5_ttk27"]
+[ext_resource type="PackedScene" uid="uid://bwvtmvfiqkn3s" path="res://src/Scenes/NPCs/TestNpc/NPC1.tscn" id="6_pk5c5"]
+[ext_resource type="PackedScene" uid="uid://bdebscm085plv" path="res://src/Scenes/NPCs/TestNpc/NPC2.tscn" id="7_r1l8q"]
+[ext_resource type="PackedScene" uid="uid://bj1i4usln0c5o" path="res://src/Scenes/NPCs/TestNpc/NPC3.tscn" id="8_po4ab"]
+[ext_resource type="PackedScene" uid="uid://c2ukga31hnlcx" path="res://src/Scenes/NPCs/TestNpc/NPC4.tscn" id="9_1eqjo"]
+[ext_resource type="PackedScene" uid="uid://dsui82ok3wnld" path="res://src/Scenes/NPCs/TestNpc/NPC5.tscn" id="10_lgeqy"]
+[ext_resource type="PackedScene" uid="uid://bnockpfvke1ir" path="res://src/Scenes/NPCs/TestNpc/NPC6.tscn" id="11_ur5n1"]
+[ext_resource type="PackedScene" uid="uid://0u5d2q77ejte" path="res://src/Scenes/NPCs/TestNpc/NPC7.tscn" id="12_7rj16"]
+[ext_resource type="PackedScene" uid="uid://c8hggeedpkayj" path="res://src/Scenes/Village/mountain.tscn" id="13_d5wlv"]
+
+[sub_resource type="Environment" id="Environment_ccd8t"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[node name="EndGame" type="Node3D"]
+script = ExtResource("1_8iw1m")
+
+[node name="Town Center" parent="." instance=ExtResource("1_rggwf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ccd8t")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.872641, 0.488362, 0, -0.488362, 0.872641, 0, 14.4047, -3.79852)
+
+[node name="Player" parent="." instance=ExtResource("2_w6a1d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.719238, -1, -28.7352)
+
+[node name="DialogueStarter" parent="." instance=ExtResource("4_16pmo")]
+dialogue_resource = ExtResource("5_ttk27")
+dialogue_start = "End_game_talk"
+
+[node name="NPC" parent="." instance=ExtResource("6_pk5c5")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.415568, -0.75, -19.0336)
+
+[node name="TestNpc" parent="." instance=ExtResource("7_r1l8q")]
+transform = Transform3D(-0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, -0.939693, -4, -1, -20)
+
+[node name="TestNpc2" parent="." instance=ExtResource("8_po4ab")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -8, -1, -23)
+
+[node name="TestNpc3" parent="." instance=ExtResource("9_1eqjo")]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 5, -1, -20)
+
+[node name="TestNpc4" parent="." instance=ExtResource("10_lgeqy")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 9, -1, -22)
+
+[node name="TestNpc5" parent="." instance=ExtResource("11_ur5n1")]
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -12, -1, -32)
+
+[node name="TestNpc6" parent="." instance=ExtResource("12_7rj16")]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 14, -1, -30)
+
+[node name="Mountain" parent="." instance=ExtResource("13_d5wlv")]
+transform = Transform3D(50, 0, 0, 0, 100, 0, 0, 0, 50, -64, -38, -100)
+
+[node name="Mountain2" parent="." instance=ExtResource("13_d5wlv")]
+transform = Transform3D(50, 0, 0, 0, 100, 0, 0, 0, 50, 39, -38, -100)
+
+[node name="Mountain3" parent="." instance=ExtResource("13_d5wlv")]
+transform = Transform3D(50, 0, 0, 0, 100, 0, 0, 0, 50, -10, -38, -100)
+
+[node name="Mountain4" parent="." instance=ExtResource("13_d5wlv")]
+transform = Transform3D(50, 0, 0, 0, 100, 0, 0, 0, 50, 91, -38, -100)
+
+[node name="Mountain5" parent="." instance=ExtResource("13_d5wlv")]
+transform = Transform3D(50, 0, 0, 0, 100, 0, 0, 0, 50, 158, -38, -100)
+
+[node name="Mountain6" parent="." instance=ExtResource("13_d5wlv")]
+transform = Transform3D(50, 0, 0, 0, 100, 0, 0, 0, 50, -112, -38, -100)
+
+[node name="Mountain7" parent="." instance=ExtResource("13_d5wlv")]
+transform = Transform3D(50, 0, 0, 0, 100, 0, 0, 0, 50, -176, -38, -66)

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://8be0xd00of7g"]
+
+[ext_resource type="PackedScene" uid="uid://bjpjbfrtvqlfw" path="res://assets/Models/Player/Blender/GLTF/Player.Thirdperson.001.glb" id="1_lti0x"]
+
+[node name="Player_Thirdperson_001" instance=ExtResource("1_lti0x")]

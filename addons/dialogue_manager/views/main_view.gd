@@ -239,21 +239,7 @@ func new_file(path: String, content: String = "") -> void:
 	var file: FileAccess = FileAccess.open(path, FileAccess.WRITE)
 	if content == "":
 		if DialogueSettings.get_setting("new_with_template", true):
-			file.store_string("\n".join([
-				"~ this_is_a_node_title",
-				"",
-				"Nathan: [[Hi|Hello|Howdy]], this is some dialogue.",
-				"Nathan: Here are some choices.",
-				"- First one",
-					"\tNathan: You picked the first one.",
-				"- Second one",
-					"\tNathan: You picked the second one.",
-				"- Start again => this_is_a_node_title",
-				"- End the conversation => END",
-				"Nathan: For more information see the online documentation.",
-				"",
-				"=> END"
-			]))
+			file.store_string(DialogueSettings.get_setting("new_template", ""))
 	else:
 		file.store_string(content)
 
@@ -266,6 +252,8 @@ func open_resource(resource: DialogueResource) -> void:
 
 
 func open_file(path: String) -> void:
+	if not FileAccess.file_exists(path): return
+
 	if not open_buffers.has(path):
 		var file: FileAccess = FileAccess.open(path, FileAccess.READ)
 		var text = file.get_as_text()

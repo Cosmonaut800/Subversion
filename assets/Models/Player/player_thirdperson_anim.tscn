@@ -4,6 +4,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://2g31qw13cwup" path="res://assets/Models/Player/Blender/GLTF/Player.Thirdperson.Anim.001.glb" id="2_mw15l"]
 
 [node name="Player_Thirdperson_Anim" instance=ExtResource("1_rsc6a")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 bones/0/position = Vector3(-8.71597e-14, 1.7, 1.24777e-07)

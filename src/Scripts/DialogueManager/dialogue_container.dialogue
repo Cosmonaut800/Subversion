@@ -1,13 +1,171 @@
-~ this_is_a_node_title
+~ Mayor_Frisbee_Dialogue
+if not Global.game_one_completed and not Global.game_two_completed:
+	Mayor Frisbee: Hi there! Welcome to the town of Manitow. My name is 
+	Mayor Frisbee, and you must be the exterminator! Thanks for coming and saving the day. 
+	We are current experience a massive infestation of Bed wasps.
+	- Tell me more about Manitow
+		Mayor Frisbee: Manitow was founded in 1996 after Lake Manitow. We here 
+		enjoy the reclusive nature of the valley as it gives us a sense of freedom
+		from the rest of society. We have our own way of doing things here, and 
+		we'd like it to stay. 
+		Mayor Frisbee: Some of our most famous locations here at Manitow is, of course, 
+		Lake Manitow, Orange Orchards, and Mount Spittoon. Manitow was actually a resort
+		area before some of the locals decided to come together and call this place their home.
+		Don't get me wrong, people still come visit - enterance is just heavily moderated.
+	- Do you know where Shari Pale lives?
+		Mayor Frisbee: Oh they flubbed the details, huh? Whoopsies sorry about that. 
+		You can find her over in Orange Orchards.
+	- End Conversation => END
+if Global.game_one_completed and not Global.game_two_completed:
+	Mayor Frisbee: Here at Manitow, we're a collective community meaning that
+	everyone puts in their input before we instill the law. But they keep wanting 
+	to cut back the income tax. How am I supposed to stuff my pocket.
+	Mayor Frisbee: erm.. I mean, how am I supposed to keep this town a float, if 
+	they keep wanting to cut the funds?
+	- Tell me more about Manitow
+		Mayor Frisbee: Manitow is known for it's beautiful scenery. The mountain ranges
+		that surround manitow make this place mysterious to many. Though, it's not much 
+		different than any other town you may have visited. At least, on the surface. 
+		Mayor Frisbee: The Ecology here at manitow is very diverse showcasing different
+		breeds of plant and wild life - some docile some dangerous. As you know, we 
+		will get an infestation of those dasterdly Bed wasps.. and that's where you come in!
+	- Do you know where Tobin lives?
+		Mayor Frisbee: That rat, Tobin. He's the one that wants taxes cut, 
+		and he's poisoning the minds of everyone around him! 
+		Mayor Frisbee: Anyway, You can find him on the west side.
+		he's usually at his place at Mount Spittoon.
+	- End Conversation => END
+if Global.game_one_completed and Global.game_two_completed:
+	Mayor Frisbee: Once again, thanks for coming, your final job is actually here at city hall.
+	You're a big help!
+	Mayor Frisbee: Oh, and you're going to want to hang on to this.
+=> END
+~ Tobin_Dialogue
+if not Global.game_one_completed and not Global.game_two_completed:
+	Tobin: The only thing better than fishin' is a nice col' Angry Orchards made from
+	the finest Oranges here at Manitow and my income tax gettin' cut and half.
+if Global.game_one_completed and not Global.game_two_completed and not Global.tobin_found:
+	Tobin: Looks like you found me! You must be the exterminator. Meet me back at my place
+	and let's get 'er done! I'll crack you open a nic col' one ~ if that's your thing.
+=> END
+~ Ralph_Dialogue
+if not Global.game_one_completed and not Global.game_two_completed:
+	Ralph: When life gets tough, there's only one thing you can do and that's taking all your
+	savings and putting it on black at your local roulette table.
+if Global.game_one_completed and not Global.game_two_completed:
+	Ralph: When is this damn bus getting here? I've been waiting forty-five minutes already.
+if Global.game_one_completed and Global.game_two_completed:
+	Ralph: I think the slot machines are calling my name.. it needs me. I'm feeling lucky!!!
+=> END
+~ Alphie_Dialogue
+if not Global.game_one_completed and not Global.game_two_completed:
+	Alphie: I heard that if you take a penny from the wishing fountain, that you'll be cursed 
+	with bad luck your entire life.
+	- Shari Pale?
+		Alphie: Ah yeah, she's always been a fan of fruit and has dreamed of living in a place 
+		where she can pick fruit right in front of her front door.
+	- End Conversation => END
+if Global.game_one_completed and not Global.game_two_completed:
+	Alphie: I've been in Manitow for quite some time. This place has been the same ever since. 
+	I would like to see some growth in the near future.
+	- Do you know Tobin?
+		Alphie: Tobin is hard one to track down. He loves to venture, but very reclusive. 
+		He hates taxes and thinks the government should have no hand in his daily life. 
+		He also likes to be in high places - makes him feel safe from predators, or something.
+	- End Conversation => END
+if Global.game_one_completed and Global.game_two_completed:
+	Alphie: I'm not sure why the Mayor feels so offputting, you might might 
+=> END
+~ Bailey_Dialogue
+if not Global.game_one_completed and not Global.game_two_completed:
+	Bailey: I love the Orange Orchards. This is what initially drew me
+	to Manitow. 
+	- Is Shari around here?
+		Bailey: I couldn't tell you. I'm just visiting, but the town center might have
+		more information. The Mayor was extremely helpful in directing me here in the first place.
+		I don't think I would have made it without him.
+if Global.game_one_completed and not Global.game_two_completed:
+	Bailey: I'd love to visit more of Manitow, but unfortunately the developers of this game
+	didn't give me a walk animation.. so I'm kinda stuck here until I get one or someone can pick
+	me up and move me in the mean time.
+	Bailey: Say, you look like a walker, do you mind helping a gal out?
+	Bailey: Oh, you're busy on a job right now, well.. no problem. I'll just have to wait this one 
+	out.
+if Global.game_one_completed and Global.game_two_completed:
+	Bailey: I heard some strange noises over at City Hall. Might want to check that place out.
+=> END
+~ Sammy_Dialogue
+if not Global.game_one_completed and not Global.game_two_completed:
+	Sammy: What a beautiful day for a walk. The atmosphere is amazing.
+if Global.game_one_completed and not Global.game_two_completed:
+	Sammy: Lake Manitow has a unique sheen that I haven't seen in any other Lake.
+	I think it's from the mini crystals produced by the local wild sea life. 
+	It's definitely worth checking out if you haven't seen it.
+if Global.game_one_completed and Global.game_two_completed:
+	Sammy: Unfortunately, I going for a walk sounded like an initial idea - but
+	the developers didn't give me a walk animation. Just gonna have to wait it out untill then.
+=> END
+~ Climber_Dialogue
+if not Global.game_one_completed and not Global.game_two_completed:
+	Climber: I hold the world record for climbing Mount Spittoon. 
+	- Can you direct me towards Shari?
+		Climber: Oh, you're that exterminator everyone is talking about. You had me weirded out 
+		for a second. She's located southwest in the Orange Orchards.
+if Global.game_one_completed and not Global.game_two_completed:
+	Climber: Tobin should be right up the mountain.
+if Global.game_one_completed and Global.game_two_completed:
+	Climber: I just beat my record climb with five minutes and twenty-two seconds. My 
+	kids are gonna see why I quit my job!
+=> END
+~ Pike_Dialogue
+if not Global.game_one_completed and not Global.game_two_completed:
+	Pike: I had to pawn my great grandma's gold watch to pay my bills. 
+	Sometimes, you gotta do what you gotta do, you know?
+	Pike: You're an exterminator! You definitely know!
+if Global.game_one_completed and not Global.game_two_completed:
+	Pike: I'd like to run my own pawn shop some day, once I can shake off 
+	this debt. It must be nice having a stable income. 
+if Global.game_one_completed and Global.game_two_completed:
+	Pike: Might want to check out City Hall, the Mayor was acting a little strange.
+=> END
+~ HQ_Dialogue
+Head Quarters: Hey, bud. Looks like we flubbed the details. We tried calling our clients,
+but we've had no luck with answers. Try asking the locals, they should be able to direct you
+to your jobs.
+Head Quarters: Again, we're sorry. Take your time. Manitow is a nice place - treat like a mini
+vacation, will you?
+=> END
+~ Next_Steps_Dialogue
+Head Quarters: Great job, one down - two to go! Your next job will be for Tobin Keith. Good luck!
+=> END
 
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => this_is_a_node_title
-- End the conversation => END
-Nathan: For more information see the online documentation.
+~ Directions
+Sign:  Welcome to Manitow! 
+Sign: City Center and Town Hall - North. 
+Orange Orchards East. Lake Manitow - North West. 
+Mart Canyon - South
+Mount Spittoon - South West.
+=> END
 
+~ Game_one_init
+if not Global.game_one_completed and not Global.game_two_completed:
+	Shari: Sonny? Oh you're the exterminator. I've been expecting you! There's a lot of bugs 
+	to take care so I hope you brought your appetite.
+	Shari: Well have at it!
+else:
+	Shari: Thanks for all your help, Sonny! I'd give you more money, but I spend all my social 
+	security for the month.
+=> END
+
+~ Game_two_init
+if not Global.game_two_completed and not Global.tobin_found:
+	House Sign: Gon' Fishin' - Tobin
+else:
+	Tobin: There you are! Well, I'll let you get to it. I've got a protest to attend.
+=> END
+~ End_game_talk
+Mayor Frisbee: On be half of the Town of Manitow, I thank you for a job well done!
+I know it wasn't much but you sure helped us in a time of need.
+Mayor Frisbee: Please come back any time! You are now a genuine member of our community!
+Mayor Frisbee: Farewell!
 => END
