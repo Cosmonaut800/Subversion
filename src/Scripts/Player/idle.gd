@@ -39,7 +39,7 @@ func process_input(_event: InputEvent) -> State:
 
 func process_physics(_delta: float) -> State:
 	if not parent.is_on_floor():
-		parent.velocity.y -= Global.gravity * _delta
+		parent.velocity.y -= 50 * _delta
 	else:
 		parent.velocity.y = 0
 	#if Global.is_talking:

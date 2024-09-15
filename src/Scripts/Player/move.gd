@@ -31,7 +31,7 @@ func process_physics(_delta: float) -> State:
 	parent.velocity.x = direction.x * movement_speed
 	parent.velocity.z = direction.z * movement_speed
 	if not parent.is_on_floor():
-		parent.velocity.y -= Global.gravity * _delta
+		parent.velocity.y -= 50 * _delta
 	else:
 		parent.velocity.y = 0		
 	# Smoothly rotate the pivot to face the movement direction.
