@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckwq7dc7yaou1"]
+
+[ext_resource type="Script" path="res://src/Scripts/Flyswatter/wasp_spawner.gd" id="1_8c11n"]
+
+[node name="WaspSpawner" type="Node3D"]
+script = ExtResource("1_8c11n")
+
+[node name="FirstSpawnTimer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 16.0
+one_shot = true
+
+[connection signal="timeout" from="FirstSpawnTimer" to="." method="_on_first_spawn_timer_timeout"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
