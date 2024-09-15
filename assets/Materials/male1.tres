@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b85c6hwg010md"]
+
+[ext_resource type="Texture2D" uid="uid://d0olt3bpxgd1k" path="res://assets/Models/Citizen/male1.png" id="1_vs6h7"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_vs6h7")
+texture_filter = 2

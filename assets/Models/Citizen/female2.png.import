@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pyrav54xr2ra"
-path.bptc="res://.godot/imported/player.png-af901d545a56483371e294845f96901d.bptc.ctex"
+uid="uid://dnv8o8g2u1rx0"
+path.bptc="res://.godot/imported/female2.png-febd70d6a4433ccbc81bb4d845b0d984.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Models/Player/player.png"
-dest_files=["res://.godot/imported/player.png-af901d545a56483371e294845f96901d.bptc.ctex"]
+source_file="res://assets/Models/Citizen/female2.png"
+dest_files=["res://.godot/imported/female2.png-febd70d6a4433ccbc81bb4d845b0d984.bptc.ctex"]
 
 [params]
 

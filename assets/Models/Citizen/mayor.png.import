@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pyrav54xr2ra"
-path.bptc="res://.godot/imported/player.png-af901d545a56483371e294845f96901d.bptc.ctex"
+uid="uid://cry65o8xvke4i"
+path.bptc="res://.godot/imported/mayor.png-f1b1b81a48370fee763faac2214d75df.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Models/Player/player.png"
-dest_files=["res://.godot/imported/player.png-af901d545a56483371e294845f96901d.bptc.ctex"]
+source_file="res://assets/Models/Citizen/mayor.png"
+dest_files=["res://.godot/imported/mayor.png-f1b1b81a48370fee763faac2214d75df.bptc.ctex"]
 
 [params]
 

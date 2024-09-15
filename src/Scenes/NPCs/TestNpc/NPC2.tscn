@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdebscm085plv"]
+[gd_scene load_steps=10 format=3 uid="uid://dtgvj6i44kg3s"]
 
 [ext_resource type="PackedScene" uid="uid://isiubeq8cbfo" path="res://assets/Models/Citizen/citizen_anim.tscn" id="1_8aivp"]
+[ext_resource type="Material" uid="uid://b85c6hwg010md" path="res://assets/Materials/male1.tres" id="2_whswg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n7jyf"]
 albedo_color = Color(1, 0, 0, 1)
@@ -30,30 +31,33 @@ transitions = ["Start", "Citizen_Anim_001_Idle", SubResource("AnimationNodeState
 [node name="Citizen_Anim" parent="Character" instance=ExtResource("1_8aivp")]
 
 [node name="Skeleton3D" parent="Character/Citizen_Anim/Armature" index="0"]
-bones/0/position = Vector3(-8.71597e-14, 1.62545, 1.27147e-07)
+bones/0/position = Vector3(-8.71597e-14, 1.5828, 1.28502e-07)
 bones/0/rotation = Quaternion(-2.51167e-15, 1, 0, -7.54979e-08)
-bones/1/rotation = Quaternion(-0.0118456, 1.22943e-11, -1.03543e-09, 0.99993)
-bones/2/rotation = Quaternion(-0.00565492, 2.79265e-11, -9.48463e-10, 0.999984)
-bones/3/rotation = Quaternion(-0.00238558, 1.4316e-11, -3.59632e-10, 0.999997)
-bones/4/rotation = Quaternion(-3.74281e-05, -1.1928e-07, -6.1199e-10, 1)
-bones/5/rotation = Quaternion(-0.0139284, -0.00546982, 0.365503, 0.93069)
-bones/6/rotation = Quaternion(-0.0139284, 0.00546987, -0.365503, 0.93069)
-bones/7/position = Vector3(-0.218248, 0.344545, 0.00176342)
-bones/7/rotation = Quaternion(-0.467984, 0.535345, 0.461959, 0.530086)
-bones/8/rotation = Quaternion(-0.496925, 0.000164951, 0.0104761, 0.86773)
-bones/10/position = Vector3(0.218248, 0.344545, 0.00176347)
-bones/10/rotation = Quaternion(-0.467984, -0.535345, -0.461959, 0.530086)
-bones/11/rotation = Quaternion(-0.496925, -0.000164953, -0.0104761, 0.86773)
-bones/13/rotation = Quaternion(0.988429, -0.0288357, 0.00387234, -0.148869)
-bones/14/rotation = Quaternion(-0.343555, 2.25718e-08, 3.55487e-07, 0.939133)
-bones/15/rotation = Quaternion(0.761793, -0.0126063, -0.026222, 0.647167)
-bones/16/rotation = Quaternion(0.988429, 0.0288358, -0.00387221, -0.148869)
-bones/17/rotation = Quaternion(-0.343555, -6.10983e-09, -3.53751e-07, 0.939133)
-bones/18/rotation = Quaternion(0.761793, 0.0126063, 0.0262219, 0.647167)
-bones/19/position = Vector3(0.666607, 4.17743, -0.153068)
-bones/19/rotation = Quaternion(0.365538, 0.930231, 0.032384, -0.00178023)
-bones/20/position = Vector3(-0.666607, 4.17743, -0.153068)
-bones/20/rotation = Quaternion(-0.365538, 0.930231, 0.0323841, 0.00178025)
+bones/1/rotation = Quaternion(-0.020324, 5.84566e-11, -2.89852e-09, 0.999794)
+bones/2/rotation = Quaternion(-0.0202397, 2.00381e-10, -3.21704e-09, 0.999795)
+bones/3/rotation = Quaternion(-0.0175561, 2.63395e-10, -2.62446e-09, 0.999846)
+bones/4/rotation = Quaternion(-0.0117212, -1.20011e-07, -1.55147e-09, 0.999931)
+bones/5/rotation = Quaternion(-0.108668, -0.0426762, 0.363044, 0.924429)
+bones/6/rotation = Quaternion(-0.108668, 0.0426762, -0.363044, 0.924429)
+bones/7/position = Vector3(-0.218248, 0.344636, 0.00561822)
+bones/7/rotation = Quaternion(-0.495079, 0.524499, 0.474237, 0.504873)
+bones/8/rotation = Quaternion(-0.522859, -0.000150961, 0.0104763, 0.852355)
+bones/10/position = Vector3(0.218248, 0.344636, 0.00561828)
+bones/10/rotation = Quaternion(-0.495079, -0.524499, -0.474237, 0.504873)
+bones/11/rotation = Quaternion(-0.52286, 0.000150955, -0.0104763, 0.852354)
+bones/13/rotation = Quaternion(0.9821, -0.0297965, 0.00486843, -0.185924)
+bones/14/rotation = Quaternion(-0.426715, 5.08132e-08, 4.48003e-07, 0.904386)
+bones/15/rotation = Quaternion(0.794706, -0.0113795, -0.0279654, 0.606243)
+bones/16/rotation = Quaternion(0.9821, 0.0297965, -0.0048683, -0.185924)
+bones/17/rotation = Quaternion(-0.426715, -3.43057e-08, -4.47486e-07, 0.904386)
+bones/18/rotation = Quaternion(0.794706, 0.0113795, 0.0279654, 0.606243)
+bones/19/position = Vector3(0.666607, 4.14487, -0.000106245)
+bones/19/rotation = Quaternion(0.36515, 0.914475, 0.173527, 0.0169958)
+bones/20/position = Vector3(-0.666607, 4.14487, -0.000106245)
+bones/20/rotation = Quaternion(-0.36515, 0.914475, 0.173527, -0.0169958)
+
+[node name="Body" parent="Character/Citizen_Anim/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_whswg")
 
 [node name="Body" type="MeshInstance3D" parent="Character"]
 visible = false
