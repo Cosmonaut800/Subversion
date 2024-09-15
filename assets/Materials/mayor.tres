@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bviaxq5jpal7c"]
+
+[ext_resource type="Texture2D" uid="uid://cry65o8xvke4i" path="res://assets/Models/Citizen/mayor.png" id="1_6oba8"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_6oba8")
+texture_filter = 2

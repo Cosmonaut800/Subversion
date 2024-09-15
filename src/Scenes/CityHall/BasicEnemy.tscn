@@ -1,15 +1,58 @@
-[gd_scene load_steps=5 format=3 uid="uid://crw2dcp25lpgq"]
+[gd_scene load_steps=14 format=3 uid="uid://crw2dcp25lpgq"]
 
 [ext_resource type="Script" path="res://src/Scripts/CityHall/basic_enemy.gd" id="1_rh2fl"]
+[ext_resource type="PackedScene" uid="uid://c28itfnjxlqre" path="res://assets/Models/Enemy/enemy_anim.tscn" id="2_sx3ja"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uwyrv"]
 radius = 0.4
 height = 1.8
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_xavh8"]
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_jt02u"]
 radius = 1.5
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iqll5"]
+animation = &"Enemy.Anim.001/Attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fdc0d"]
+animation = &"Enemy.Anim.001/Run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p52nr"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g0khd"]
+advance_mode = 2
+advance_condition = &"attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_675si"]
+advance_mode = 2
+advance_condition = &"chase"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_idq1x"]
+states/Enemy_Anim_001_Attack/node = SubResource("AnimationNodeAnimation_iqll5")
+states/Enemy_Anim_001_Attack/position = Vector2(527, 161)
+states/Enemy_Anim_001_Run/node = SubResource("AnimationNodeAnimation_fdc0d")
+states/Enemy_Anim_001_Run/position = Vector2(527, 48)
+transitions = ["Start", "Enemy_Anim_001_Run", SubResource("AnimationNodeStateMachineTransition_p52nr"), "Enemy_Anim_001_Run", "Enemy_Anim_001_Attack", SubResource("AnimationNodeStateMachineTransition_g0khd"), "Enemy_Anim_001_Attack", "Enemy_Anim_001_Run", SubResource("AnimationNodeStateMachineTransition_675si")]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_eulw5"]
+direction = Vector3(1.45519e-11, 1, 1.45519e-11)
+initial_velocity_min = 8.0
+initial_velocity_max = 8.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mnrqd"]
+shading_mode = 2
+diffuse_mode = 2
+specular_mode = 2
+albedo_color = Color(0, 0.392157, 0, 1)
+disable_receive_shadows = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_753w8"]
+material = SubResource("StandardMaterial3D_mnrqd")
+size = Vector2(0.2, 0.2)
 
 [node name="BasicEnemy" type="CharacterBody3D"]
 collision_layer = 5
@@ -19,9 +62,38 @@ script = ExtResource("1_rh2fl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_uwyrv")
 
-[node name="Graphics" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_xavh8")
+[node name="Graphics" parent="." instance=ExtResource("2_sx3ja")]
+transform = Transform3D(0.48, 0, 0, 0, 0.48, 0, 0, 0, 0.48, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/Armature" index="0"]
+bones/0/position = Vector3(2.48182e-14, 1.99979, 0.199733)
+bones/0/rotation = Quaternion(-1.68033e-07, 0.906347, 0.422534, -4.24689e-07)
+bones/1/rotation = Quaternion(0.0326721, -2.59241e-07, -3.67136e-09, 0.999466)
+bones/2/rotation = Quaternion(-0.0900264, -5.23436e-07, -8.25039e-09, 0.995939)
+bones/3/rotation = Quaternion(-0.032283, -8.9311e-09, 5.42901e-09, 0.999479)
+bones/4/rotation = Quaternion(0.412391, 3.87359e-07, -7.36501e-08, 0.911007)
+bones/5/rotation = Quaternion(-0.476397, 0.266857, 0.0436992, 0.836614)
+bones/6/rotation = Quaternion(-0.682461, 0.000536624, -0.259808, 0.683189)
+bones/7/rotation = Quaternion(-0.685307, -0.092462, 0.701035, 0.174225)
+bones/8/rotation = Quaternion(-0.335254, 0.0159745, -0.0925431, 0.937436)
+bones/9/rotation = Quaternion(-0.493459, -0.175609, -0.0586444, 0.849835)
+bones/10/rotation = Quaternion(-0.674798, 0.0507787, 0.32081, 0.662685)
+bones/11/rotation = Quaternion(0.685307, -0.092462, 0.701036, -0.174225)
+bones/12/rotation = Quaternion(-0.335254, -0.0159745, 0.0925431, 0.937436)
+bones/13/rotation = Quaternion(-0.490198, 0.495778, 0.436743, 0.568477)
+bones/14/rotation = Quaternion(-0.225405, -0.403219, -0.167765, 0.870897)
+bones/15/rotation = Quaternion(0.391945, 0.597177, -0.380323, 0.587464)
+bones/16/rotation = Quaternion(-0.717309, -0.00154463, 0.0298759, 0.696113)
+bones/17/rotation = Quaternion(-0.390613, -0.577505, -0.533879, 0.478418)
+bones/18/rotation = Quaternion(-0.390366, 0.0920632, -0.147829, 0.904038)
+bones/19/rotation = Quaternion(0.297411, -0.648351, 0.284439, 0.640532)
+bones/20/rotation = Quaternion(-0.717309, 0.00154458, -0.0298758, 0.696113)
+bones/21/rotation = Quaternion(0.988213, -0.0547727, -0.0308334, -0.139589)
+bones/22/rotation = Quaternion(-0.579637, 0.00272431, -0.0088196, 0.814822)
+bones/23/rotation = Quaternion(0.387059, 0.0542782, -0.014018, 0.920349)
+bones/24/rotation = Quaternion(0.366866, 0.0359451, -0.0113606, -0.92951)
+bones/25/rotation = Quaternion(-0.478361, -0.00293606, 0.00727879, 0.878129)
+bones/26/rotation = Quaternion(0.714231, 0.0366581, 0.00259776, 0.698945)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 0.1
@@ -45,6 +117,26 @@ one_shot = true
 [node name="DeathTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../Graphics")
+tree_root = SubResource("AnimationNodeStateMachine_idq1x")
+anim_player = NodePath("../Graphics/AnimationPlayer")
+parameters/conditions/attack = false
+parameters/conditions/chase = false
+
+[node name="DeathParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.787806, 0)
+emitting = false
+amount = 16
+lifetime = 0.6
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_eulw5")
+draw_pass_1 = SubResource("QuadMesh_753w8")
+
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+
+[editable path="Graphics"]

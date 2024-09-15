@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var model := $DoorPivot
 
-var locked := false
+var locked := true
 var has_opened := false
 
 func unlock():

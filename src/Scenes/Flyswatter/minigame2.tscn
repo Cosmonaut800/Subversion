@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bv8q78h3f6wya"]
+
+[ext_resource type="Script" path="res://src/Scripts/Flyswatter/minigame.gd" id="1_767ee"]
+
+[node name="Minigame2" type="Node3D"]
+script = ExtResource("1_767ee")
+first_wasp_time = 5.0
+wasp_interval = 2.0

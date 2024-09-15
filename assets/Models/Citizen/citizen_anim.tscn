@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://isiubeq8cbfo"]
+
+[ext_resource type="PackedScene" uid="uid://cufpby056meet" path="res://assets/Models/Citizen/Blender/GLTF/Citizen.001.glb" id="1_cihui"]
+[ext_resource type="AnimationLibrary" uid="uid://dpdh7kksjboa6" path="res://assets/Models/Citizen/Blender/GLTF/Citizen.Anim.001.glb" id="2_rgia3"]
+
+[node name="Citizen_Anim" instance=ExtResource("1_cihui")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/position = Vector3(-8.71597e-14, 1.7, 1.24777e-07)
+bones/0/rotation = Quaternion(-2.51167e-15, 1, 0, -7.54979e-08)
+bones/1/rotation = Quaternion(1.77636e-15, 3.55271e-15, -1.05879e-22, 1)
+bones/2/rotation = Quaternion(1.48892e-23, 0, -6.35347e-22, 1)
+bones/3/rotation = Quaternion(1.48893e-23, -1.1758e-30, -6.93375e-23, 1)
+bones/4/rotation = Quaternion(2.647e-23, -1.19209e-07, 5.061e-15, 1)
+bones/5/rotation = Quaternion(9.06811e-08, 2.15023e-07, 0.365544, 0.930794)
+bones/6/rotation = Quaternion(2.39913e-08, -1.6469e-07, -0.365544, 0.930794)
+bones/7/position = Vector3(-0.218248, 0.344535, 2.95129e-08)
+bones/7/rotation = Quaternion(-0.461912, 0.535385, 0.461912, 0.535385)
+bones/8/rotation = Quaternion(-0.264708, 0.0027721, 0.0100981, 0.964272)
+bones/10/position = Vector3(0.218248, 0.344535, 8.14793e-08)
+bones/10/rotation = Quaternion(-0.461912, -0.535385, -0.461912, 0.535385)
+bones/11/rotation = Quaternion(-0.264708, -0.00277207, -0.0100981, 0.964272)
+bones/13/rotation = Quaternion(0.999595, -0.0273583, 0.000214269, -0.0078248)
+bones/14/rotation = Quaternion(-0.0182373, 3.00896e-08, -1.17512e-09, 0.999834)
+bones/15/rotation = Quaternion(0.625267, -0.0166647, -0.021698, 0.779931)
+bones/16/rotation = Quaternion(0.999595, 0.0273583, -0.000214134, -0.0078248)
+bones/17/rotation = Quaternion(-0.0182373, -3.01156e-08, -1.06999e-10, 0.999834)
+bones/18/rotation = Quaternion(0.625267, 0.0166647, 0.021698, 0.779931)
+bones/19/rotation = Quaternion(0.365544, 0.930794, 1.06581e-14, -1.47514e-07)
+bones/20/rotation = Quaternion(-0.365544, 0.930794, -4.21468e-08, 1.68587e-07)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"Citizen.Anim.001": ExtResource("2_rgia3")
+}

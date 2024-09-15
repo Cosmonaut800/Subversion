@@ -1,16 +1,14 @@
-extends CanvasLayer
+class_name DialogueManagerExampleBalloon extends CanvasLayer
+## A basic dialogue balloon for use with Dialogue Manager.
 
 ## The action to use for advancing the dialogue
 @export var next_action: StringName = &"ui_accept"
 
 ## The action to use to skip typing the dialogue
 @export var skip_action: StringName = &"ui_cancel"
-
-@onready var balloon: Control = %Balloon
-@onready var character_label: RichTextLabel = %CharacterLabel
-@onready var dialogue_label: DialogueLabel = %DialogueLabel
-@onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
-
+@onready var talk_sound := $TalkSound
+@onready var indicator := $Indicator
+@onready var timer := $Indicator/Timer
 ## The dialogue resource
 var resource: DialogueResource
 
@@ -18,7 +16,12 @@ var resource: DialogueResource
 var temporary_game_states: Array = []
 
 ## See if we are waiting for the player
-var is_waiting_for_input: bool = false
+var is_waiting_for_input: bool = false:
+	set(value):
+		is_waiting_for_input = value
+		indicator.visible = value
+	get:
+		return is_waiting_for_input
 
 ## See if we are running a long mutation and should hide the balloon
 var will_hide_balloon: bool = false
@@ -78,8 +81,21 @@ var dialogue_line: DialogueLine:
 	get:
 		return dialogue_line
 
+## The base balloon anchor
+@onready var balloon: Control = %Balloon
+
+## The label showing the name of the currently speaking character
+@onready var character_label: RichTextLabel = %CharacterLabel
+
+## The label showing the currently spoken dialogue
+@onready var dialogue_label: DialogueLabel = %DialogueLabel
+
+## The menu of responses
+@onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
+
 
 func _ready() -> void:
+	indicator.hide()
 	balloon.hide()
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
 
@@ -156,3 +172,9 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 
 
 #endregion
+
+
+func _on_dialogue_label_spoke(letter, letter_index, speed):
+	if not letter in [".", " "]:
+		talk_sound.pitch_scale = randf_range(0.9,1.1)
+		talk_sound.play()

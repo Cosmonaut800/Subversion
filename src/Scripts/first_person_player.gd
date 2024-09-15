@@ -44,6 +44,7 @@ const BULLET_DAMAGE := 12.0
 							$YawPivot/PitchPivot/Rays/Splatter8,
 							$YawPivot/PitchPivot/Rays/Splatter9]
 @onready var healthbar := $UI/Control/HealthBar
+@onready var death_timer: Timer = $DeathTimer
 
 var previous_basis: Basis
 var previous_position: Vector3
@@ -63,7 +64,7 @@ var recoil_tween: Tween
 var gun_tween: Tween
 
 var state := 0
-enum STATE {FREE}
+enum STATE {FREE, DEAD}
 
 var focused := true
 
@@ -72,6 +73,8 @@ var can_use := true
 
 var health := MAX_HEALTH
 var ammo := 2
+
+signal died
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -98,7 +101,7 @@ func _physics_process(delta):
 	else:
 		velocity = Vector3.ZERO
 	
-	if Input.is_action_just_pressed("primary_fire") and ammo > 0 and reload_wait.is_stopped():
+	if state == STATE.FREE and Input.is_action_just_pressed("primary_fire") and ammo > 0 and reload_wait.is_stopped():
 		shoot()
 	
 	if is_on_floor() && can_step && get_last_motion().length() > 0.05:
@@ -130,10 +133,19 @@ func _process(_delta):
 		
 		focused = !focused
 	
+	if not focused and Input.is_action_just_pressed("primary_fire"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		focused = true
+	
 	if health > 100.0:
 		health = 100.0
 	elif health < 0.0:
+		var cam_tween = create_tween()
 		health = -0.01
+		cam_tween.tween_property(camera, "position:y", -1.5, 1.0)
+		if state != STATE.DEAD:
+			death_timer.start()
+		state = STATE.DEAD
 	
 	healthbar.set_value(health)
 
@@ -165,7 +177,7 @@ func shoot():
 			splatters[i].process_material.initial_velocity_max = 2.5
 			if entity.get_collision_layer_value(3):
 				entity.health -= BULLET_DAMAGE
-				splatters[i].draw_pass_1.surface_get_material(0).albedo_color = Color.DARK_RED
+				splatters[i].draw_pass_1.surface_get_material(0).albedo_color = Color.DARK_GREEN
 				splatters[i].process_material.initial_velocity_min = 1.0 + raycasts[i].get_collision_normal().dot(entity.velocity)
 				splatters[i].process_material.initial_velocity_max = 1.0 + raycasts[i].get_collision_normal().dot(entity.velocity)
 			else:
@@ -207,3 +219,6 @@ func _on_muzzle_flash_timer_timeout() -> void:
 
 func _on_reload_wait_timeout() -> void:
 	ammo = AMMO_MAX
+
+func _on_death_timer_timeout() -> void:
+	died.emit()

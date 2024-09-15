@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://c28itfnjxlqre"]
+
+[ext_resource type="PackedScene" uid="uid://q4drx15i4wmm" path="res://assets/Models/Enemy/Blender/GLTF/Enemy.001.glb" id="1_5if1w"]
+[ext_resource type="AnimationLibrary" uid="uid://cn0i0pa4q3ris" path="res://assets/Models/Enemy/Blender/GLTF/Enemy.Anim.001.glb" id="2_yistk"]
+
+[node name="Enemy_Anim" instance=ExtResource("1_5if1w")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/position = Vector3(2.46325e-14, 1.7547, -0.196168)
+bones/0/rotation = Quaternion(-5.58753e-08, 0.991009, 0.133795, -4.44599e-07)
+bones/1/rotation = Quaternion(-0.0771083, -2.3617e-07, -4.78572e-08, 0.997023)
+bones/2/rotation = Quaternion(-0.0623086, -5.63386e-07, -2.19599e-08, 0.998057)
+bones/3/rotation = Quaternion(-0.10682, 6.21861e-08, 1.14781e-07, 0.994278)
+bones/4/rotation = Quaternion(0.371622, 3.3135e-07, -1.00681e-07, 0.928384)
+bones/5/rotation = Quaternion(-0.356323, 0.211566, 0.0831808, 0.906286)
+bones/6/rotation = Quaternion(-0.596176, -0.0432961, -0.289725, 0.747502)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(-0.68286, -0.0828659, 0.702235, 0.183581)
+bones/7/scale = Vector3(1, 1, 0.999999)
+bones/8/rotation = Quaternion(-0.322402, 0.0172387, -0.092316, 0.941933)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(-0.356323, -0.211566, -0.0831809, 0.906286)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(-0.596176, 0.0432961, 0.289725, 0.747502)
+bones/10/scale = Vector3(1, 1, 1)
+bones/11/rotation = Quaternion(0.68286, -0.082866, 0.702235, -0.183581)
+bones/11/scale = Vector3(1, 1, 0.999999)
+bones/12/rotation = Quaternion(-0.322402, -0.0172386, 0.092316, 0.941933)
+bones/13/rotation = Quaternion(-0.442353, 0.538901, 0.487341, 0.525746)
+bones/14/rotation = Quaternion(-0.497608, -0.0335687, 0.0110284, 0.866682)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(0.476144, 0.532912, -0.466122, 0.521557)
+bones/16/rotation = Quaternion(-0.717309, -0.00155918, 0.0298749, 0.696112)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/rotation = Quaternion(-0.442352, -0.538901, -0.487341, 0.525746)
+bones/18/rotation = Quaternion(-0.497608, 0.0335687, -0.0110284, 0.866682)
+bones/19/rotation = Quaternion(0.476144, -0.532912, 0.466122, 0.521557)
+bones/19/scale = Vector3(1, 1, 1)
+bones/20/rotation = Quaternion(-0.71731, 0.00155931, -0.0298749, 0.696112)
+bones/20/scale = Vector3(1, 1, 1)
+bones/21/rotation = Quaternion(0.87447, -0.0358037, -0.000486541, -0.483756)
+bones/22/rotation = Quaternion(-0.725604, 0.00230041, -0.0110405, 0.68802)
+bones/22/scale = Vector3(1, 1, 1)
+bones/23/rotation = Quaternion(0.826513, 0.00516947, -0.0240943, 0.562378)
+bones/23/scale = Vector3(1, 1, 1)
+bones/24/rotation = Quaternion(0.87447, 0.0358041, 0.000487213, -0.483756)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/rotation = Quaternion(-0.725604, -0.00230032, 0.0110405, 0.68802)
+bones/25/scale = Vector3(1, 1, 1)
+bones/26/rotation = Quaternion(0.826513, -0.00516944, 0.0240943, 0.562378)
+bones/26/scale = Vector3(1, 1, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"Enemy.Anim.001": ExtResource("2_yistk")
+}

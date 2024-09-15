@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://0t06yu4rnmnn"]
+
+[ext_resource type="Texture2D" uid="uid://3m8yx8nj2nym" path="res://assets/Materials/Textures/flyswatter_bg.png" id="1_05mlh"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_05mlh")
+texture_filter = 2

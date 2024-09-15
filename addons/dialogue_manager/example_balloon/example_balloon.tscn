@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://73jm5qjy52vq"]
+[gd_scene load_steps=10 format=3 uid="uid://73jm5qjy52vq"]
 
 [ext_resource type="Script" path="res://addons/dialogue_manager/example_balloon/example_balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
+[ext_resource type="AudioStream" uid="uid://dfgrj7cndyxd1" path="res://addons/dialogue_manager/example_balloon/Fast_Single_v4_wav.wav" id="2_fks2h"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_72ixx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
@@ -66,6 +67,11 @@ Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
 [node name="ExampleBalloon" type="CanvasLayer"]
 layer = 100
 script = ExtResource("1_36de5")
+
+[node name="TalkSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fks2h")
+volume_db = -18.0
+bus = &"SFX"
 
 [node name="Balloon" type="Control" parent="."]
 unique_name_in_owner = true
@@ -145,5 +151,16 @@ response_template = NodePath("ResponseExample")
 layout_mode = 2
 text = "Response example"
 
+[node name="Indicator" type="Label" parent="."]
+offset_left = 959.0
+offset_top = 597.0
+offset_right = 1122.0
+offset_bottom = 620.0
+text = "Press Space (or Click)"
+
+[node name="Timer" type="Timer" parent="Indicator"]
+wait_time = 0.2
+
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
+[connection signal="spoke" from="Balloon/Panel/Dialogue/VBoxContainer/DialogueLabel" to="." method="_on_dialogue_label_spoke"]
 [connection signal="response_selected" from="Balloon/Responses/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

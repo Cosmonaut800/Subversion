@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dpudw516j8pow"]
+[gd_scene load_steps=41 format=3 uid="uid://dpudw516j8pow"]
 
 [ext_resource type="Script" path="res://src/Scripts/first_person_player.gd" id="1_fnf2j"]
 [ext_resource type="AudioStream" uid="uid://drfml1xsm5u5e" path="res://assets/Audio/double_barrel.wav" id="2_b7to4"]
@@ -210,6 +210,9 @@ particles_anim_loop = false
 [sub_resource type="QuadMesh" id="QuadMesh_1smjk"]
 material = SubResource("StandardMaterial3D_t4r1e")
 size = Vector2(0.1, 0.1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqsbm"]
+bg_color = Color(1, 0, 0, 1)
 
 [node name="FirstPersonPlayer" type="CharacterBody3D"]
 collision_layer = 2
@@ -437,12 +440,31 @@ offset_top = -63.0
 offset_right = 346.0
 offset_bottom = -36.0
 grow_vertical = 0
+theme_override_styles/fill = SubResource("StyleBoxFlat_bqsbm")
 value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="UI/Control/HealthBar"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -31.0
+offset_top = -28.0
+offset_right = 31.0
+offset_bottom = -5.0
+grow_horizontal = 2
+text = "HEALTH"
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11846, 0)
 omni_range = 13.9315
 
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="timeout" from="YawPivot/PitchPivot/Camera3D/MuzzleFlashTimer" to="." method="_on_muzzle_flash_timer_timeout"]
 [connection signal="timeout" from="Audio/FootstepTimer" to="." method="_on_footstep_timer_timeout"]
 [connection signal="timeout" from="ReloadWait" to="." method="_on_reload_wait_timeout"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

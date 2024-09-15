@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://1ynb8ejec0a6"]
+[gd_scene load_steps=5 format=3 uid="uid://1ynb8ejec0a6"]
 
 [ext_resource type="Script" path="res://src/Scripts/CityHall/key.gd" id="1_ubxde"]
 [ext_resource type="PackedScene" uid="uid://1c56ywl2tlql" path="res://assets/Models/key.glb" id="1_we3ut"]
+[ext_resource type="AudioStream" uid="uid://cjr6y7eyydvse" path="res://assets/Audio/switch5.wav" id="3_40j0g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aoc0r"]
 
@@ -20,4 +21,18 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_aoc0r")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 0.784314, 0.239216, 1)
+omni_range = 1.37621
+
+[node name="PickupSFX" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_40j0g")
+bus = &"SFX"
+attenuation_filter_cutoff_hz = 20500.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

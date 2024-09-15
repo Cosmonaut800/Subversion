@@ -1,0 +1,80 @@
+[gd_scene load_steps=10 format=3 uid="uid://cir210d7hnvuh"]
+
+[ext_resource type="PackedScene" uid="uid://isiubeq8cbfo" path="res://assets/Models/Citizen/citizen_anim.tscn" id="1_1vlxm"]
+[ext_resource type="Material" uid="uid://dx0piaurilvav" path="res://assets/Materials/male2.tres" id="2_i7mca"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n7jyf"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jj0ue"]
+material = SubResource("StandardMaterial3D_n7jyf")
+
+[sub_resource type="BoxMesh" id="BoxMesh_xsnom"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yds2k"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_03u5g"]
+animation = &"Citizen.Anim.001/Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b0jtx"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_68cy7"]
+states/Citizen_Anim_001_Idle/node = SubResource("AnimationNodeAnimation_03u5g")
+states/Citizen_Anim_001_Idle/position = Vector2(589, 91)
+transitions = ["Start", "Citizen_Anim_001_Idle", SubResource("AnimationNodeStateMachineTransition_b0jtx")]
+
+[node name="TestNpc" type="StaticBody3D"]
+
+[node name="Character" type="Node3D" parent="."]
+
+[node name="Citizen_Anim" parent="Character" instance=ExtResource("1_1vlxm")]
+
+[node name="Skeleton3D" parent="Character/Citizen_Anim/Armature" index="0"]
+bones/0/position = Vector3(-8.71597e-14, 1.67729, 1.25499e-07)
+bones/0/rotation = Quaternion(-2.51167e-15, 1, 0, -7.54979e-08)
+bones/1/rotation = Quaternion(-0.00084104, 7.81709e-14, -7.35245e-11, 1)
+bones/2/rotation = Quaternion(-0.000822767, 1.67621e-12, -7.68073e-10, 1)
+bones/3/rotation = Quaternion(-0.00279206, 6.05086e-12, -1.10088e-09, 0.999996)
+bones/4/rotation = Quaternion(-0.00826987, -1.19185e-07, -2.55443e-09, 0.999966)
+bones/5/rotation = Quaternion(-0.180638, -0.0709407, 0.358594, 0.913098)
+bones/6/rotation = Quaternion(-0.180639, 0.0709408, -0.358594, 0.913098)
+bones/7/position = Vector3(-0.218248, 0.344538, 0.000897985)
+bones/7/rotation = Quaternion(-0.46584, 0.532462, 0.465279, 0.531971)
+bones/8/rotation = Quaternion(-0.515227, -5.74054e-05, 0.0104772, 0.85699)
+bones/10/position = Vector3(0.218248, 0.344538, 0.000898037)
+bones/10/rotation = Quaternion(-0.46584, -0.532462, -0.465279, 0.531971)
+bones/11/rotation = Quaternion(-0.515227, 5.74045e-05, -0.0104772, 0.85699)
+bones/13/rotation = Quaternion(0.996187, -0.02778, 0.00216942, -0.082676)
+bones/14/rotation = Quaternion(-0.192106, 8.79729e-11, 2.00885e-07, 0.981374)
+bones/15/rotation = Quaternion(0.700064, -0.0145638, -0.0237558, 0.713537)
+bones/16/rotation = Quaternion(0.996187, 0.02778, -0.00216929, -0.082676)
+bones/17/rotation = Quaternion(-0.192106, -5.10355e-08, -2.04473e-07, 0.981374)
+bones/18/rotation = Quaternion(0.700064, 0.0145638, 0.0237558, 0.713537)
+bones/19/position = Vector3(0.666607, 4.22685, -0.193855)
+bones/19/rotation = Quaternion(0.359576, 0.910766, 0.191915, 0.0661701)
+bones/20/position = Vector3(-0.666607, 4.22685, -0.193855)
+bones/20/rotation = Quaternion(-0.359576, 0.910766, 0.191916, -0.0661701)
+
+[node name="Body" parent="Character/Citizen_Anim/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_i7mca")
+
+[node name="Body" type="MeshInstance3D" parent="Character"]
+visible = false
+mesh = SubResource("CapsuleMesh_jj0ue")
+
+[node name="Head" type="MeshInstance3D" parent="Character"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.7, 0.0209607, 0.315423, -0.438926)
+visible = false
+mesh = SubResource("BoxMesh_xsnom")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.94041, 0)
+shape = SubResource("CapsuleShape3D_yds2k")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../Character/Citizen_Anim")
+tree_root = SubResource("AnimationNodeStateMachine_68cy7")
+anim_player = NodePath("../Character/Citizen_Anim/AnimationPlayer")
+
+[editable path="Character/Citizen_Anim"]

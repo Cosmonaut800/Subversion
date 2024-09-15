@@ -1,16 +1,17 @@
-[gd_scene load_steps=14 format=3 uid="uid://bbrwemhjdmnmp"]
+[gd_scene load_steps=16 format=3 uid="uid://bbrwemhjdmnmp"]
 
-[ext_resource type="PackedScene" uid="uid://dybrn0vr7kju3" path="res://assets/Models/subversion_map2.glb" id="1_yogdl"]
-[ext_resource type="PackedScene" uid="uid://dpudw516j8pow" path="res://src/Scenes/Player/first_person_player.tscn" id="2_23518"]
-[ext_resource type="PackedScene" uid="uid://djx0nkflp07y8" path="res://assets/Models/subversion_door.glb" id="2_qugqh"]
-[ext_resource type="PackedScene" uid="uid://o1wc2dmtt7wj" path="res://src/Scenes/CityHall/locked_door.tscn" id="3_pruxl"]
-[ext_resource type="PackedScene" uid="uid://csbua6s8huld4" path="res://src/Scenes/CityHall/EnemySpawner.tscn" id="4_pxmmj"]
-[ext_resource type="PackedScene" uid="uid://dgkmdffi5q7c3" path="res://src/Scenes/CityHall/health_pickup.tscn" id="4_rnite"]
-[ext_resource type="PackedScene" uid="uid://1ynb8ejec0a6" path="res://src/Scenes/CityHall/key.tscn" id="7_mejor"]
-[ext_resource type="PackedScene" uid="uid://b0rxt0mh4l6vx" path="res://src/Scenes/CityHall/scene_trigger.tscn" id="8_ni776"]
+[ext_resource type="PackedScene" uid="uid://dybrn0vr7kju3" path="res://assets/Models/subversion_map2.glb" id="1_jfut7"]
+[ext_resource type="Script" path="res://src/Scripts/CityHall/city_hall.gd" id="1_jw4ir"]
+[ext_resource type="PackedScene" uid="uid://djx0nkflp07y8" path="res://assets/Models/subversion_door.glb" id="2_pe2p7"]
+[ext_resource type="PackedScene" uid="uid://o1wc2dmtt7wj" path="res://src/Scenes/CityHall/locked_door.tscn" id="3_2exgt"]
+[ext_resource type="PackedScene" uid="uid://dgkmdffi5q7c3" path="res://src/Scenes/CityHall/health_pickup.tscn" id="4_4lyqu"]
+[ext_resource type="PackedScene" uid="uid://csbua6s8huld4" path="res://src/Scenes/CityHall/EnemySpawner.tscn" id="5_4ydu1"]
+[ext_resource type="PackedScene" uid="uid://dpudw516j8pow" path="res://src/Scenes/Player/first_person_player.tscn" id="6_x5cwa"]
+[ext_resource type="PackedScene" uid="uid://1ynb8ejec0a6" path="res://src/Scenes/CityHall/key.tscn" id="7_og8t0"]
+[ext_resource type="PackedScene" uid="uid://b0rxt0mh4l6vx" path="res://src/Scenes/CityHall/scene_trigger.tscn" id="8_tsaru"]
+[ext_resource type="AudioStream" uid="uid://ckkooiaytnh4v" path="res://assets/Audio/CityHall_Theme.wav" id="10_t3gg1"]
 
 [sub_resource type="Environment" id="Environment_k0ooc"]
-background_mode = 4
 ambient_light_source = 1
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_1sj88"]
@@ -20,15 +21,16 @@ cell_height = 0.1
 agent_height = 2.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hprev"]
-size = Vector3(18.1716, 2.63037, 3.08854)
+size = Vector3(19.374, 7.19843, 19.3883)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_liw2h"]
-size = Vector3(3.29529, 4.1123, 14.852)
+[sub_resource type="BoxShape3D" id="BoxShape3D_2o6xo"]
+size = Vector3(19.374, 4.11484, 3.67008)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vmmyg"]
-size = Vector3(12.787, 5.56, 6.27112)
+[sub_resource type="BoxShape3D" id="BoxShape3D_xrc50"]
+size = Vector3(15.0377, 3.27402, 11.7238)
 
-[node name="TestStage" type="Node3D"]
+[node name="CityHall" type="Node3D"]
+script = ExtResource("1_jw4ir")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_k0ooc")
@@ -36,61 +38,88 @@ environment = SubResource("Environment_k0ooc")
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_1sj88")
 
-[node name="subversion_map2" parent="NavigationRegion3D" instance=ExtResource("1_yogdl")]
+[node name="subversion_map2" parent="NavigationRegion3D" instance=ExtResource("1_jfut7")]
 
-[node name="subversion_door" parent="NavigationRegion3D" instance=ExtResource("2_qugqh")]
+[node name="subversion_door" parent="NavigationRegion3D" instance=ExtResource("2_pe2p7")]
 transform = Transform3D(-0.939936, 0, 0.341351, 0, 1, 0, -0.341351, 0, -0.939936, -2.8531, 0, 14.437)
 
-[node name="LockedDoor" parent="NavigationRegion3D" instance=ExtResource("3_pruxl")]
+[node name="LockedDoor" parent="NavigationRegion3D" instance=ExtResource("3_2exgt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.727592, -1.93786e-07, 11.7743)
 
 [node name="HealthPickups" type="Node3D" parent="."]
 
-[node name="HealthPickup" parent="HealthPickups" instance=ExtResource("4_rnite")]
+[node name="HealthPickup" parent="HealthPickups" instance=ExtResource("4_4lyqu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.14452, 3.2512, 6.10037)
 
-[node name="HealthPickup2" parent="HealthPickups" instance=ExtResource("4_rnite")]
+[node name="HealthPickup2" parent="HealthPickups" instance=ExtResource("4_4lyqu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.19642, 3.2512, 5.9134)
 
-[node name="HealthPickup3" parent="HealthPickups" instance=ExtResource("4_rnite")]
+[node name="HealthPickup3" parent="HealthPickups" instance=ExtResource("4_4lyqu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.880539, 1.19209e-07, -9.66073)
 
-[node name="HealthPickup4" parent="HealthPickups" instance=ExtResource("4_rnite")]
+[node name="HealthPickup4" parent="HealthPickups" instance=ExtResource("4_4lyqu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00101519, 2.4384, 0.0278496)
 
-[node name="EnemySpawnerGr1Hide" type="Area3D" parent="."]
+[node name="EnemySpawnerGr1" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.419082, 1.30781, -9.67979)
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemySpawnerGr1Hide"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.130578, 0.124141, -0.0798912)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemySpawnerGr1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.362477, 2.40817, 11.3113)
 shape = SubResource("BoxShape3D_hprev")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="EnemySpawnerGr1Hide"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.509094, 0.753418, 29.6204)
-shape = SubResource("BoxShape3D_liw2h")
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="EnemySpawnerGr1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.362477, 3.94996, 0.158819)
+shape = SubResource("BoxShape3D_2o6xo")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="EnemySpawnerGr1Hide"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.439148, 1.51089, 39.8339)
-shape = SubResource("BoxShape3D_vmmyg")
-
-[node name="EnemySpawner" parent="EnemySpawnerGr1Hide" node_paths=PackedStringArray("player", "hide_region") instance=ExtResource("4_pxmmj")]
+[node name="EnemySpawner" parent="EnemySpawnerGr1" node_paths=PackedStringArray("player", "active_region") instance=ExtResource("5_4ydu1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.41786, -0.877067, -0.0587473)
 active = false
 player = NodePath("../../FirstPersonPlayer")
-hide_region = NodePath("..")
+active_region = NodePath("..")
 
-[node name="EnemySpawner2" parent="EnemySpawnerGr1Hide" node_paths=PackedStringArray("player", "hide_region") instance=ExtResource("4_pxmmj")]
+[node name="EnemySpawner2" parent="EnemySpawnerGr1" node_paths=PackedStringArray("player", "active_region") instance=ExtResource("5_4ydu1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.34073, -1.12563, -0.155115)
 active = false
 player = NodePath("../../FirstPersonPlayer")
-hide_region = NodePath("..")
+active_region = NodePath("..")
 
-[node name="FirstPersonPlayer" parent="." instance=ExtResource("2_23518")]
+[node name="EnemySpawnerGr2" type="Area3D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemySpawnerGr2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1406, 1.15765, 8.56488)
+shape = SubResource("BoxShape3D_xrc50")
+
+[node name="EnemySpawner3" parent="EnemySpawnerGr2" node_paths=PackedStringArray("player", "active_region") instance=ExtResource("5_4ydu1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.20841, 0.389057, 20.8614)
+max_enemies = 1
+active = false
+player = NodePath("../../FirstPersonPlayer")
+active_region = NodePath("..")
+
+[node name="FirstPersonPlayer" parent="." instance=ExtResource("6_x5cwa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0999776, 7.1907e-07, 30.3495)
 
-[node name="Key" parent="." instance=ExtResource("7_mejor")]
+[node name="Key" parent="." instance=ExtResource("7_og8t0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.16802, 0, 23.7618)
 
-[node name="SceneTrigger" parent="." instance=ExtResource("8_ni776")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0185012, 3.2512, -11.1538)
+[node name="SceneTrigger" parent="." instance=ExtResource("8_tsaru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000658818, 3.73014, -11.1538)
+
+[node name="Key2" parent="." instance=ExtResource("7_og8t0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.92969, 2.4384, 14.3548)
+
+[node name="HealthPickup" parent="." instance=ExtResource("4_4lyqu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.88528, 2.4384, 17.8902)
+
+[node name="bg_music" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("10_t3gg1")
+attenuation_model = 3
+autoplay = true
+panning_strength = 0.0
+
+[connection signal="died" from="FirstPersonPlayer" to="." method="_on_first_person_player_died"]
+[connection signal="picked_up" from="Key" to="NavigationRegion3D/LockedDoor" method="unlock"]
+[connection signal="scene_ended" from="SceneTrigger" to="." method="_on_scene_trigger_scene_ended"]
+[connection signal="picked_up" from="Key2" to="SceneTrigger" method="activate"]
