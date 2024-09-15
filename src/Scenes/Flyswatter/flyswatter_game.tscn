@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://bhokbtjd7mbs2"]
+[gd_scene load_steps=16 format=3 uid="uid://bhokbtjd7mbs2"]
 
 [ext_resource type="Texture2D" uid="uid://cj8y5uu80texg" path="res://assets/Materials/Textures/wood_floor_gray.png" id="1_aqjal"]
 [ext_resource type="Script" path="res://src/Scripts/Flyswatter/flyswatter_game.gd" id="1_h0kes"]
 [ext_resource type="PackedScene" uid="uid://cvc0iprcfdebn" path="res://src/Scenes/Flyswatter/fly_spawner.tscn" id="2_2j553"]
+[ext_resource type="Material" uid="uid://0t06yu4rnmnn" path="res://assets/Materials/flyswatter_bg.tres" id="2_3xa61"]
 [ext_resource type="PackedScene" uid="uid://bcjwblhl7wrqg" path="res://src/Scenes/Flyswatter/swatter.tscn" id="3_opqic"]
 [ext_resource type="PackedScene" uid="uid://ckwq7dc7yaou1" path="res://src/Scenes/Flyswatter/wasp_spawner.tscn" id="4_3dqm4"]
 [ext_resource type="AudioStream" uid="uid://c4aayt2ry2lpm" path="res://assets/Audio/buzzing_ambience.wav" id="6_qq0s8"]
@@ -17,6 +18,7 @@ texture_filter = 2
 
 [sub_resource type="QuadMesh" id="QuadMesh_pg5e4"]
 material = SubResource("StandardMaterial3D_geelw")
+size = Vector2(1.2, 1.2)
 
 [sub_resource type="LabelSettings" id="LabelSettings_eddkk"]
 font_size = 60
@@ -45,6 +47,7 @@ fov = 28.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.095)
+material_override = ExtResource("2_3xa61")
 mesh = SubResource("QuadMesh_pg5e4")
 
 [node name="FlySpawner" parent="." instance=ExtResource("2_2j553")]
