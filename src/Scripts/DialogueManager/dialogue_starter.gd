@@ -17,7 +17,7 @@ func start_dialogue() -> void:
 			Global.game_one_completed = true
 			Global.player_can_move = false
 			minigame1_started.emit()
-		if game_name == "game two" and Global.game_one_completed and not Global.game_two_completed:
+		if game_name == "game two" and Global.game_one_completed and not Global.game_two_completed and Global.tobin_found:
 			Global.game_two_completed = true
 			Global.player_can_move = false
 			minigame2_started.emit()

@@ -14,9 +14,9 @@ var fps_started := false
 
 signal start_fps
 
-func _ready():
-	Global.game_one_completed = true
-	Global.game_two_completed = true
+#func _ready():
+	#Global.game_one_completed = true
+	#Global.game_two_completed = true
 
 func _process(_delta):
 	if minigame1_started and not Global.is_talking:

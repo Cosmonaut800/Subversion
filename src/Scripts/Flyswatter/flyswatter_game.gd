@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var time_limit := 5.0
+@export var time_limit := 60.0
 @export var first_wasp_time := 30.0
 @export var wasp_interval := 15.0
 

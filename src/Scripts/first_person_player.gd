@@ -133,6 +133,10 @@ func _process(_delta):
 		
 		focused = !focused
 	
+	if not focused and Input.is_action_just_pressed("primary_fire"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		focused = true
+	
 	if health > 100.0:
 		health = 100.0
 	elif health < 0.0:

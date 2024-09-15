@@ -114,4 +114,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.88528, 2.4384, 17.8902)
 
 [connection signal="died" from="FirstPersonPlayer" to="." method="_on_first_person_player_died"]
 [connection signal="picked_up" from="Key" to="NavigationRegion3D/LockedDoor" method="unlock"]
+[connection signal="scene_ended" from="SceneTrigger" to="." method="_on_scene_trigger_scene_ended"]
 [connection signal="picked_up" from="Key2" to="SceneTrigger" method="activate"]

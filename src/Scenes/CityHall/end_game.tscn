@@ -3,15 +3,15 @@
 [ext_resource type="Script" path="res://src/Scripts/CityHall/end_game.gd" id="1_8iw1m"]
 [ext_resource type="PackedScene" uid="uid://bbkobjgqqyfsp" path="res://assets/Town_center.gltf" id="1_rggwf"]
 [ext_resource type="PackedScene" uid="uid://d0rjl2uql7asj" path="res://src/Scenes/Player/player.tscn" id="2_w6a1d"]
-[ext_resource type="PackedScene" uid="uid://d3bf2vwd43ogn" path="res://addons/dialogue_starter.tscn" id="4_16pmo"]
+[ext_resource type="PackedScene" path="res://addons/dialogue_starter.tscn" id="4_16pmo"]
 [ext_resource type="Resource" uid="uid://bddc5j7bfm0d0" path="res://src/Scripts/DialogueManager/dialogue_container.dialogue" id="5_ttk27"]
-[ext_resource type="PackedScene" uid="uid://bwvtmvfiqkn3s" path="res://src/Scenes/NPCs/TestNpc/NPC1.tscn" id="6_pk5c5"]
-[ext_resource type="PackedScene" uid="uid://bdebscm085plv" path="res://src/Scenes/NPCs/TestNpc/NPC2.tscn" id="7_r1l8q"]
-[ext_resource type="PackedScene" uid="uid://bj1i4usln0c5o" path="res://src/Scenes/NPCs/TestNpc/NPC3.tscn" id="8_po4ab"]
-[ext_resource type="PackedScene" uid="uid://c2ukga31hnlcx" path="res://src/Scenes/NPCs/TestNpc/NPC4.tscn" id="9_1eqjo"]
-[ext_resource type="PackedScene" uid="uid://dsui82ok3wnld" path="res://src/Scenes/NPCs/TestNpc/NPC5.tscn" id="10_lgeqy"]
-[ext_resource type="PackedScene" uid="uid://bnockpfvke1ir" path="res://src/Scenes/NPCs/TestNpc/NPC6.tscn" id="11_ur5n1"]
-[ext_resource type="PackedScene" uid="uid://0u5d2q77ejte" path="res://src/Scenes/NPCs/TestNpc/NPC7.tscn" id="12_7rj16"]
+[ext_resource type="PackedScene" uid="uid://nanvw6abdjxm" path="res://src/Scenes/NPCs/TestNpc/NPC1.tscn" id="6_pk5c5"]
+[ext_resource type="PackedScene" uid="uid://dtgvj6i44kg3s" path="res://src/Scenes/NPCs/TestNpc/NPC2.tscn" id="7_r1l8q"]
+[ext_resource type="PackedScene" uid="uid://cjib8e6n8vaag" path="res://src/Scenes/NPCs/TestNpc/NPC3.tscn" id="8_po4ab"]
+[ext_resource type="PackedScene" uid="uid://b70ncpl1lvph8" path="res://src/Scenes/NPCs/TestNpc/NPC4.tscn" id="9_1eqjo"]
+[ext_resource type="PackedScene" uid="uid://b8v7seo1cmxk" path="res://src/Scenes/NPCs/TestNpc/NPC5.tscn" id="10_lgeqy"]
+[ext_resource type="PackedScene" uid="uid://bp314onlummxp" path="res://src/Scenes/NPCs/TestNpc/NPC6.tscn" id="11_ur5n1"]
+[ext_resource type="PackedScene" uid="uid://ckhp0nc6jr8j5" path="res://src/Scenes/NPCs/TestNpc/NPC7.tscn" id="12_7rj16"]
 [ext_resource type="PackedScene" uid="uid://c8hggeedpkayj" path="res://src/Scenes/Village/mountain.tscn" id="13_d5wlv"]
 
 [sub_resource type="Environment" id="Environment_ccd8t"]
@@ -31,7 +31,7 @@ environment = SubResource("Environment_ccd8t")
 transform = Transform3D(1, 0, 0, 0, 0.872641, 0.488362, 0, -0.488362, 0.872641, 0, 14.4047, -3.79852)
 
 [node name="Player" parent="." instance=ExtResource("2_w6a1d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.719238, -1, -28.7352)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.719238, -1, -28.7352)
 
 [node name="DialogueStarter" parent="." instance=ExtResource("4_16pmo")]
 dialogue_resource = ExtResource("5_ttk27")
