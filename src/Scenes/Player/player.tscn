@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/Scripts/Player/player.gd" id="1_rn414"]
 [ext_resource type="PackedScene" uid="uid://bxmvys46vndly" path="res://src/Scenes/Statemachine/statemachine.tscn" id="2_a2anx"]
-[ext_resource type="Material" uid="uid://5gpgokq3hhup" path="res://assets/Materials/player.tres" id="3_diwqf"]
+[ext_resource type="Material" path="res://assets/Materials/player.tres" id="3_diwqf"]
 [ext_resource type="Script" path="res://src/Scripts/Player/idle.gd" id="3_wdds3"]
 [ext_resource type="Resource" uid="uid://bddc5j7bfm0d0" path="res://src/Scripts/DialogueManager/dialogue_container.dialogue" id="4_eub0x"]
 [ext_resource type="Script" path="res://src/Scripts/Player/move.gd" id="4_ymhpd"]
@@ -60,7 +60,6 @@ shape = SubResource("CapsuleShape3D_x1evk")
 
 [node name="Skeleton3D" parent="Character/Player_Thirdperson_Anim/Armature" index="0"]
 bones/0/position = Vector3(-8.71597e-14, 1.66938, 1.2575e-07)
-bones/0/rotation = Quaternion(2.06994e-19, 1, 0, -7.54979e-08)
 bones/2/position = Vector3(-2.40094e-15, 0.500237, -5.96527e-09)
 bones/2/rotation = Quaternion(-0.00244047, 5.08749e-12, -2.07344e-09, 0.999997)
 bones/4/position = Vector3(7.36194e-16, 0.500237, -5.89499e-09)
@@ -68,7 +67,6 @@ bones/4/rotation = Quaternion(-0.0077713, 2.37376e-11, -1.87193e-09, 0.99997)
 bones/5/scale = Vector3(1, 0.999999, 1)
 bones/6/position = Vector3(-2.58107e-11, 0.182689, 1.46683e-08)
 bones/6/rotation = Quaternion(-0.0119827, 8.07338e-11, -2.48604e-09, 0.999928)
-bones/7/scale = Vector3(1, 1, 1)
 bones/8/position = Vector3(-9.00655e-11, 0.182689, 6.51926e-09)
 bones/8/rotation = Quaternion(-0.0177492, -1.19266e-07, -2.80875e-09, 0.999843)
 bones/10/rotation = Quaternion(-0.760761, -1.83144e-08, 2.24909e-07, 0.649033)

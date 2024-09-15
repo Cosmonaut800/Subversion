@@ -1,13 +1,14 @@
-[gd_scene load_steps=74 format=3 uid="uid://b0ahb003d7w2s"]
+[gd_scene load_steps=77 format=3 uid="uid://b0ahb003d7w2s"]
 
 [ext_resource type="PackedScene" uid="uid://d0rjl2uql7asj" path="res://src/Scenes/Player/player.tscn" id="1_pij0r"]
 [ext_resource type="PackedScene" uid="uid://bx0vvgxuwrxuc" path="res://assets/OrangeOrchards.gltf" id="2_apkti"]
 [ext_resource type="PackedScene" uid="uid://nanvw6abdjxm" path="res://src/Scenes/NPCs/TestNpc/NPC1.tscn" id="2_h1bax"]
-[ext_resource type="PackedScene" path="res://addons/dialogue_starter.tscn" id="3_j8ef7"]
+[ext_resource type="PackedScene" uid="uid://d3bf2vwd43ogn" path="res://addons/dialogue_starter.tscn" id="3_j8ef7"]
 [ext_resource type="Resource" uid="uid://bddc5j7bfm0d0" path="res://src/Scripts/DialogueManager/dialogue_container.dialogue" id="4_47aer"]
 [ext_resource type="PackedScene" uid="uid://8olwogff7sq7" path="res://assets/Starting_Area.gltf" id="5_d147o"]
 [ext_resource type="PackedScene" uid="uid://bbkobjgqqyfsp" path="res://assets/Town_center.gltf" id="6_cvny5"]
 [ext_resource type="PackedScene" uid="uid://du1vrijspuans" path="res://assets/Manitow-Lake.gltf" id="7_b2ib1"]
+[ext_resource type="AudioStream" uid="uid://c8746obb3i285" path="res://assets/Audio/Calm_Theme.wav" id="8_7c8g0"]
 [ext_resource type="PackedScene" uid="uid://cngfcgmtb35hu" path="res://assets/Central_Island.gltf" id="9_fn334"]
 [ext_resource type="PackedScene" uid="uid://m8nnqpu7oblf" path="res://assets/Sign.gltf" id="9_i36hc"]
 [ext_resource type="PackedScene" uid="uid://c8hggeedpkayj" path="res://src/Scenes/Village/mountain.tscn" id="10_w3ddw"]
@@ -20,8 +21,9 @@
 [ext_resource type="PackedScene" uid="uid://bp314onlummxp" path="res://src/Scenes/NPCs/TestNpc/NPC6.tscn" id="16_nvrwp"]
 [ext_resource type="PackedScene" uid="uid://ckhp0nc6jr8j5" path="res://src/Scenes/NPCs/TestNpc/NPC7.tscn" id="17_v7lyr"]
 [ext_resource type="PackedScene" uid="uid://cir210d7hnvuh" path="res://src/Scenes/NPCs/TestNpc/NPC8.tscn" id="18_dyrjb"]
-[ext_resource type="PackedScene" path="res://src/Scenes/Village/collision.tscn" id="21_yjgc1"]
-[ext_resource type="PackedScene" path="res://src/Scenes/Village/hq_dialogue.tscn" id="22_87q1n"]
+[ext_resource type="PackedScene" uid="uid://dctekf5u6xijt" path="res://src/Scenes/Village/collision.tscn" id="21_yjgc1"]
+[ext_resource type="PackedScene" uid="uid://cxpnfxquldolo" path="res://src/Scenes/Village/hq_dialogue.tscn" id="22_87q1n"]
+[ext_resource type="Script" path="res://src/Scenes/Village/play_village_bg_music.gd" id="24_of7oo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_utqmi"]
 
@@ -162,7 +164,16 @@ size = Vector3(0.685425, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ey1t1"]
 size = Vector3(103.658, 1, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_alv2n"]
+size = Vector3(50.8789, 20.5654, 0.001)
+
 [node name="Village" type="Node"]
+
+[node name="village_music_bg" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_7c8g0")
+attenuation_model = 3
+panning_strength = 0.0
+bus = &"Village Music"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_7crjn")
@@ -813,6 +824,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.7845, -0.14957, 189.092)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HQDialogue"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.607712, 1.31925, 0)
 shape = SubResource("BoxShape3D_ey1t1")
+
+[node name="PlayVillageBGMusic" type="Area3D" parent="."]
+script = ExtResource("24_of7oo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayVillageBGMusic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.3459, 16.4898, 120.375)
+shape = SubResource("BoxShape3D_alv2n")
+
+[connection signal="body_entered" from="PlayVillageBGMusic" to="PlayVillageBGMusic" method="_on_body_entered"]
 
 [editable path="Collisions/Collision8"]
 [editable path="Collisions/Collision9"]

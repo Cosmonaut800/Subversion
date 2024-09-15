@@ -15,6 +15,7 @@ extends Node3D
 @onready var final_score_label := $CanvasLayer/Control/Finished/FinalScore
 @onready var game_over := $CanvasLayer/Control/GameOver
 @onready var ambience := $Ambience
+@onready var bg_music := $bg_music
 
 
 
