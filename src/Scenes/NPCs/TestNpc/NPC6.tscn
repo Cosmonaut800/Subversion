@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bp314onlummxp"]
 
 [ext_resource type="PackedScene" uid="uid://isiubeq8cbfo" path="res://assets/Models/Citizen/citizen_anim.tscn" id="1_53bx6"]
-[ext_resource type="Material" uid="uid://dwsxs10o8prhf" path="res://assets/Materials/female1.tres" id="2_ygk5d"]
+[ext_resource type="Material" path="res://assets/Materials/female1.tres" id="2_ygk5d"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n7jyf"]
 albedo_color = Color(1, 0, 0, 1)
@@ -32,7 +32,6 @@ transitions = ["Start", "Citizen_Anim_001_Idle", SubResource("AnimationNodeState
 
 [node name="Skeleton3D" parent="Character/Citizen_Anim/Armature" index="0"]
 bones/0/position = Vector3(-8.71597e-14, 1.58272, 1.28505e-07)
-bones/0/rotation = Quaternion(-2.51167e-15, 1, 0, -7.54979e-08)
 bones/1/rotation = Quaternion(-0.0203353, 5.81209e-11, -2.88056e-09, 0.999793)
 bones/2/rotation = Quaternion(-0.0202065, 1.99832e-10, -3.20801e-09, 0.999796)
 bones/3/rotation = Quaternion(-0.017499, 2.62304e-10, -2.61597e-09, 0.999847)

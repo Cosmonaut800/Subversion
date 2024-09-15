@@ -5,8 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://cvc0iprcfdebn" path="res://src/Scenes/Flyswatter/fly_spawner.tscn" id="2_2j553"]
 [ext_resource type="Material" uid="uid://0t06yu4rnmnn" path="res://assets/Materials/flyswatter_bg.tres" id="2_3xa61"]
 [ext_resource type="PackedScene" uid="uid://bcjwblhl7wrqg" path="res://src/Scenes/Flyswatter/swatter.tscn" id="3_opqic"]
-[ext_resource type="PackedScene" uid="uid://ckwq7dc7yaou1" path="res://src/Scenes/Flyswatter/wasp_spawner.tscn" id="4_3dqm4"]
+[ext_resource type="PackedScene" path="res://src/Scenes/Flyswatter/wasp_spawner.tscn" id="4_3dqm4"]
 [ext_resource type="AudioStream" uid="uid://c4aayt2ry2lpm" path="res://assets/Audio/buzzing_ambience.wav" id="6_qq0s8"]
+[ext_resource type="AudioStream" uid="uid://bitko2amcgdxs" path="res://assets/Audio/FlySwattingTheme.wav" id="7_filgj"]
 
 [sub_resource type="Environment" id="Environment_c78k1"]
 ambient_light_color = Color(1, 1, 1, 1)
@@ -213,6 +214,13 @@ attenuation_model = 3
 volume_db = -6.0
 autoplay = true
 panning_strength = 0.0
+
+[node name="bg_music" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_filgj")
+attenuation_model = 3
+autoplay = true
+panning_strength = 0.0
+bus = &"Fly Swatter Music"
 
 [connection signal="lost_life" from="Swatter" to="." method="_on_swatter_lost_life"]
 [connection signal="pressed" from="CanvasLayer/Control/Finished/Continue" to="." method="_on_continue_pressed"]

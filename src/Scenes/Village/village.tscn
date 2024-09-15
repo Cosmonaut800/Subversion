@@ -1,10 +1,10 @@
-[gd_scene load_steps=75 format=3 uid="uid://b0ahb003d7w2s"]
+[gd_scene load_steps=78 format=3 uid="uid://b0ahb003d7w2s"]
 
 [ext_resource type="Script" path="res://src/Scenes/Village/village.gd" id="1_0agi3"]
 [ext_resource type="PackedScene" uid="uid://d0rjl2uql7asj" path="res://src/Scenes/Player/player.tscn" id="1_pij0r"]
 [ext_resource type="PackedScene" uid="uid://bx0vvgxuwrxuc" path="res://assets/OrangeOrchards.gltf" id="2_apkti"]
 [ext_resource type="PackedScene" uid="uid://nanvw6abdjxm" path="res://src/Scenes/NPCs/TestNpc/NPC1.tscn" id="2_h1bax"]
-[ext_resource type="PackedScene" path="res://addons/dialogue_starter.tscn" id="3_j8ef7"]
+[ext_resource type="PackedScene" uid="uid://d3bf2vwd43ogn" path="res://addons/dialogue_starter.tscn" id="3_j8ef7"]
 [ext_resource type="Resource" uid="uid://bddc5j7bfm0d0" path="res://src/Scripts/DialogueManager/dialogue_container.dialogue" id="4_47aer"]
 [ext_resource type="PackedScene" uid="uid://8olwogff7sq7" path="res://assets/Starting_Area.gltf" id="5_d147o"]
 [ext_resource type="PackedScene" uid="uid://bbkobjgqqyfsp" path="res://assets/Town_center.gltf" id="6_cvny5"]
@@ -21,8 +21,10 @@
 [ext_resource type="PackedScene" uid="uid://bp314onlummxp" path="res://src/Scenes/NPCs/TestNpc/NPC6.tscn" id="16_nvrwp"]
 [ext_resource type="PackedScene" uid="uid://ckhp0nc6jr8j5" path="res://src/Scenes/NPCs/TestNpc/NPC7.tscn" id="17_v7lyr"]
 [ext_resource type="PackedScene" uid="uid://cir210d7hnvuh" path="res://src/Scenes/NPCs/TestNpc/NPC8.tscn" id="18_dyrjb"]
-[ext_resource type="PackedScene" path="res://src/Scenes/Village/collision.tscn" id="21_yjgc1"]
-[ext_resource type="PackedScene" path="res://src/Scenes/Village/hq_dialogue.tscn" id="22_87q1n"]
+[ext_resource type="PackedScene" uid="uid://dctekf5u6xijt" path="res://src/Scenes/Village/collision.tscn" id="21_yjgc1"]
+[ext_resource type="PackedScene" uid="uid://cxpnfxquldolo" path="res://src/Scenes/Village/hq_dialogue.tscn" id="22_87q1n"]
+[ext_resource type="AudioStream" uid="uid://c8746obb3i285" path="res://assets/Audio/Calm_Theme.wav" id="24_sjlvh"]
+[ext_resource type="Script" path="res://src/Scenes/Village/bg_music_trigger.gd" id="25_f18yh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_utqmi"]
 
@@ -162,6 +164,9 @@ size = Vector3(0.685425, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ey1t1"]
 size = Vector3(103.658, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wrd0o"]
+size = Vector3(3.34778, 1.06653, 1)
 
 [node name="Village" type="Node"]
 script = ExtResource("1_0agi3")
@@ -817,9 +822,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.7845, -0.14957, 189.092)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.607712, 1.31925, 0)
 shape = SubResource("BoxShape3D_ey1t1")
 
+[node name="bg_music" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("24_sjlvh")
+attenuation_model = 3
+panning_strength = 0.0
+
+[node name="bg_music_trigger" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.8322, 3.25229, 72.0123)
+script = ExtResource("25_f18yh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bg_music_trigger"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 51.5899, 9.53523, 44.0498)
+shape = SubResource("BoxShape3D_wrd0o")
+
 [connection signal="minigame1_started" from="WorldEnvironment/Shari\'s House/DialogueStarter" to="." method="_on_dialogue_starter_minigame_1_started"]
 [connection signal="minigame2_started" from="WorldEnvironment/Tobin\'s House/DialogueStarter" to="." method="_on_dialogue_starter_minigame_2_started"]
 [connection signal="fps_started" from="Mayor Frisbee/DialogueStarter" to="." method="_on_dialogue_starter_fps_started"]
+[connection signal="body_entered" from="bg_music_trigger" to="bg_music_trigger" method="_on_body_entered"]
 
 [editable path="Collisions/Collision8"]
 [editable path="Collisions/Collision9"]
