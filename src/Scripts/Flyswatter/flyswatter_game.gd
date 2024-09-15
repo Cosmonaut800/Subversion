@@ -16,9 +16,8 @@ extends Node3D
 @onready var game_over := $CanvasLayer/Control/GameOver
 @onready var ambience := $Ambience
 @onready var camera := $Camera3D
-
-
-
+@onready var bg_music: AudioStreamPlayer3D = $bg_music
+@onready var game_over_music: AudioStreamPlayer3D = $GameOver
 
 var tween: Tween
 
@@ -65,6 +64,8 @@ func lose_game():
 		swatter.tracking = false
 		fly_spawner.max_flies = 0
 		wasp_spawner.active = false
+		bg_music.stop()
+		game_over_music.play()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _on_swatter_lost_life() -> void:

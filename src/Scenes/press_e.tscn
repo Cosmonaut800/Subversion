@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh7a2gmetrif3"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ht2f6"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="LabelSettings" id="LabelSettings_jpvl3"]
+font_size = 80
+
+[node name="PressE" type="Sprite3D"]
+billboard = 1
+no_depth_test = true
+texture = SubResource("ViewportTexture_ht2f6")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(512, 128)
+
+[node name="Panel" type="Panel" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.0
+offset_top = -55.0
+offset_right = 149.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PRESS E
+"
+label_settings = SubResource("LabelSettings_jpvl3")

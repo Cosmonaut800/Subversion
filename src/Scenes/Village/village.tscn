@@ -1,10 +1,10 @@
-[gd_scene load_steps=78 format=3 uid="uid://b0ahb003d7w2s"]
+[gd_scene load_steps=89 format=3 uid="uid://b0ahb003d7w2s"]
 
 [ext_resource type="Script" path="res://src/Scenes/Village/village.gd" id="1_0agi3"]
 [ext_resource type="PackedScene" uid="uid://d0rjl2uql7asj" path="res://src/Scenes/Player/player.tscn" id="1_pij0r"]
 [ext_resource type="PackedScene" uid="uid://bx0vvgxuwrxuc" path="res://assets/OrangeOrchards.gltf" id="2_apkti"]
 [ext_resource type="PackedScene" uid="uid://nanvw6abdjxm" path="res://src/Scenes/NPCs/TestNpc/NPC1.tscn" id="2_h1bax"]
-[ext_resource type="PackedScene" uid="uid://d3bf2vwd43ogn" path="res://addons/dialogue_starter.tscn" id="3_j8ef7"]
+[ext_resource type="PackedScene" path="res://addons/dialogue_starter.tscn" id="3_j8ef7"]
 [ext_resource type="Resource" uid="uid://bddc5j7bfm0d0" path="res://src/Scripts/DialogueManager/dialogue_container.dialogue" id="4_47aer"]
 [ext_resource type="PackedScene" uid="uid://8olwogff7sq7" path="res://assets/Starting_Area.gltf" id="5_d147o"]
 [ext_resource type="PackedScene" uid="uid://bbkobjgqqyfsp" path="res://assets/Town_center.gltf" id="6_cvny5"]
@@ -21,10 +21,11 @@
 [ext_resource type="PackedScene" uid="uid://bp314onlummxp" path="res://src/Scenes/NPCs/TestNpc/NPC6.tscn" id="16_nvrwp"]
 [ext_resource type="PackedScene" uid="uid://ckhp0nc6jr8j5" path="res://src/Scenes/NPCs/TestNpc/NPC7.tscn" id="17_v7lyr"]
 [ext_resource type="PackedScene" uid="uid://cir210d7hnvuh" path="res://src/Scenes/NPCs/TestNpc/NPC8.tscn" id="18_dyrjb"]
-[ext_resource type="PackedScene" uid="uid://dctekf5u6xijt" path="res://src/Scenes/Village/collision.tscn" id="21_yjgc1"]
-[ext_resource type="PackedScene" uid="uid://cxpnfxquldolo" path="res://src/Scenes/Village/hq_dialogue.tscn" id="22_87q1n"]
+[ext_resource type="PackedScene" path="res://src/Scenes/Village/collision.tscn" id="21_yjgc1"]
+[ext_resource type="PackedScene" path="res://src/Scenes/Village/hq_dialogue.tscn" id="22_87q1n"]
 [ext_resource type="AudioStream" uid="uid://c8746obb3i285" path="res://assets/Audio/Calm_Theme.wav" id="24_sjlvh"]
 [ext_resource type="Script" path="res://src/Scenes/Village/bg_music_trigger.gd" id="25_f18yh"]
+[ext_resource type="PackedScene" uid="uid://bh7a2gmetrif3" path="res://src/Scenes/press_e.tscn" id="26_8f021"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_utqmi"]
 
@@ -46,20 +47,44 @@ ambient_light_energy = 1.85
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6imby"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_adq6k"]
+viewport_path = NodePath("SubViewport")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_b4psn"]
 size = Vector3(1, 1, 1.29297)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_y68b7"]
+viewport_path = NodePath("SubViewport")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_1n5ja"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_mofvx"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nwcys"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_ssxmp"]
+viewport_path = NodePath("SubViewport")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_tq50l"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6ftfv"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1vqbw"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_rep2r"]
+viewport_path = NodePath("SubViewport")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_4nbax"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_fv2bj"]
+viewport_path = NodePath("SubViewport")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_akbf0"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_njmk4"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qojji"]
 
@@ -167,6 +192,12 @@ size = Vector3(103.658, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wrd0o"]
 size = Vector3(3.34778, 1.06653, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ptyuj"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5xg34"]
+viewport_path = NodePath("SubViewport")
 
 [node name="Village" type="Node"]
 script = ExtResource("1_0agi3")
@@ -410,6 +441,10 @@ game_name = "game three"
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 1, 0)
 shape = SubResource("BoxShape3D_6imby")
 
+[node name="PressE" parent="Mayor Frisbee" instance=ExtResource("26_8f021")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.0764, 0)
+texture = SubResource("ViewportTexture_adq6k")
+
 [node name="Tobin" parent="." instance=ExtResource("12_n3sdh")]
 transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -299, 25, -47)
 
@@ -423,6 +458,10 @@ game_name = "tobin"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tobin/DialogueStarter"]
 transform = Transform3D(7, 0, 1.19209e-07, 0, 7, 0, -1.19209e-07, 0, 7, -1.60661, -0.529976, -0.355743)
 shape = SubResource("BoxShape3D_b4psn")
+
+[node name="PressE" parent="Tobin" instance=ExtResource("26_8f021")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.435, 0)
+texture = SubResource("ViewportTexture_y68b7")
 
 [node name="Ralph" parent="." instance=ExtResource("13_6d0q8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59, 0, 180)
@@ -439,6 +478,10 @@ dialogue_start = "Ralph_Dialogue"
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, -1, 4, 1)
 shape = SubResource("BoxShape3D_1n5ja")
 
+[node name="PressE" parent="Ralph" instance=ExtResource("26_8f021")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.08758, 0)
+texture = SubResource("ViewportTexture_mofvx")
+
 [node name="Sammy" parent="." instance=ExtResource("14_2isy7")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -217, 24, 75)
 
@@ -451,6 +494,10 @@ dialogue_start = "Sammy_Dialogue"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sammy/DialogueStarter"]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 3, 0)
 shape = SubResource("BoxShape3D_nwcys")
+
+[node name="PressE" parent="Sammy" instance=ExtResource("26_8f021")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.51522, 0)
+texture = SubResource("ViewportTexture_ssxmp")
 
 [node name="Alphie" parent="." instance=ExtResource("15_sfcux")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -36, 24, 15)
@@ -465,6 +512,10 @@ dialogue_start = "Alphie_Dialogue"
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 4, 0)
 shape = SubResource("BoxShape3D_tq50l")
 
+[node name="PressE" parent="Alphie" instance=ExtResource("26_8f021")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.64086, 0)
+texture = SubResource("ViewportTexture_6ftfv")
+
 [node name="Bailey" parent="." instance=ExtResource("16_nvrwp")]
 transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 163, 24.4285, 61)
 
@@ -477,6 +528,10 @@ dialogue_start = "Bailey_Dialogue"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bailey/DialogueStarter"]
 transform = Transform3D(7, 0, 1.19209e-07, 0, 7, 0, -1.19209e-07, 0, 7, 0, 3, 0)
 shape = SubResource("BoxShape3D_1vqbw")
+
+[node name="PressE" parent="Bailey" instance=ExtResource("26_8f021")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.78913, 0)
+texture = SubResource("ViewportTexture_rep2r")
 
 [node name="Climber" parent="." instance=ExtResource("17_v7lyr")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -178, 25, 171)
@@ -491,6 +546,10 @@ dialogue_start = "Climber_Dialogue"
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 3, 0)
 shape = SubResource("BoxShape3D_4nbax")
 
+[node name="PressE" parent="Climber" instance=ExtResource("26_8f021")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.69268, 0)
+texture = SubResource("ViewportTexture_fv2bj")
+
 [node name="Pike" parent="." instance=ExtResource("18_dyrjb")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 35, 24, 3)
 
@@ -503,6 +562,10 @@ dialogue_start = "Pike_Dialogue"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pike/DialogueStarter"]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 3, 0)
 shape = SubResource("BoxShape3D_akbf0")
+
+[node name="PressE" parent="Pike" instance=ExtResource("26_8f021")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.32003, 0)
+texture = SubResource("ViewportTexture_njmk4")
 
 [node name="Collisions" type="Node3D" parent="."]
 
@@ -834,6 +897,14 @@ script = ExtResource("25_f18yh")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="bg_music_trigger"]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 51.5899, 9.53523, 44.0498)
 shape = SubResource("BoxShape3D_wrd0o")
+
+[node name="PressE" parent="." instance=ExtResource("26_8f021")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.277, 30.8801, 161.335)
+texture = SubResource("ViewportTexture_ptyuj")
+
+[node name="PressE2" parent="." instance=ExtResource("26_8f021")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100.872, 63.886, 157.442)
+texture = SubResource("ViewportTexture_5xg34")
 
 [connection signal="minigame1_started" from="WorldEnvironment/Shari\'s House/DialogueStarter" to="." method="_on_dialogue_starter_minigame_1_started"]
 [connection signal="minigame2_started" from="WorldEnvironment/Tobin\'s House/DialogueStarter" to="." method="_on_dialogue_starter_minigame_2_started"]

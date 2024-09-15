@@ -1,6 +1,7 @@
 extends Node
 
 @onready var village_camera := $WorldEnvironment/Player/CameraPivot/Camera3D
+@onready var bg_music: AudioStreamPlayer3D = $bg_music
 
 var minigame1_template = preload("res://src/Scenes/Flyswatter/minigame1.tscn")
 var minigame1: Node3D
@@ -25,6 +26,7 @@ func _process(_delta):
 		minigame1.won_minigame.connect(on_won_minigame1)
 		minigame1.minigame.camera.set_current(true)
 		minigame1_started = false
+		bg_music.stop()
 	
 	if minigame2_started and not Global.is_talking:
 		minigame2 = minigame2_template.instantiate()
@@ -32,17 +34,21 @@ func _process(_delta):
 		minigame2.won_minigame.connect(on_won_minigame2)
 		minigame2.minigame.camera.set_current(true)
 		minigame2_started = false
+		bg_music.stop()
 	
 	if fps_started and not Global.is_talking:
 		start_fps.emit()
 		fps_started = false
+		bg_music.stop()
 
 func on_won_minigame1():
 	village_camera.set_current(true)
+	bg_music.play()
 	minigame1.queue_free()
 
 func on_won_minigame2():
 	village_camera.set_current(true)
+	bg_music.play()
 	minigame2.queue_free()
 
 func _on_dialogue_starter_minigame_1_started() -> void:
