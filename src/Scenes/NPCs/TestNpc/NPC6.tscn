@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://bnockpfvke1ir"]
+
+[ext_resource type="PackedScene" uid="uid://isiubeq8cbfo" path="res://assets/Models/Citizen/citizen_anim.tscn" id="1_53bx6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n7jyf"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jj0ue"]
+material = SubResource("StandardMaterial3D_n7jyf")
+
+[sub_resource type="BoxMesh" id="BoxMesh_xsnom"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yds2k"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_03u5g"]
+animation = &"Citizen.Anim.001/Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b0jtx"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_68cy7"]
+states/Citizen_Anim_001_Idle/node = SubResource("AnimationNodeAnimation_03u5g")
+states/Citizen_Anim_001_Idle/position = Vector2(589, 91)
+transitions = ["Start", "Citizen_Anim_001_Idle", SubResource("AnimationNodeStateMachineTransition_b0jtx")]
+
+[node name="TestNpc" type="StaticBody3D"]
+
+[node name="Character" type="Node3D" parent="."]
+
+[node name="Citizen_Anim" parent="Character" instance=ExtResource("1_53bx6")]
+
+[node name="Skeleton3D" parent="Character/Citizen_Anim/Armature" index="0"]
+bones/0/position = Vector3(-8.71597e-14, 1.58171, 1.28537e-07)
+bones/0/rotation = Quaternion(-2.51167e-15, 1, 0, -7.54979e-08)
+bones/1/rotation = Quaternion(-0.020536, 5.21683e-11, -2.56272e-09, 0.999789)
+bones/2/rotation = Quaternion(-0.0194624, 1.91353e-10, -3.09715e-09, 0.999811)
+bones/3/rotation = Quaternion(-0.0164492, 2.41813e-10, -2.46e-09, 0.999865)
+bones/4/rotation = Quaternion(-0.0103847, -1.19945e-07, -1.51837e-09, 0.999946)
+bones/5/rotation = Quaternion(-0.0901865, -0.0354181, 0.363824, 0.926415)
+bones/6/rotation = Quaternion(-0.0901866, 0.0354182, -0.363824, 0.926415)
+bones/7/position = Vector3(-0.218248, 0.344639, 0.00569738)
+bones/7/rotation = Quaternion(-0.493335, 0.525464, 0.473167, 0.506577)
+bones/8/rotation = Quaternion(-0.519897, -0.000114585, 0.0104767, 0.854165)
+bones/10/position = Vector3(0.218248, 0.344639, 0.00569743)
+bones/10/rotation = Quaternion(-0.493335, -0.525464, -0.473167, 0.506577)
+bones/11/rotation = Quaternion(-0.519897, 0.00011458, -0.0104767, 0.854165)
+bones/13/rotation = Quaternion(0.982094, -0.0297974, 0.0048693, -0.185956)
+bones/14/rotation = Quaternion(-0.428583, 6.88633e-08, 5.23422e-07, 0.903503)
+bones/15/rotation = Quaternion(0.795439, -0.01135, -0.0280087, 0.605279)
+bones/16/rotation = Quaternion(0.982094, 0.0297974, -0.00486917, -0.185956)
+bones/17/rotation = Quaternion(-0.428583, -5.32752e-08, -5.21913e-07, 0.903503)
+bones/18/rotation = Quaternion(0.795439, 0.01135, 0.0280087, 0.605279)
+bones/19/position = Vector3(0.666607, 4.14349, -0.00763939)
+bones/19/rotation = Quaternion(0.365388, 0.918208, 0.152543, 0.0107676)
+bones/20/position = Vector3(-0.666607, 4.14349, -0.00763938)
+bones/20/rotation = Quaternion(-0.365388, 0.918208, 0.152543, -0.0107676)
+
+[node name="Body" type="MeshInstance3D" parent="Character"]
+visible = false
+mesh = SubResource("CapsuleMesh_jj0ue")
+
+[node name="Head" type="MeshInstance3D" parent="Character"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.7, 0.0209607, 0.315423, -0.438926)
+visible = false
+mesh = SubResource("BoxMesh_xsnom")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.94041, 0)
+shape = SubResource("CapsuleShape3D_yds2k")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../Character/Citizen_Anim")
+tree_root = SubResource("AnimationNodeStateMachine_68cy7")
+anim_player = NodePath("../Character/Citizen_Anim/AnimationPlayer")
+
+[editable path="Character/Citizen_Anim"]

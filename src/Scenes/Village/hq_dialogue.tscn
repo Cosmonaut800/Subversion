@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxpnfxquldolo"]
+
+[ext_resource type="Script" path="res://src/Scenes/Village/hq_dialogue.gd" id="1_rfoda"]
+[ext_resource type="PackedScene" uid="uid://d3bf2vwd43ogn" path="res://addons/dialogue_starter.tscn" id="2_4pvv0"]
+[ext_resource type="Resource" uid="uid://bddc5j7bfm0d0" path="res://src/Scripts/DialogueManager/dialogue_container.dialogue" id="3_4rpco"]
+
+[node name="HQDialogue" type="Area3D"]
+script = ExtResource("1_rfoda")
+
+[node name="DialogueStarter" parent="." instance=ExtResource("2_4pvv0")]
+dialogue_resource = ExtResource("3_4rpco")
+dialogue_start = "HQ_Dialogue"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

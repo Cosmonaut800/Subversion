@@ -2,19 +2,25 @@ extends State
 
 
 @export var idle_state: State
+@export var interact_state : State
 
 @export var rotation_speed = 8.0
 @export var movement_speed = 25.0
 @onready var character = $"../../Character"
-
+@onready var anim_tree := $"../../AnimationTree"
 func enter() -> void:
+	print(Global.is_talking)
 	#parent.animation_player.play(animation_name)
+	anim_tree.set("parameters/conditions/stop", false)
+	anim_tree.set("parameters/conditions/run", true)
 	pass
 
 func exit() -> void:
 	pass
 
 func process_input(_event: InputEvent) -> State:
+	if Global.is_talking:
+		return interact_state
 	return null
 
 func process_physics(_delta: float) -> State:
@@ -28,7 +34,6 @@ func process_physics(_delta: float) -> State:
 		parent.velocity.y -= Global.gravity * _delta
 	else:
 		parent.velocity.y = 0		
-	print(parent.velocity.y)
 	# Smoothly rotate the pivot to face the movement direction.
 	var target_rotation = Basis().looking_at(direction, Vector3.UP)
 	character.basis = character.basis.slerp(target_rotation, rotation_speed * _delta)

@@ -4,6 +4,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://2g31qw13cwup" path="res://assets/Models/Player/Blender/GLTF/Player.Thirdperson.Anim.001.glb" id="2_mw15l"]
 
 [node name="Player_Thirdperson_Anim" instance=ExtResource("1_rsc6a")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 bones/0/position = Vector3(-8.71597e-14, 1.7, 1.24777e-07)
@@ -11,7 +12,7 @@ bones/0/rotation = Quaternion(2.06994e-19, 1, 0, -7.54979e-08)
 bones/2/position = Vector3(-2.40095e-15, 0.500237, -5.96528e-09)
 bones/2/rotation = Quaternion(0, -3.55271e-15, 1.74701e-21, 1)
 bones/4/position = Vector3(7.66155e-16, 0.500237, -5.96529e-09)
-bones/4/rotation = Quaternion(1.48892e-23, 2.52234e-44, -6.35347e-22, 1)
+bones/4/rotation = Quaternion(1.48892e-23, 0, -6.35347e-22, 1)
 bones/6/position = Vector3(-6.91347e-16, 0.182689, -2.17856e-09)
 bones/6/rotation = Quaternion(1.48893e-23, 3.45232e-30, -6.93375e-23, 1)
 bones/8/position = Vector3(-4.31536e-17, 0.182689, -7.62309e-09)

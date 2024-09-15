@@ -4,6 +4,7 @@ extends State
 @export var interact_state: State #this will need to handle either dialogue or starting of flyswatting game - which will probably begin at the end of a dialogue
 @onready var dialogue_starter_detector := $"../../Character/DialogueStarterDetector"
 @export var dialogue_resource : DialogueResource
+@onready var anim_tree := $"../../AnimationTree"
 var dialogue_start := "this_is_a_node_title"
 var can_move : bool = true
 var entity_to_rotate: Node3D = null
@@ -12,6 +13,8 @@ var start_rotation = false
 func enter() -> void:
 	dialogue_starter_detector.monitoring = true
 	#parent.animation_player.play(animation_name)
+	anim_tree.set("parameters/conditions/stop", true)
+	anim_tree.set("parameters/conditions/run", false)
 	parent.velocity.x = 0
 	parent.velocity.z = 0
 
@@ -29,7 +32,9 @@ func process_input(_event: InputEvent) -> State:
 			Global.is_talking = true
 			entity_to_rotate = dialogue_starters[0]
 			entity_to_rotate.start_dialogue()
-			return
+			return 
+	if Global.is_talking:
+		return interact_state
 	return null
 
 func process_physics(_delta: float) -> State:
@@ -37,8 +42,8 @@ func process_physics(_delta: float) -> State:
 		parent.velocity.y -= Global.gravity * _delta
 	else:
 		parent.velocity.y = 0
-	if Global.is_talking:
-		rotate_entity_smoothly(entity_to_rotate.get_parent(), _delta)
+	#if Global.is_talking:
+		#rotate_entity_smoothly(entity_to_rotate.get_parent(), _delta)
 	parent.move_and_slide()
 	return null
 
