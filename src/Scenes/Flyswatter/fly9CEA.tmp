@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhokbtjd7mbs2"]
+
+[ext_resource type="Texture2D" uid="uid://cj8y5uu80texg" path="res://assets/Materials/Textures/wood_floor_gray.png" id="1_h4dvu"]
+[ext_resource type="PackedScene" uid="uid://gsqsrpu4iupa" path="res://src/Scenes/Flyswatter/fly.tscn" id="2_wap85"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_geelw"]
+shading_mode = 0
+albedo_texture = ExtResource("1_h4dvu")
+texture_filter = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_pg5e4"]
+material = SubResource("StandardMaterial3D_geelw")
+
+[node name="Flyswatter" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+fov = 116.7
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.095)
+mesh = SubResource("QuadMesh_pg5e4")
+
+[node name="Fly" parent="." instance=ExtResource("2_wap85")]

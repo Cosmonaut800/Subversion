@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://bhokbtjd7mbs2"]
+
+[ext_resource type="Texture2D" uid="uid://cj8y5uu80texg" path="res://assets/Materials/Textures/wood_floor_gray.png" id="1_aqjal"]
+[ext_resource type="PackedScene" uid="uid://cvc0iprcfdebn" path="res://src/Scenes/Flyswatter/fly_spawner.tscn" id="2_2j553"]
+[ext_resource type="PackedScene" uid="uid://bcjwblhl7wrqg" path="res://src/Scenes/Flyswatter/swatter.tscn" id="3_opqic"]
+
+[sub_resource type="Environment" id="Environment_c78k1"]
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_geelw"]
+shading_mode = 0
+albedo_texture = ExtResource("1_aqjal")
+texture_filter = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_pg5e4"]
+material = SubResource("StandardMaterial3D_geelw")
+
+[node name="FlyswatterGame" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_c78k1")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+fov = 28.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.095)
+mesh = SubResource("QuadMesh_pg5e4")
+
+[node name="FlySpawner" parent="." instance=ExtResource("2_2j553")]
+
+[node name="Swatter" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_opqic")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.184475, -2.98023e-08, 0.0735302)
+camera = NodePath("../Camera3D")

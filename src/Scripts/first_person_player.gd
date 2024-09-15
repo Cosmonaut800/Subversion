@@ -165,7 +165,7 @@ func shoot():
 			splatters[i].process_material.initial_velocity_max = 2.5
 			if entity.get_collision_layer_value(3):
 				entity.health -= BULLET_DAMAGE
-				splatters[i].draw_pass_1.surface_get_material(0).albedo_color = Color.DARK_RED
+				splatters[i].draw_pass_1.surface_get_material(0).albedo_color = Color.DARK_GREEN
 				splatters[i].process_material.initial_velocity_min = 1.0 + raycasts[i].get_collision_normal().dot(entity.velocity)
 				splatters[i].process_material.initial_velocity_max = 1.0 + raycasts[i].get_collision_normal().dot(entity.velocity)
 			else:

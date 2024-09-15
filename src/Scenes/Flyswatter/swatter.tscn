@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcjwblhl7wrqg"]
+
+[ext_resource type="Script" path="res://src/Scripts/Flyswatter/swatter.gd" id="1_80p0g"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hupyq"]
+size = Vector3(0.2, 0.5, 0.025)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iaqir"]
+size = Vector3(0.2, 0.2, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_e4nq1"]
+radius = 0.1
+
+[node name="Swatter" type="Node3D"]
+script = ExtResource("1_80p0g")
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
+
+[node name="Graphics" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh = SubResource("BoxMesh_hupyq")
+skeleton = NodePath("../..")
+
+[node name="killzone" type="Area3D" parent="."]
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="killzone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.511292)
+shape = SubResource("BoxShape3D_iaqir")
+
+[node name="hurtzone" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.399532, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hurtzone"]
+shape = SubResource("SphereShape3D_e4nq1")
