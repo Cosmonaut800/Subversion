@@ -1,15 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcjwblhl7wrqg"]
+[gd_scene load_steps=6 format=3 uid="uid://bcjwblhl7wrqg"]
 
 [ext_resource type="Script" path="res://src/Scripts/Flyswatter/swatter.gd" id="1_80p0g"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_hupyq"]
-size = Vector3(0.2, 0.5, 0.025)
+[ext_resource type="PackedScene" uid="uid://fewe814yibqm" path="res://assets/Models/swatter.glb" id="2_ivu62"]
+[ext_resource type="AudioStream" uid="uid://yqj6wwc6rbp0" path="res://assets/Audio/wet-splat-2.mp3" id="3_xlm4o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iaqir"]
-size = Vector3(0.2, 0.2, 1)
+size = Vector3(0.25, 0.25, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_e4nq1"]
-radius = 0.1
+radius = 0.0759852
 
 [node name="Swatter" type="Node3D"]
 script = ExtResource("1_80p0g")
@@ -17,20 +16,30 @@ script = ExtResource("1_80p0g")
 [node name="Pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
 
-[node name="Graphics" type="MeshInstance3D" parent="Pivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-mesh = SubResource("BoxMesh_hupyq")
-skeleton = NodePath("../..")
+[node name="Graphics" parent="Pivot" instance=ExtResource("2_ivu62")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.25, 0)
 
 [node name="killzone" type="Area3D" parent="."]
 collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="killzone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.511292)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 shape = SubResource("BoxShape3D_iaqir")
 
-[node name="hurtzone" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.399532, 0)
+[node name="hurtzone" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.35, 0)
+collision_layer = 32
+collision_mask = 64
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="hurtzone"]
 shape = SubResource("SphereShape3D_e4nq1")
+
+[node name="Splat" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_xlm4o")
+attenuation_model = 3
+volume_db = -6.70659
+panning_strength = 0.0
+bus = &"FlyswatterSFX"
+attenuation_filter_db = 0.0
+
+[connection signal="body_entered" from="hurtzone" to="." method="_on_hurtzone_body_entered"]
