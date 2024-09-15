@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d0rjl2uql7asj"]
+[gd_scene load_steps=22 format=3 uid="uid://d0rjl2uql7asj"]
 
 [ext_resource type="Script" path="res://src/Scripts/Player/player.gd" id="1_rn414"]
 [ext_resource type="PackedScene" uid="uid://bxmvys46vndly" path="res://src/Scenes/Statemachine/statemachine.tscn" id="2_a2anx"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://src/Scripts/Player/move.gd" id="4_ymhpd"]
 [ext_resource type="Script" path="res://src/Scripts/Player/interact.gd" id="5_s4xwr"]
 [ext_resource type="PackedScene" uid="uid://bjqcm3u61yv8i" path="res://assets/Models/Player/player_thirdperson_anim.tscn" id="8_rm35r"]
+[ext_resource type="AudioStream" uid="uid://cguxm2ojm58pm" path="res://assets/Audio/Footsteps3P.wav" id="9_6o70l"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x1evk"]
 
@@ -59,31 +60,33 @@ shape = SubResource("CapsuleShape3D_x1evk")
 [node name="Player_Thirdperson_Anim" parent="Character" instance=ExtResource("8_rm35r")]
 
 [node name="Skeleton3D" parent="Character/Player_Thirdperson_Anim/Armature" index="0"]
-bones/0/position = Vector3(-8.71597e-14, 1.59613, 1.28079e-07)
+bones/0/position = Vector3(-8.71597e-14, 1.67815, 1.25471e-07)
+bones/0/rotation = Quaternion(2.06994e-19, 1, 0, -7.54979e-08)
 bones/2/position = Vector3(-2.40094e-15, 0.500237, -5.96527e-09)
-bones/2/rotation = Quaternion(-0.018124, 2.8715e-11, -1.58393e-09, 0.999836)
+bones/2/rotation = Quaternion(-0.000726654, 6.04058e-14, -6.35249e-11, 1)
 bones/4/position = Vector3(7.36194e-16, 0.500237, -5.89499e-09)
-bones/4/rotation = Quaternion(-0.0124536, 1.00192e-10, -2.02021e-09, 0.999922)
+bones/4/rotation = Quaternion(-0.000752443, 1.41516e-12, -7.87005e-10, 1)
 bones/5/scale = Vector3(1, 0.999999, 1)
 bones/6/position = Vector3(-2.58107e-11, 0.182689, 1.46683e-08)
-bones/6/rotation = Quaternion(-0.00824699, 8.63869e-11, -1.23922e-09, 0.999966)
+bones/6/rotation = Quaternion(-0.00309214, 6.38109e-12, -1.14619e-09, 0.999995)
+bones/7/scale = Vector3(1, 1, 1)
 bones/8/position = Vector3(-9.00655e-11, 0.182689, 6.51926e-09)
-bones/8/rotation = Quaternion(-0.00273935, -1.19505e-07, -1.1341e-09, 0.999996)
-bones/10/rotation = Quaternion(-0.725734, 1.50609e-08, 2.52715e-07, 0.687975)
-bones/12/position = Vector3(-0.218248, 0.344588, 0.00387458)
-bones/12/rotation = Quaternion(-0.479275, 0.531692, 0.466159, 0.519899)
-bones/14/rotation = Quaternion(-0.502982, 9.16696e-05, 0.010477, 0.864234)
-bones/18/position = Vector3(0.218248, 0.344588, 0.00387463)
-bones/18/rotation = Quaternion(-0.47929, -0.531667, -0.466192, 0.519881)
-bones/20/rotation = Quaternion(-0.502982, -9.16748e-05, -0.010477, 0.864234)
+bones/8/rotation = Quaternion(-0.0087358, -1.19185e-07, -2.55394e-09, 0.999962)
+bones/10/rotation = Quaternion(-0.739927, -5.47532e-08, 1.62691e-07, 0.672688)
+bones/12/position = Vector3(-0.218248, 0.344537, 0.000869532)
+bones/12/rotation = Quaternion(-0.466349, 0.532157, 0.465627, 0.531524)
+bones/14/rotation = Quaternion(-0.516241, -6.98104e-05, 0.0104772, 0.856379)
+bones/18/position = Vector3(0.218248, 0.344537, 0.000869583)
+bones/18/rotation = Quaternion(-0.466349, -0.532157, -0.465627, 0.531524)
+bones/20/rotation = Quaternion(-0.516241, 6.98088e-05, -0.0104772, 0.856379)
 bones/24/position = Vector3(-0.286447, -0.277495, 2.08227e-08)
-bones/24/rotation = Quaternion(0.984077, -0.0294865, 0.00457506, -0.175222)
-bones/26/rotation = Quaternion(-0.402841, -1.77487e-08, 4.30897e-07, 0.91527)
-bones/28/rotation = Quaternion(0.785316, -0.011748, -0.0274298, 0.618376)
+bones/24/rotation = Quaternion(0.996314, -0.0277633, 0.00212999, -0.0811321)
+bones/26/rotation = Quaternion(-0.188539, -1.44007e-08, 2.15943e-07, 0.982066)
+bones/28/rotation = Quaternion(0.698576, -0.0146074, -0.023706, 0.714994)
 bones/30/position = Vector3(0.286447, -0.277495, 1.06284e-07)
-bones/30/rotation = Quaternion(0.984077, 0.0294866, -0.00457493, -0.175222)
-bones/32/rotation = Quaternion(-0.402841, -7.77675e-08, -4.40695e-07, 0.91527)
-bones/34/rotation = Quaternion(0.785316, 0.0117481, 0.0274297, 0.618376)
+bones/30/rotation = Quaternion(0.996314, 0.0277634, -0.00212985, -0.0811321)
+bones/32/rotation = Quaternion(-0.188539, -7.58072e-08, -2.19851e-07, 0.982066)
+bones/34/rotation = Quaternion(0.698576, 0.0146074, 0.0237059, 0.714994)
 
 [node name="Body" parent="Character/Player_Thirdperson_Anim/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_diwqf")
@@ -132,5 +135,9 @@ tree_root = SubResource("AnimationNodeStateMachine_4w2fd")
 anim_player = NodePath("../Character/Player_Thirdperson_Anim/AnimationPlayer")
 parameters/conditions/run = false
 parameters/conditions/stop = false
+
+[node name="FootstepsSFX" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("9_6o70l")
+volume_db = -3.0
 
 [editable path="Character/Player_Thirdperson_Anim"]
