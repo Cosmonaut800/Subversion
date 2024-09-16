@@ -3,21 +3,20 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d0olt3bpxgd1k"
-path.bptc="res://.godot/imported/male1.png-42e7606349682218f853a1fdc3f55a93.bptc.ctex"
+path="res://.godot/imported/male1.png-42e7606349682218f853a1fdc3f55a93.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/Models/Citizen/male1.png"
-dest_files=["res://.godot/imported/male1.png-42e7606349682218f853a1fdc3f55a93.bptc.ctex"]
+dest_files=["res://.godot/imported/male1.png-42e7606349682218f853a1fdc3f55a93.ctex"]
 
 [params]
 
-compress/mode=2
-compress/high_quality=true
+compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0

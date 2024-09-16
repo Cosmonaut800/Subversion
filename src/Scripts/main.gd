@@ -1,5 +1,12 @@
 extends Node3D
 
+# The web build of this project requires you to set the compression mode of all
+# textures that need to be high quality to "Lossless," and then set the
+# "Detect 3D > Compress to" field to "VRAM Compressed."
+# 
+# The project will reset the textures' compression mode every time you open it.
+# I don't know why.
+
 @onready var village := $Village
 @onready var color_rect: ColorRect = $CanvasLayer/Control/ColorRect
 @onready var transition_timer: Timer = $TransitionTimer
@@ -37,6 +44,7 @@ func reset_city_hall():
 	city_hall = city_hall_template.instantiate()
 	add_child(city_hall)
 	city_hall.player_died.connect(reset_city_hall)
+	city_hall.player_won.connect(play_ending)
 
 func play_ending():
 	var tween = create_tween()

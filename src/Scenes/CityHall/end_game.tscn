@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bqu2qdu6mnb11"]
+[gd_scene load_steps=16 format=3 uid="uid://bqu2qdu6mnb11"]
 
 [ext_resource type="Script" path="res://src/Scripts/CityHall/end_game.gd" id="1_8iw1m"]
 [ext_resource type="PackedScene" uid="uid://bbkobjgqqyfsp" path="res://assets/Town_center.gltf" id="1_rggwf"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bp314onlummxp" path="res://src/Scenes/NPCs/TestNpc/NPC6.tscn" id="11_ur5n1"]
 [ext_resource type="PackedScene" uid="uid://ckhp0nc6jr8j5" path="res://src/Scenes/NPCs/TestNpc/NPC7.tscn" id="12_7rj16"]
 [ext_resource type="PackedScene" uid="uid://c8hggeedpkayj" path="res://src/Scenes/Village/mountain.tscn" id="13_d5wlv"]
+[ext_resource type="AudioStream" uid="uid://c8746obb3i285" path="res://assets/Audio/Calm_Theme.wav" id="14_k3ibf"]
 
 [sub_resource type="Environment" id="Environment_ccd8t"]
 ambient_light_source = 2
@@ -78,3 +79,10 @@ transform = Transform3D(50, 0, 0, 0, 100, 0, 0, 0, 50, -112, -38, -100)
 
 [node name="Mountain7" parent="." instance=ExtResource("13_d5wlv")]
 transform = Transform3D(50, 0, 0, 0, 100, 0, 0, 0, 50, -176, -38, -66)
+
+[node name="bg_music" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("14_k3ibf")
+attenuation_model = 3
+autoplay = true
+panning_strength = 0.0
+bus = &"Village Music"

@@ -9,12 +9,12 @@ if not Global.game_one_completed and not Global.game_two_completed:
 		from the rest of society. We have our own way of doing things here, and 
 		we'd like it to stay. 
 		Mayor Frisbee: Some of our most famous locations here at Manitow is, of course, 
-		Lake Manitow, Orange Orchards, and Mount Spittoon. Manitow was actually a resort
+		Lake Manitow, Orange Groves, and Mount Spittoon. Manitow was actually a resort
 		area before some of the locals decided to come together and call this place their home.
 		Don't get me wrong, people still come visit - enterance is just heavily moderated.
 	- Do you know where Shari Pale lives?
 		Mayor Frisbee: Oh they flubbed the details, huh? Whoopsies sorry about that. 
-		You can find her over in Orange Orchards.
+		You can find her over in Orange Groves.
 	- End Conversation => END
 if Global.game_one_completed and not Global.game_two_completed:
 	Mayor Frisbee: Here at Manitow, we're a collective community meaning that
@@ -42,10 +42,10 @@ if Global.game_one_completed and Global.game_two_completed:
 => END
 ~ Tobin_Dialogue
 if not Global.game_one_completed and not Global.game_two_completed:
-	Tobin: The only thing better than fishin' is a nice col' Angry Orchards made from
-	the finest Oranges here at Manitow and my income tax gettin' cut and half.
+	Tobin: The only thing better than fishin' is a nice col' Angry Grove made from
+	the finest oranges here at Manitow and my income tax gettin' cut in half.
 if Global.game_one_completed and not Global.game_two_completed and not Global.tobin_found:
-	Tobin: Looks like you found me! You must be the exterminator. Meet me back at my place
+	Tobin: Looks like you found me! You must be the exterminator. Meet me back at my place on top of the mountain
 	and let's get 'er done! I'll crack you open a nic col' one ~ if that's your thing.
 => END
 ~ Ralph_Dialogue
@@ -78,7 +78,7 @@ if Global.game_one_completed and Global.game_two_completed:
 => END
 ~ Bailey_Dialogue
 if not Global.game_one_completed and not Global.game_two_completed:
-	Bailey: I love the Orange Orchards. This is what initially drew me
+	Bailey: I love the Orange Groves. This is what initially drew me
 	to Manitow. 
 	- Is Shari around here?
 		Bailey: I couldn't tell you. I'm just visiting, but the town center might have
@@ -110,7 +110,7 @@ if not Global.game_one_completed and not Global.game_two_completed:
 	Climber: I hold the world record for climbing Mount Spittoon. 
 	- Can you direct me towards Shari?
 		Climber: Oh, you're that exterminator everyone is talking about. You had me weirded out 
-		for a second. She's located southwest in the Orange Orchards.
+		for a second. She's located southeast in the Orange Groves.
 if Global.game_one_completed and not Global.game_two_completed:
 	Climber: Tobin should be right up the mountain.
 if Global.game_one_completed and Global.game_two_completed:
@@ -142,7 +142,7 @@ Head Quarters: Great job, one down - two to go! Your next job will be for Tobin 
 ~ Directions
 Sign:  Welcome to Manitow! 
 Sign: City Center and Town Hall - North. 
-Orange Orchards East. Lake Manitow - North West. 
+Orange Groves - East. Shari's House - Southeast. Lake Manitow - North West. 
 Mart Canyon - South
 Mount Spittoon - South West.
 => END
@@ -164,7 +164,7 @@ else:
 	Tobin: There you are! Well, I'll let you get to it. I've got a protest to attend.
 => END
 ~ End_game_talk
-Mayor Frisbee: On be half of the Town of Manitow, I thank you for a job well done!
+Mayor Frisbee: On behalf of the Town of Manitow, I thank you for a job well done!
 I know it wasn't much but you sure helped us in a time of need.
 Mayor Frisbee: Please come back any time! You are now a genuine member of our community!
 Mayor Frisbee: Farewell!

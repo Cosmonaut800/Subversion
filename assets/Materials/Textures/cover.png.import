@@ -2,26 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnv8o8g2u1rx0"
-path="res://.godot/imported/female2.png-febd70d6a4433ccbc81bb4d845b0d984.ctex"
+uid="uid://b6hj7nel2odd0"
+path="res://.godot/imported/cover.png-a9a8ac5b065cf12982924b900ace2b86.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Models/Citizen/female2.png"
-dest_files=["res://.godot/imported/female2.png-febd70d6a4433ccbc81bb4d845b0d984.ctex"]
+source_file="res://assets/Materials/Textures/cover.png"
+dest_files=["res://.godot/imported/cover.png-a9a8ac5b065cf12982924b900ace2b86.ctex"]
 
 [params]
 
 compress/mode=0
-compress/high_quality=true
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

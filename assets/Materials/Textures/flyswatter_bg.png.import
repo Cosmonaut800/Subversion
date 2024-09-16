@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://3m8yx8nj2nym"
-path.bptc="res://.godot/imported/flyswatter_bg.png-e4fbfb318cf5461a7cba5490987de026.bptc.ctex"
+path="res://.godot/imported/flyswatter_bg.png-e4fbfb318cf5461a7cba5490987de026.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/Materials/Textures/flyswatter_bg.png"
-dest_files=["res://.godot/imported/flyswatter_bg.png-e4fbfb318cf5461a7cba5490987de026.bptc.ctex"]
+dest_files=["res://.godot/imported/flyswatter_bg.png-e4fbfb318cf5461a7cba5490987de026.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1

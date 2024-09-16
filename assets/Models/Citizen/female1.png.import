@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://doubfgpr7q3hs"
-path.bptc="res://.godot/imported/female1.png-3ae4202a1a7c221a3d827f9485312bd2.bptc.ctex"
+path="res://.godot/imported/female1.png-3ae4202a1a7c221a3d827f9485312bd2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/Models/Citizen/female1.png"
-dest_files=["res://.godot/imported/female1.png-3ae4202a1a7c221a3d827f9485312bd2.bptc.ctex"]
+dest_files=["res://.godot/imported/female1.png-3ae4202a1a7c221a3d827f9485312bd2.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -125,6 +125,8 @@ func _process(_delta):
 	if ammo < AMMO_MAX and Input.is_action_just_pressed("reload") and reload_wait.is_stopped():
 		reload_gun()
 	
+	#Comment out the below section for web builds
+	#---------------------------------------------------
 	if Input.is_action_just_pressed("ui_cancel"):
 		if focused:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -136,6 +138,7 @@ func _process(_delta):
 	if not focused and Input.is_action_just_pressed("primary_fire"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		focused = true
+	#---------------------------------------------------
 	
 	if health > 100.0:
 		health = 100.0

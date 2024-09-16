@@ -30,20 +30,21 @@ func process_input(_event: InputEvent) -> State:
 func process_physics(_delta: float) -> State:
 
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	var direction = (parent.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	
-	parent.velocity.x = direction.x * movement_speed
-	parent.velocity.z = direction.z * movement_speed
-	if not parent.is_on_floor():
-		parent.velocity.y -= 50 * _delta
+	var direction = (Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	#parent.transform.basis * 
+	if direction:
+		parent.velocity.x = direction.x * movement_speed
+		parent.velocity.z = direction.z * movement_speed
+		if not parent.is_on_floor():
+			parent.velocity.y -= 50 * _delta
+		else:
+			parent.velocity.y = 0		
+		# Smoothly rotate the pivot to face the movement direction.
+		var target_rotation = Basis().looking_at(direction, Vector3.UP)
+		character.basis = character.basis.slerp(target_rotation, rotation_speed * _delta)
+		parent.move_and_slide()
+		
 	else:
-		parent.velocity.y = 0		
-	# Smoothly rotate the pivot to face the movement direction.
-	var target_rotation = Basis().looking_at(direction, Vector3.UP)
-	character.basis = character.basis.slerp(target_rotation, rotation_speed * _delta)
-	parent.move_and_slide()
-	
-	if not direction:
 		return idle_state
 	
 	return null

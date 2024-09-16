@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://b0ahb003d7w2s"]
+[gd_scene load_steps=90 format=3 uid="uid://b0ahb003d7w2s"]
 
 [ext_resource type="Script" path="res://src/Scenes/Village/village.gd" id="1_0agi3"]
 [ext_resource type="PackedScene" uid="uid://d0rjl2uql7asj" path="res://src/Scenes/Player/player.tscn" id="1_pij0r"]
@@ -40,6 +40,9 @@ ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 1.85
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_75btx"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_mwdjo"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kjx8v"]
 
@@ -391,6 +394,10 @@ dialogue_start = "Directions"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/Directional Sign/DialogueStarter"]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 5.16376, 0)
 shape = SubResource("BoxShape3D_75btx")
+
+[node name="PressE" parent="WorldEnvironment/Directional Sign" instance=ExtResource("26_8f021")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.95461, 0)
+texture = SubResource("ViewportTexture_mwdjo")
 
 [node name="Mary\'s House" parent="WorldEnvironment" instance=ExtResource("12_xkkve")]
 transform = Transform3D(0.662712, 0, -0.748875, 0, 1, 0, 0.748875, 0, 0.662712, 182.439, 25.1488, -33.0732)
