@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://73jm5qjy52vq"]
+[gd_scene load_steps=14 format=3 uid="uid://73jm5qjy52vq"]
 
 [ext_resource type="Script" path="res://addons/dialogue_manager/example_balloon/example_balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="AudioStream" uid="uid://dfgrj7cndyxd1" path="res://addons/dialogue_manager/example_balloon/Fast_Single_v4_wav.wav" id="2_fks2h"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_72ixx"]
+[ext_resource type="Texture2D" uid="uid://bbhr5ppk64hrj" path="res://assets/theme_1.png" id="3_kmorf"]
+[ext_resource type="FontFile" uid="uid://yt6tt3i3iyyv" path="res://src/Scenes/CUTE DINO.OTF" id="4_inr5c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -64,6 +66,13 @@ MarginContainer/constants/margin_right = 30
 MarginContainer/constants/margin_top = 15
 Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c1aap"]
+texture = ExtResource("3_kmorf")
+texture_margin_left = 4.0
+texture_margin_right = 4.0
+
+[sub_resource type="Theme" id="Theme_mhfgk"]
+
 [node name="ExampleBalloon" type="CanvasLayer"]
 layer = 100
 script = ExtResource("1_36de5")
@@ -90,13 +99,26 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 21.0
+offset_left = 320.0
 offset_top = -183.0
-offset_right = -19.0
+offset_right = -279.0
 offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_c1aap")
+
+[node name="Indicator" type="Label" parent="Balloon/Panel"]
+offset_left = 407.0
+offset_top = 128.0
+offset_right = 664.0
+offset_bottom = 166.0
+theme_override_fonts/font = ExtResource("4_inr5c")
+theme_override_font_sizes/font_size = 24
+text = "Press Space (or Click)"
+
+[node name="Timer" type="Timer" parent="Balloon/Panel/Indicator"]
+wait_time = 0.2
 
 [node name="Dialogue" type="MarginContainer" parent="Balloon/Panel"]
 layout_mode = 1
@@ -105,6 +127,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_mhfgk")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Balloon/Panel/Dialogue"]
 layout_mode = 2
@@ -114,6 +137,7 @@ unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
 mouse_filter = 1
+theme_override_fonts/normal_font = ExtResource("4_inr5c")
 bbcode_enabled = true
 text = "Character"
 fit_content = true
@@ -123,6 +147,8 @@ scroll_active = false
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("4_inr5c")
+theme_override_font_sizes/normal_font_size = 24
 text = "Dialogue..."
 
 [node name="Responses" type="MarginContainer" parent="Balloon"]
@@ -132,10 +158,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -147.0
-offset_top = -558.0
-offset_right = 494.0
-offset_bottom = -154.0
+offset_left = -249.0
+offset_top = -564.0
+offset_right = 392.0
+offset_bottom = -160.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -150,16 +176,6 @@ response_template = NodePath("ResponseExample")
 [node name="ResponseExample" type="Button" parent="Balloon/Responses/ResponsesMenu"]
 layout_mode = 2
 text = "Response example"
-
-[node name="Indicator" type="Label" parent="."]
-offset_left = 959.0
-offset_top = 597.0
-offset_right = 1122.0
-offset_bottom = 620.0
-text = "Press Space (or Click)"
-
-[node name="Timer" type="Timer" parent="Indicator"]
-wait_time = 0.2
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="spoke" from="Balloon/Panel/Dialogue/VBoxContainer/DialogueLabel" to="." method="_on_dialogue_label_spoke"]

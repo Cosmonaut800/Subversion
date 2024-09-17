@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/Scenes/Village/village.gd" id="1_0agi3"]
 [ext_resource type="PackedScene" uid="uid://d0rjl2uql7asj" path="res://src/Scenes/Player/player.tscn" id="1_pij0r"]
 [ext_resource type="PackedScene" uid="uid://bx0vvgxuwrxuc" path="res://assets/OrangeOrchards.gltf" id="2_apkti"]
-[ext_resource type="PackedScene" uid="uid://nanvw6abdjxm" path="res://src/Scenes/NPCs/TestNpc/NPC1.tscn" id="2_h1bax"]
+[ext_resource type="PackedScene" uid="uid://bcwuk307xqpwf" path="res://src/Scenes/NPCs/TestNpc/NPC1.tscn" id="2_h1bax"]
 [ext_resource type="PackedScene" path="res://addons/dialogue_starter.tscn" id="3_j8ef7"]
 [ext_resource type="Resource" uid="uid://bddc5j7bfm0d0" path="res://src/Scripts/DialogueManager/dialogue_container.dialogue" id="4_47aer"]
 [ext_resource type="PackedScene" uid="uid://8olwogff7sq7" path="res://assets/Starting_Area.gltf" id="5_d147o"]
@@ -11,21 +11,21 @@
 [ext_resource type="PackedScene" uid="uid://du1vrijspuans" path="res://assets/Manitow-Lake.gltf" id="7_b2ib1"]
 [ext_resource type="PackedScene" uid="uid://cngfcgmtb35hu" path="res://assets/Central_Island.gltf" id="9_fn334"]
 [ext_resource type="PackedScene" uid="uid://m8nnqpu7oblf" path="res://assets/Sign.gltf" id="9_i36hc"]
-[ext_resource type="PackedScene" uid="uid://c8hggeedpkayj" path="res://src/Scenes/Village/mountain.tscn" id="10_w3ddw"]
+[ext_resource type="PackedScene" path="res://src/Scenes/Village/mountain.tscn" id="10_w3ddw"]
 [ext_resource type="PackedScene" uid="uid://bu70svn6pv313" path="res://assets/Mount-Spitoon.gltf" id="11_tgrmc"]
-[ext_resource type="PackedScene" uid="uid://dtgvj6i44kg3s" path="res://src/Scenes/NPCs/TestNpc/NPC2.tscn" id="12_n3sdh"]
+[ext_resource type="PackedScene" uid="uid://bcy5dxlw2n88r" path="res://src/Scenes/NPCs/TestNpc/NPC2.tscn" id="12_n3sdh"]
 [ext_resource type="PackedScene" uid="uid://br0cmwrwox8j5" path="res://assets/House.gltf" id="12_xkkve"]
-[ext_resource type="PackedScene" uid="uid://cjib8e6n8vaag" path="res://src/Scenes/NPCs/TestNpc/NPC3.tscn" id="13_6d0q8"]
-[ext_resource type="PackedScene" uid="uid://b70ncpl1lvph8" path="res://src/Scenes/NPCs/TestNpc/NPC4.tscn" id="14_2isy7"]
-[ext_resource type="PackedScene" uid="uid://b8v7seo1cmxk" path="res://src/Scenes/NPCs/TestNpc/NPC5.tscn" id="15_sfcux"]
-[ext_resource type="PackedScene" uid="uid://bp314onlummxp" path="res://src/Scenes/NPCs/TestNpc/NPC6.tscn" id="16_nvrwp"]
-[ext_resource type="PackedScene" uid="uid://ckhp0nc6jr8j5" path="res://src/Scenes/NPCs/TestNpc/NPC7.tscn" id="17_v7lyr"]
-[ext_resource type="PackedScene" uid="uid://cir210d7hnvuh" path="res://src/Scenes/NPCs/TestNpc/NPC8.tscn" id="18_dyrjb"]
+[ext_resource type="PackedScene" uid="uid://b2d4drobylu51" path="res://src/Scenes/NPCs/TestNpc/NPC3.tscn" id="13_6d0q8"]
+[ext_resource type="PackedScene" uid="uid://ch2gaojqwmjp5" path="res://src/Scenes/NPCs/TestNpc/NPC4.tscn" id="14_2isy7"]
+[ext_resource type="PackedScene" uid="uid://bchqsefey4ilq" path="res://src/Scenes/NPCs/TestNpc/NPC5.tscn" id="15_sfcux"]
+[ext_resource type="PackedScene" uid="uid://dwqur70ppvrbv" path="res://src/Scenes/NPCs/TestNpc/NPC6.tscn" id="16_nvrwp"]
+[ext_resource type="PackedScene" uid="uid://cvkdnrk618v2a" path="res://src/Scenes/NPCs/TestNpc/NPC7.tscn" id="17_v7lyr"]
+[ext_resource type="PackedScene" uid="uid://cpk44g3horjcq" path="res://src/Scenes/NPCs/TestNpc/NPC8.tscn" id="18_dyrjb"]
 [ext_resource type="PackedScene" path="res://src/Scenes/Village/collision.tscn" id="21_yjgc1"]
 [ext_resource type="PackedScene" path="res://src/Scenes/Village/hq_dialogue.tscn" id="22_87q1n"]
 [ext_resource type="AudioStream" uid="uid://c8746obb3i285" path="res://assets/Audio/Calm_Theme.wav" id="24_sjlvh"]
 [ext_resource type="Script" path="res://src/Scenes/Village/bg_music_trigger.gd" id="25_f18yh"]
-[ext_resource type="PackedScene" uid="uid://bh7a2gmetrif3" path="res://src/Scenes/press_e.tscn" id="26_8f021"]
+[ext_resource type="PackedScene" uid="uid://w6n07pl4hq3t" path="res://src/Scenes/press_e.tscn" id="26_8f021"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_utqmi"]
 
@@ -210,12 +210,6 @@ environment = SubResource("Environment_7crjn")
 
 [node name="Player" parent="WorldEnvironment" instance=ExtResource("1_pij0r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.4724, 0.511162, 182.125)
-
-[node name="CameraPivot" type="Marker3D" parent="WorldEnvironment/Player"]
-transform = Transform3D(1, 0, 0, 0, 0.543629, 0.839326, 0, -0.839326, 0.543629, -0.189987, 16.2963, 5.23692)
-
-[node name="Camera3D" type="Camera3D" parent="WorldEnvironment/Player/CameraPivot"]
-current = true
 
 [node name="Town Center" parent="WorldEnvironment" instance=ExtResource("6_cvny5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5348, 24.3643, 2.2739)
@@ -490,7 +484,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.08758, 0)
 texture = SubResource("ViewportTexture_mofvx")
 
 [node name="Sammy" parent="." instance=ExtResource("14_2isy7")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -217, 24, 75)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -217, 24.5656, 75)
 
 [node name="DialogueStarter" parent="Sammy" instance=ExtResource("3_j8ef7")]
 collision_layer = 4
@@ -507,7 +501,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.51522, 0)
 texture = SubResource("ViewportTexture_ssxmp")
 
 [node name="Alphie" parent="." instance=ExtResource("15_sfcux")]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -36, 24, 15)
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -36, 24.439, 15)
 
 [node name="DialogueStarter" parent="Alphie" instance=ExtResource("3_j8ef7")]
 collision_layer = 4
@@ -558,7 +552,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.69268, 0)
 texture = SubResource("ViewportTexture_fv2bj")
 
 [node name="Pike" parent="." instance=ExtResource("18_dyrjb")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 35, 24, 3)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 35, 24.4139, 3)
 
 [node name="DialogueStarter" parent="Pike" instance=ExtResource("3_j8ef7")]
 collision_layer = 4

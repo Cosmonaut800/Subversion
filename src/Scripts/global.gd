@@ -7,3 +7,7 @@ var game_two_completed = false
 var has_left_mart = false
 var tobin_found = false
 var player_can_move = true
+var NORMAL_CAMERA_HEIGHT := 15.0
+var NORMAL_CAMERA_ROTATION_X := -55.0
+var DIALOGUE_HEIGHT := 0.2
+var DIALOGUE_ROTATION_X := 0.0

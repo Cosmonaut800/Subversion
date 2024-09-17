@@ -1,0 +1,116 @@
+[gd_scene load_steps=11 format=3 uid="uid://dc23cfachusqj"]
+
+[ext_resource type="Script" path="res://src/Scenes/main_menu.gd" id="1_35ncu"]
+[ext_resource type="PackedScene" uid="uid://81n1a8argg0v" path="res://src/Scenes/Village/village_main_menu.tscn" id="1_r5mnu"]
+[ext_resource type="Texture2D" uid="uid://dqwoaqbx0g7g8" path="res://assets/Title_Text.png" id="3_btpah"]
+[ext_resource type="FontFile" uid="uid://yt6tt3i3iyyv" path="res://src/Scenes/CUTE DINO.OTF" id="4_xutcl"]
+
+[sub_resource type="Animation" id="Animation_othc5"]
+resource_name = "Title Animate"
+
+[sub_resource type="Animation" id="Animation_nav2n"]
+resource_name = "Fade_In"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorOverlay:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_v4da5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorOverlay:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_80kkv"]
+resource_name = "Title_Fade_In"
+
+[sub_resource type="Animation" id="Animation_ch1be"]
+resource_name = "Fade_Out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorOverlay:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jcw3b"]
+_data = {
+"Fade_In": SubResource("Animation_nav2n"),
+"Fade_Out": SubResource("Animation_ch1be"),
+"RESET": SubResource("Animation_v4da5"),
+"Title Animate": SubResource("Animation_othc5"),
+"Title_Fade_In": SubResource("Animation_80kkv")
+}
+
+[node name="MainMenu" type="Node3D"]
+script = ExtResource("1_35ncu")
+
+[node name="camera_stopper" type="Marker3D" parent="."]
+transform = Transform3D(-0.00254846, 0.872409, -0.48877, 0.00201099, 0.488775, 0.872408, 0.999995, 0.00124039, -0.00300003, 115.098, 139.961, 100.581)
+
+[node name="Village" parent="." instance=ExtResource("1_r5mnu")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_left = 457.0
+offset_top = 565.0
+offset_right = 497.0
+offset_bottom = 605.0
+
+[node name="TitleGraphic" type="TextureRect" parent="CanvasLayer"]
+offset_left = 122.0
+offset_top = 20.0
+offset_right = 1147.0
+offset_bottom = 521.0
+texture = ExtResource("3_btpah")
+
+[node name="StartButton" type="Button" parent="CanvasLayer"]
+offset_left = 522.0
+offset_top = 568.0
+offset_right = 732.0
+offset_bottom = 656.0
+theme_override_fonts/font = ExtResource("4_xutcl")
+theme_override_font_sizes/font_size = 30
+action_mode = 0
+text = "Start Game"
+
+[node name="ColorOverlay" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1282.0
+offset_bottom = 737.0
+color = Color(0, 0, 0, 1)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.00254846, 0.872409, -0.48877, 0.00201099, 0.488775, 0.872408, 0.999995, 0.00124039, -0.00300003, -229.266, 139.961, 100.581)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jcw3b")
+}
+
+[connection signal="pressed" from="CanvasLayer/StartButton" to="." method="_on_start_button_pressed"]

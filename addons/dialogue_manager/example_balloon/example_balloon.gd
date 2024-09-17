@@ -7,7 +7,7 @@ class_name DialogueManagerExampleBalloon extends CanvasLayer
 ## The action to use to skip typing the dialogue
 @export var skip_action: StringName = &"ui_cancel"
 @onready var talk_sound := $TalkSound
-@onready var indicator := $Indicator
+@onready var indicator := $Balloon/Panel/Indicator
 @onready var timer := $Indicator/Timer
 ## The dialogue resource
 var resource: DialogueResource

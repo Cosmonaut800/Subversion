@@ -1,0 +1,454 @@
+[gd_scene load_steps=45 format=3 uid="uid://81n1a8argg0v"]
+
+[ext_resource type="Script" path="res://src/Scenes/Village/village.gd" id="1_g4my0"]
+[ext_resource type="PackedScene" uid="uid://bbkobjgqqyfsp" path="res://assets/Town_center.gltf" id="3_y7apo"]
+[ext_resource type="PackedScene" uid="uid://du1vrijspuans" path="res://assets/Manitow-Lake.gltf" id="4_371k8"]
+[ext_resource type="PackedScene" uid="uid://bx0vvgxuwrxuc" path="res://assets/OrangeOrchards.gltf" id="5_gc2i6"]
+[ext_resource type="PackedScene" uid="uid://8olwogff7sq7" path="res://assets/Starting_Area.gltf" id="6_jxv17"]
+[ext_resource type="PackedScene" uid="uid://cngfcgmtb35hu" path="res://assets/Central_Island.gltf" id="7_rlrne"]
+[ext_resource type="PackedScene" uid="uid://bu70svn6pv313" path="res://assets/Mount-Spitoon.gltf" id="8_42ixl"]
+[ext_resource type="PackedScene" path="res://src/Scenes/Village/mountain.tscn" id="9_4ovr5"]
+[ext_resource type="PackedScene" uid="uid://m8nnqpu7oblf" path="res://assets/Sign.gltf" id="10_1t2ht"]
+[ext_resource type="PackedScene" path="res://addons/dialogue_starter.tscn" id="11_pl487"]
+[ext_resource type="Resource" uid="uid://bddc5j7bfm0d0" path="res://src/Scripts/DialogueManager/dialogue_container.dialogue" id="12_eyrbn"]
+[ext_resource type="PackedScene" path="res://src/Scenes/press_e.tscn" id="13_w8pn7"]
+[ext_resource type="PackedScene" uid="uid://br0cmwrwox8j5" path="res://assets/House.gltf" id="14_vyo0t"]
+[ext_resource type="PackedScene" uid="uid://bcwuk307xqpwf" path="res://src/Scenes/NPCs/TestNpc/NPC1.tscn" id="15_ecdwn"]
+[ext_resource type="PackedScene" uid="uid://bcy5dxlw2n88r" path="res://src/Scenes/NPCs/TestNpc/NPC2.tscn" id="16_w6ptl"]
+[ext_resource type="PackedScene" uid="uid://b2d4drobylu51" path="res://src/Scenes/NPCs/TestNpc/NPC3.tscn" id="17_hsflx"]
+[ext_resource type="PackedScene" uid="uid://ch2gaojqwmjp5" path="res://src/Scenes/NPCs/TestNpc/NPC4.tscn" id="18_3j7x0"]
+[ext_resource type="PackedScene" uid="uid://bchqsefey4ilq" path="res://src/Scenes/NPCs/TestNpc/NPC5.tscn" id="19_ijr0j"]
+[ext_resource type="PackedScene" uid="uid://dwqur70ppvrbv" path="res://src/Scenes/NPCs/TestNpc/NPC6.tscn" id="20_jy5fa"]
+[ext_resource type="PackedScene" uid="uid://cvkdnrk618v2a" path="res://src/Scenes/NPCs/TestNpc/NPC7.tscn" id="21_1ny2c"]
+[ext_resource type="PackedScene" uid="uid://cpk44g3horjcq" path="res://src/Scenes/NPCs/TestNpc/NPC8.tscn" id="22_t0whp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_utqmi"]
+
+[sub_resource type="Sky" id="Sky_viaue"]
+sky_material = SubResource("ShaderMaterial_utqmi")
+
+[sub_resource type="Environment" id="Environment_7crjn"]
+background_mode = 2
+sky = SubResource("Sky_viaue")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 1.85
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_75btx"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_mwdjo"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kjx8v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ym0kg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6imby"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_adq6k"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b4psn"]
+size = Vector3(1, 1, 1.29297)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_y68b7"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1n5ja"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_mofvx"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nwcys"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ssxmp"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tq50l"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6ftfv"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1vqbw"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_rep2r"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4nbax"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fv2bj"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_akbf0"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_njmk4"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Village" type="Node"]
+script = ExtResource("1_g4my0")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7crjn")
+
+[node name="Town Center" parent="WorldEnvironment" instance=ExtResource("3_y7apo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5348, 24.3643, 2.2739)
+
+[node name="manitow" parent="WorldEnvironment" instance=ExtResource("4_371k8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -226.799, 24.5298, 16.9929)
+
+[node name="Orange Orchards" parent="WorldEnvironment" instance=ExtResource("5_gc2i6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84.7259, 24.3478, -16.1123)
+
+[node name="Canyon" parent="WorldEnvironment" instance=ExtResource("6_jxv17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7387, 0.60043, 170.608)
+
+[node name="Central" parent="WorldEnvironment" instance=ExtResource("7_rlrne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8663, 24.4632, 58.8292)
+
+[node name="spittoonmt" parent="WorldEnvironment" instance=ExtResource("8_42ixl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -189.08, 24.6747, 165.141)
+
+[node name="MountainRanges" type="Node3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.59683, 5.29361, -5.29794)
+
+[node name="Mountain" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -283.252, 32.7529, 61.9695)
+
+[node name="Mountain2" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -285.566, 32.7529, 107.425)
+
+[node name="Mountain3" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -286.342, 32.7529, 146.328)
+
+[node name="Mountain4" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -285.824, 32.7507, 192.491)
+
+[node name="Mountain5" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -278.348, 32.7507, 237.461)
+
+[node name="Mountain6" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -230.017, 32.7507, 235.826)
+
+[node name="Mountain7" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -199.283, 32.7507, 235.962)
+
+[node name="Mountain8" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -168.223, 32.7507, 235.826)
+
+[node name="Mountain9" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -137.224, 32.7507, 235.962)
+
+[node name="Mountain10" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -104.716, 32.7507, 235.826)
+
+[node name="Mountain11" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -75.552, 32.7507, 235.962)
+
+[node name="Mountain12" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -40.9261, 32.7507, 235.826)
+
+[node name="Mountain13" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -6.67105, 32.7507, 235.962)
+
+[node name="Mountain14" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 27.7293, 32.7505, 236.144)
+
+[node name="Mountain15" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 56.9683, 32.7505, 236.28)
+
+[node name="Mountain16" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 92.8541, 32.7505, 236.144)
+
+[node name="Mountain17" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 129.257, 32.7505, 236.28)
+
+[node name="Mountain18" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 172.437, 32.7505, 236.144)
+
+[node name="Mountain19" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 208.841, 28.4952, 248.975)
+
+[node name="Mountain20" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -279.558, 5.35576, -75.393)
+
+[node name="Mountain21" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -229.862, 6.37774, -75.7235)
+
+[node name="Mountain43" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -327.387, 6.32729, -75.3077)
+
+[node name="Mountain44" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -365.525, 6.32729, -51.496)
+
+[node name="Mountain45" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -365.525, 6.32729, -12.6866)
+
+[node name="Mountain46" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -365.525, 6.32729, 18.4181)
+
+[node name="Mountain47" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -332.009, 6.32729, 26.2713)
+
+[node name="Mountain48" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -305.971, 6.32729, 61.2525)
+
+[node name="Mountain22" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -199.283, 6.32729, -77.0263)
+
+[node name="Mountain23" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -168.223, 6.32729, -75.0494)
+
+[node name="Mountain24" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -137.224, 6.32729, -74.9915)
+
+[node name="Mountain25" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -104.716, 6.32729, -74.8775)
+
+[node name="Mountain26" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -75.552, 6.32729, -74.6962)
+
+[node name="Mountain27" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -40.9261, 6.32729, -74.5823)
+
+[node name="Mountain28" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -6.67105, 6.32729, -74.1261)
+
+[node name="Mountain29" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 27.7293, 6.32703, -73.8313)
+
+[node name="Mountain30" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 56.9683, 6.32703, -74.412)
+
+[node name="Mountain31" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 92.8541, 6.32703, -74.6817)
+
+[node name="Mountain32" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 129.257, 6.32703, -74.9394)
+
+[node name="Mountain33" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 172.437, 6.32703, -75.9483)
+
+[node name="Mountain34" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 222.418, 19.9829, 207.881)
+
+[node name="Mountain35" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 222.418, 19.9829, 164.509)
+
+[node name="Mountain36" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 222.418, 19.9829, 127.181)
+
+[node name="Mountain37" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 222.418, 19.9829, 83.8096)
+
+[node name="Mountain38" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 222.418, 19.9829, 45.4119)
+
+[node name="Mountain39" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 222.418, 19.9829, 2.04023)
+
+[node name="Mountain40" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 222.418, 19.9828, -31.9459)
+
+[node name="Mountain41" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 231.586, 19.2578, -77.4437)
+
+[node name="Mountain42" parent="WorldEnvironment/MountainRanges" instance=ExtResource("9_4ovr5")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 198.033, 19.2578, -77.4437)
+
+[node name="Directional Sign" parent="WorldEnvironment" instance=ExtResource("10_1t2ht")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2658, 24.2384, 82)
+
+[node name="DialogueStarter" parent="WorldEnvironment/Directional Sign" instance=ExtResource("11_pl487")]
+collision_layer = 4
+collision_mask = 4
+dialogue_resource = ExtResource("12_eyrbn")
+dialogue_start = "Directions"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/Directional Sign/DialogueStarter"]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 5.16376, 0)
+shape = SubResource("BoxShape3D_75btx")
+
+[node name="PressE" parent="WorldEnvironment/Directional Sign" instance=ExtResource("13_w8pn7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.95461, 0)
+texture = SubResource("ViewportTexture_mwdjo")
+
+[node name="Mary\'s House" parent="WorldEnvironment" instance=ExtResource("14_vyo0t")]
+transform = Transform3D(0.662712, 0, -0.748875, 0, 1, 0, 0.748875, 0, 0.662712, 182.439, 25.1488, -33.0732)
+
+[node name="Shari\'s House" parent="WorldEnvironment" instance=ExtResource("14_vyo0t")]
+transform = Transform3D(0.926279, 0, -0.376839, 0, 1, 0, 0.376839, 0, 0.926279, 179.811, 24.3478, 162.429)
+
+[node name="DialogueStarter" parent="WorldEnvironment/Shari\'s House" instance=ExtResource("11_pl487")]
+collision_layer = 4
+collision_mask = 4
+dialogue_resource = ExtResource("12_eyrbn")
+dialogue_start = "Game_one_init"
+game_name = "game one"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/Shari\'s House/DialogueStarter"]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 2.63274, 2.27509, -1.47092)
+shape = SubResource("BoxShape3D_kjx8v")
+
+[node name="Bill\'s House" parent="WorldEnvironment" instance=ExtResource("14_vyo0t")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -118.247, 24.4632, 103.247)
+
+[node name="Tobin\'s House" parent="WorldEnvironment" instance=ExtResource("14_vyo0t")]
+transform = Transform3D(0.999913, 0, 0.0132293, 0, 1, 0, -0.0132293, 0, 0.999913, -102.654, 57.7391, 160.235)
+
+[node name="DialogueStarter" parent="WorldEnvironment/Tobin\'s House" instance=ExtResource("11_pl487")]
+collision_layer = 4
+collision_mask = 4
+dialogue_resource = ExtResource("12_eyrbn")
+dialogue_start = "Game_two_init"
+game_name = "game two"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/Tobin\'s House/DialogueStarter"]
+transform = Transform3D(7, 0, -7.45058e-09, 0, 7, 0, 7.45058e-09, 0, 7, 0.0485077, 2.38334, -3.66649)
+shape = SubResource("BoxShape3D_ym0kg")
+
+[node name="Mayor Frisbee" parent="." instance=ExtResource("15_ecdwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 24.4827, -29)
+
+[node name="DialogueStarter" parent="Mayor Frisbee" instance=ExtResource("11_pl487")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.14386, -1.52588e-05, 0.0920715)
+collision_layer = 4
+collision_mask = 4
+dialogue_resource = ExtResource("12_eyrbn")
+dialogue_start = "Mayor_Frisbee_Dialogue"
+game_name = "game three"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mayor Frisbee/DialogueStarter"]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 1, 0)
+shape = SubResource("BoxShape3D_6imby")
+
+[node name="PressE" parent="Mayor Frisbee" instance=ExtResource("13_w8pn7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.0764, 0)
+texture = SubResource("ViewportTexture_adq6k")
+
+[node name="Tobin" parent="." instance=ExtResource("16_w6ptl")]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -299, 25, -47)
+
+[node name="DialogueStarter" parent="Tobin" instance=ExtResource("11_pl487")]
+collision_layer = 4
+collision_mask = 4
+dialogue_resource = ExtResource("12_eyrbn")
+dialogue_start = "Tobin_Dialogue"
+game_name = "tobin"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tobin/DialogueStarter"]
+transform = Transform3D(7, 0, 1.19209e-07, 0, 7, 0, -1.19209e-07, 0, 7, -1.60661, -0.529976, -0.355743)
+shape = SubResource("BoxShape3D_b4psn")
+
+[node name="PressE" parent="Tobin" instance=ExtResource("13_w8pn7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.435, 0)
+texture = SubResource("ViewportTexture_y68b7")
+
+[node name="Ralph" parent="." instance=ExtResource("17_hsflx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59, 0, 180)
+collision_layer = 4
+collision_mask = 4
+
+[node name="DialogueStarter" parent="Ralph" instance=ExtResource("11_pl487")]
+collision_layer = 4
+collision_mask = 4
+dialogue_resource = ExtResource("12_eyrbn")
+dialogue_start = "Ralph_Dialogue"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ralph/DialogueStarter"]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, -1, 4, 1)
+shape = SubResource("BoxShape3D_1n5ja")
+
+[node name="PressE" parent="Ralph" instance=ExtResource("13_w8pn7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.08758, 0)
+texture = SubResource("ViewportTexture_mofvx")
+
+[node name="Sammy" parent="." instance=ExtResource("18_3j7x0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -217, 24, 75)
+
+[node name="DialogueStarter" parent="Sammy" instance=ExtResource("11_pl487")]
+collision_layer = 4
+collision_mask = 4
+dialogue_resource = ExtResource("12_eyrbn")
+dialogue_start = "Sammy_Dialogue"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sammy/DialogueStarter"]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 3, 0)
+shape = SubResource("BoxShape3D_nwcys")
+
+[node name="PressE" parent="Sammy" instance=ExtResource("13_w8pn7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.51522, 0)
+texture = SubResource("ViewportTexture_ssxmp")
+
+[node name="Alphie" parent="." instance=ExtResource("19_ijr0j")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -36, 24, 15)
+
+[node name="DialogueStarter" parent="Alphie" instance=ExtResource("11_pl487")]
+collision_layer = 4
+collision_mask = 4
+dialogue_resource = ExtResource("12_eyrbn")
+dialogue_start = "Alphie_Dialogue"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Alphie/DialogueStarter"]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 4, 0)
+shape = SubResource("BoxShape3D_tq50l")
+
+[node name="PressE" parent="Alphie" instance=ExtResource("13_w8pn7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.64086, 0)
+texture = SubResource("ViewportTexture_6ftfv")
+
+[node name="Bailey" parent="." instance=ExtResource("20_jy5fa")]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 163, 24.4285, 61)
+
+[node name="DialogueStarter" parent="Bailey" instance=ExtResource("11_pl487")]
+collision_layer = 4
+collision_mask = 4
+dialogue_resource = ExtResource("12_eyrbn")
+dialogue_start = "Bailey_Dialogue"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bailey/DialogueStarter"]
+transform = Transform3D(7, 0, 1.19209e-07, 0, 7, 0, -1.19209e-07, 0, 7, 0, 3, 0)
+shape = SubResource("BoxShape3D_1vqbw")
+
+[node name="PressE" parent="Bailey" instance=ExtResource("13_w8pn7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.78913, 0)
+texture = SubResource("ViewportTexture_rep2r")
+
+[node name="Climber" parent="." instance=ExtResource("21_1ny2c")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -178, 25, 171)
+
+[node name="DialogueStarter" parent="Climber" instance=ExtResource("11_pl487")]
+collision_layer = 4
+collision_mask = 4
+dialogue_resource = ExtResource("12_eyrbn")
+dialogue_start = "Climber_Dialogue"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Climber/DialogueStarter"]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 3, 0)
+shape = SubResource("BoxShape3D_4nbax")
+
+[node name="PressE" parent="Climber" instance=ExtResource("13_w8pn7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.69268, 0)
+texture = SubResource("ViewportTexture_fv2bj")
+
+[node name="Pike" parent="." instance=ExtResource("22_t0whp")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 35, 24, 3)
+
+[node name="DialogueStarter" parent="Pike" instance=ExtResource("11_pl487")]
+collision_layer = 4
+collision_mask = 4
+dialogue_resource = ExtResource("12_eyrbn")
+dialogue_start = "Pike_Dialogue"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pike/DialogueStarter"]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 3, 0)
+shape = SubResource("BoxShape3D_akbf0")
+
+[node name="PressE" parent="Pike" instance=ExtResource("13_w8pn7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.32003, 0)
+texture = SubResource("ViewportTexture_njmk4")
+
+[node name="Node" type="Node" parent="."]
+
+[connection signal="minigame1_started" from="WorldEnvironment/Shari\'s House/DialogueStarter" to="." method="_on_dialogue_starter_minigame_1_started"]
+[connection signal="minigame2_started" from="WorldEnvironment/Tobin\'s House/DialogueStarter" to="." method="_on_dialogue_starter_minigame_2_started"]
+[connection signal="fps_started" from="Mayor Frisbee/DialogueStarter" to="." method="_on_dialogue_starter_fps_started"]

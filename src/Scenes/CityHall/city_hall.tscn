@@ -1,9 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://bbrwemhjdmnmp"]
+[gd_scene load_steps=16 format=3 uid="uid://cdynnw1mmfl56"]
 
 [ext_resource type="PackedScene" uid="uid://dybrn0vr7kju3" path="res://assets/Models/subversion_map2.glb" id="1_jfut7"]
 [ext_resource type="Script" path="res://src/Scripts/CityHall/city_hall.gd" id="1_jw4ir"]
 [ext_resource type="PackedScene" uid="uid://djx0nkflp07y8" path="res://assets/Models/subversion_door.glb" id="2_pe2p7"]
-[ext_resource type="PackedScene" uid="uid://o1wc2dmtt7wj" path="res://src/Scenes/CityHall/locked_door.tscn" id="3_2exgt"]
+[ext_resource type="PackedScene" path="res://src/Scenes/CityHall/locked_door.tscn" id="3_2exgt"]
 [ext_resource type="PackedScene" uid="uid://dgkmdffi5q7c3" path="res://src/Scenes/CityHall/health_pickup.tscn" id="4_4lyqu"]
 [ext_resource type="PackedScene" uid="uid://csbua6s8huld4" path="res://src/Scenes/CityHall/EnemySpawner.tscn" id="5_4ydu1"]
 [ext_resource type="PackedScene" uid="uid://dpudw516j8pow" path="res://src/Scenes/Player/first_person_player.tscn" id="6_x5cwa"]

@@ -1,8 +1,8 @@
 class_name Entity
 extends CharacterBody3D
 
-@onready
-var animation_player = $animations
+#@onready
+#var animation_player = $animations
 @onready
 var state_machine = $Statemachine
 

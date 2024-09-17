@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bh7a2gmetrif3"]
+[gd_scene load_steps=4 format=3 uid="uid://w6n07pl4hq3t"]
+
+[ext_resource type="FontFile" uid="uid://yt6tt3i3iyyv" path="res://src/Scenes/CUTE DINO.OTF" id="1_xq4ce"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ht2f6"]
 viewport_path = NodePath("SubViewport")
@@ -35,6 +37,7 @@ offset_right = 149.0
 offset_bottom = 55.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_xq4ce")
 text = "PRESS E
 "
 label_settings = SubResource("LabelSettings_jpvl3")

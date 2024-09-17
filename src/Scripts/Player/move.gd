@@ -32,7 +32,7 @@ func process_physics(_delta: float) -> State:
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var direction = (Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	#parent.transform.basis * 
-	if direction:
+	if Global.player_can_move and direction:
 		parent.velocity.x = direction.x * movement_speed
 		parent.velocity.z = direction.z * movement_speed
 		if not parent.is_on_floor():

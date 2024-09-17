@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://bsfnibm23b3lj"]
+
+[ext_resource type="Script" path="res://src/Scripts/CityHall/end_game.gd" id="1_vrr3f"]
+[ext_resource type="PackedScene" uid="uid://bbkobjgqqyfsp" path="res://assets/Town_center.gltf" id="2_k4l0o"]
+[ext_resource type="PackedScene" path="res://addons/dialogue_starter.tscn" id="4_tg8iy"]
+[ext_resource type="Resource" uid="uid://bddc5j7bfm0d0" path="res://src/Scripts/DialogueManager/dialogue_container.dialogue" id="5_usg30"]
+[ext_resource type="PackedScene" uid="uid://bcwuk307xqpwf" path="res://src/Scenes/NPCs/TestNpc/NPC1.tscn" id="6_atq5m"]
+[ext_resource type="PackedScene" path="res://src/Scenes/Village/mountain.tscn" id="13_15os3"]
+
+[sub_resource type="Environment" id="Environment_ccd8t"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[node name="EndGame" type="Node3D"]
+script = ExtResource("1_vrr3f")
+
+[node name="Town Center" parent="." instance=ExtResource("2_k4l0o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ccd8t")
+
+[node name="DialogueStarter" parent="." instance=ExtResource("4_tg8iy")]
+dialogue_resource = ExtResource("5_usg30")
+dialogue_start = "End_game_talk"
+
+[node name="NPC" parent="." instance=ExtResource("6_atq5m")]
+transform = Transform3D(0.998183, 0, -0.060247, 0, 1, 0, 0.060247, 0, 0.998183, 0.415568, -0.75, -24.269)
+
+[node name="Mountain" parent="." instance=ExtResource("13_15os3")]
+transform = Transform3D(50, 0, 0, 0, 100, 0, 0, 0, 50, -64, -38, -100)
+
+[node name="Mountain2" parent="." instance=ExtResource("13_15os3")]
+transform = Transform3D(50, 0, 0, 0, 100, 0, 0, 0, 50, 39, -38, -100)
+
+[node name="Mountain3" parent="." instance=ExtResource("13_15os3")]
+transform = Transform3D(50, 0, 0, 0, 100, 0, 0, 0, 50, -10, -38, -100)
+
+[node name="Mountain4" parent="." instance=ExtResource("13_15os3")]
+transform = Transform3D(50, 0, 0, 0, 100, 0, 0, 0, 50, 91, -38, -100)
+
+[node name="Mountain5" parent="." instance=ExtResource("13_15os3")]
+transform = Transform3D(50, 0, 0, 0, 100, 0, 0, 0, 50, 158, -38, -100)
+
+[node name="Mountain6" parent="." instance=ExtResource("13_15os3")]
+transform = Transform3D(50, 0, 0, 0, 100, 0, 0, 0, 50, -112, -38, -100)
+
+[node name="Mountain7" parent="." instance=ExtResource("13_15os3")]
+transform = Transform3D(50, 0, 0, 0, 100, 0, 0, 0, 50, -176, -38, -66)

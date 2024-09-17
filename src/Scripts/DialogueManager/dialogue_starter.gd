@@ -3,6 +3,8 @@ extends Area3D
 @export var dialogue_resource: DialogueResource
 @export var dialogue_start: String
 @export var game_name : String
+@onready var camera := $"../../Player/CameraPivot/Camera3D"
+@onready var dialogue_point := $"../../Player/DialoguePoint"
 
 signal minigame1_started
 signal minigame2_started

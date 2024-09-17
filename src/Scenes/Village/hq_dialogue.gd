@@ -1,6 +1,7 @@
 extends Area3D
 @onready var dialogue_start := $DialogueStarter
 @onready var parent := $"."
+@onready var player := $"../WorldEnvironment/Player"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,5 +14,6 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.name == "Player":
+		Global.player_can_move = false
 		dialogue_start.start_dialogue()
 		parent.queue_free()

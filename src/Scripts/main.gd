@@ -19,6 +19,10 @@ var city_hall: Node3D
 var ending_template := preload("res://src/Scenes/CityHall/end_game.tscn")
 var ending: Node3D
 
+func _ready():
+	get_tree().create_tween().tween_property(color_rect, "color", Color.BLACK, 0.1)
+	get_tree().create_tween().tween_property(color_rect, "color", Color.TRANSPARENT, 2)
+
 func _on_village_start_fps() -> void:
 	var tween = create_tween()
 	
